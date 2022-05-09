@@ -55,7 +55,7 @@ public class Start {
         
 
         /* Create and display the form */      
-         new MiBUI().setVisible(true);
+         new MiBUI(idb).setVisible(true);
            
         
     }

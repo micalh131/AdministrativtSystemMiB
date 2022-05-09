@@ -4,6 +4,7 @@
  */
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import oru.inf.InfDB;
 import oru.inf.InfException;
 /**
@@ -12,13 +13,14 @@ import oru.inf.InfException;
  */
 
 public class MiBUI extends javax.swing.JFrame {
-
+    
+    private static InfDB idb;
     /**
      * Creates new form MiBUI
      */
-    public MiBUI() {
+    public MiBUI(InfDB idb) {
         initComponents();
-        
+        this.idb = idb;
         
     }
 
@@ -39,6 +41,7 @@ public class MiBUI extends javax.swing.JFrame {
         lblPassword = new javax.swing.JLabel();
         txtPassword = new javax.swing.JTextField();
         btnLogin = new javax.swing.JButton();
+        jPasswordField1 = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -47,11 +50,6 @@ public class MiBUI extends javax.swing.JFrame {
 
         cmbSelectUser.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Välj", "Agent", "Alien", "Admin" }));
         cmbSelectUser.setToolTipText("");
-        cmbSelectUser.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cmbSelectUserActionPerformed(evt);
-            }
-        });
 
         lblSelectUser.setText("Typ av användare");
 
@@ -64,6 +62,13 @@ public class MiBUI extends javax.swing.JFrame {
         txtPassword.setColumns(4);
 
         btnLogin.setText("Logga in");
+        btnLogin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLoginActionPerformed(evt);
+            }
+        });
+
+        jPasswordField1.setText("jPasswordField1");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -72,15 +77,21 @@ public class MiBUI extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(31, 31, 31)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnLogin)
-                    .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblPassword)
-                    .addComponent(txtUserName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblUserName)
-                    .addComponent(lblSelectUser)
-                    .addComponent(cmbSelectUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(409, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnLogin)
+                            .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblPassword)
+                            .addComponent(lblUserName)
+                            .addComponent(lblSelectUser)
+                            .addComponent(cmbSelectUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(409, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(txtUserName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(66, 66, 66))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -94,7 +105,9 @@ public class MiBUI extends javax.swing.JFrame {
                 .addGap(27, 27, 27)
                 .addComponent(lblUserName)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtUserName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtUserName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(lblPassword)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -107,9 +120,35 @@ public class MiBUI extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void cmbSelectUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbSelectUserActionPerformed
-   //cmbSelectUser.addItem("Välj");
-    }//GEN-LAST:event_cmbSelectUserActionPerformed
+    private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
+        // TODO add your handling code here:
+        
+        
+        try{
+            String fragaUserName = "SELECT Agent_ID FROM agent WHERE Agent_ID=1";
+            String fragaPassword = "SELECT Losenord FROM agent WHERE Losenord = 'planka'";
+            String svarUserName = idb.fetchSingle(fragaUserName);
+            String svarPassword = idb.fetchSingle(fragaPassword);
+            String userName = txtUserName.getText();
+            String password = txtPassword.getText();
+            System.out.println("YAY");
+            if(userName.equals( svarUserName) && password.equals(svarPassword)){
+                System.out.println("Inloggad!!!!!! ");
+             }   
+            else{
+                System.out.println("NOooooo");
+            }
+        }
+        catch(InfException e){
+            JOptionPane.showMessageDialog(null, "Något gick fel");
+        }
+        
+        
+        
+        
+        
+        
+    }//GEN-LAST:event_btnLoginActionPerformed
 
     
     
@@ -117,6 +156,7 @@ public class MiBUI extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnLogin;
     private javax.swing.JComboBox<String> cmbSelectUser;
+    private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JLabel lblLogin;
     private javax.swing.JLabel lblPassword;
     private javax.swing.JLabel lblSelectUser;
