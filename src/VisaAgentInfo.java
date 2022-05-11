@@ -62,7 +62,7 @@ public class VisaAgentInfo extends javax.swing.JFrame {
    private void visaInfo(){
         //String id = cmbValjAgent.getItemAt(1);
         try{
-        String fraga = "SELECT Agent_ID, Namn, Telefon, Anstallningsdatum FROM Agent WHERE Omrade = 1";
+        String fraga = "SELECT Agent_ID, Namn, Telefon FROM Agent JOIN  WHERE Omrade = 1";
         HashMap<String, String> svar = idb.fetchRow(fraga);
         String namn = svar.get("Namn");
         String telefon = svar.get("Telefon");
