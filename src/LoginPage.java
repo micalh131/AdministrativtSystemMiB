@@ -146,13 +146,15 @@ public class LoginPage extends javax.swing.JFrame {
             else  if(valdUser.equalsIgnoreCase("Alien")){
             String fragaUserName = "SELECT Alien_ID FROM alien WHERE Alien_ID=" + userName;
             String fragaPassword = "SELECT Losenord FROM alien WHERE Losenord=" + "'" + password + "'";
+            String fragaPlats = "SELECT plats FROM alien WHERE Alien_ID=" + userName;
+            String svarPlats = idb.fetchSingle(fragaPlats);
             String svarUserName = idb.fetchSingle(fragaUserName);
             String svarPassword = idb.fetchSingle(fragaPassword);
             
             System.out.println(valdUser);
              if(userName.equals( svarUserName) && password.equals(svarPassword)){
                System.out.println("Inloggad som alien");
-               new AlienPage(idb).setVisible(true);
+               new AlienPage(idb, svarPlats, userName, valdUser).setVisible(true);
              }   
          }
          
