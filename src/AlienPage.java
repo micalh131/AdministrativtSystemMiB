@@ -12,12 +12,22 @@ import oru.inf.InfDB;
  */
 public class AlienPage extends javax.swing.JFrame {
     private InfDB idb;
+    private String alienPlats;
+    private String alienUserName;
+    private String valdUser;
     /**
      * Creates new form AlienPage
+     * @param idb
+     * @param alienPlats
+     * @param alienUserName
+     * @param valdUser
      */
-    public AlienPage(InfDB idb) {
+    public AlienPage(InfDB idb,String alienPlats, String alienUserName, String valdUser ) {
         initComponents();
         this.idb = idb;
+        this.alienPlats = alienPlats;
+        this.alienUserName = alienUserName;
+        this.valdUser = valdUser;
     }
 
     /**
@@ -35,7 +45,12 @@ public class AlienPage extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jButton1.setText("jButton1");
+        jButton1.setText("Byt lösenord");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         btnVisaAgentInfo.setText("AgentInfo");
         btnVisaAgentInfo.addActionListener(new java.awt.event.ActionListener() {
@@ -53,7 +68,7 @@ public class AlienPage extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(54, 54, 54)
                 .addComponent(jButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 95, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 73, Short.MAX_VALUE)
                 .addComponent(btnVisaAgentInfo)
                 .addGap(93, 93, 93))
             .addGroup(layout.createSequentialGroup()
@@ -78,9 +93,14 @@ public class AlienPage extends javax.swing.JFrame {
 
     private void btnVisaAgentInfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVisaAgentInfoActionPerformed
         // TODO add your handling code here:
-        new VisaAgentInfo(idb).setVisible(true);
+        new VisaAgentInfo(idb, alienPlats).setVisible(true);
         
     }//GEN-LAST:event_btnVisaAgentInfoActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        new AndraLosenord(idb,alienUserName,valdUser).setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     
 

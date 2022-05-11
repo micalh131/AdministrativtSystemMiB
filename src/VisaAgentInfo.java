@@ -8,19 +8,22 @@ import oru.inf.InfException;
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-
 /**
  *
  * @author miche
  */
 public class VisaAgentInfo extends javax.swing.JFrame {
+
     private InfDB idb;
+    private String alienPlats;
+
     /**
      * Creates new form VisaAgentInfo
      */
-    public VisaAgentInfo(InfDB idb) {
+    public VisaAgentInfo(InfDB idb, String alienPlats) {
         initComponents();
         this.idb = idb;
+        this.alienPlats = alienPlats;
         visaInfo();
     }
 
@@ -59,22 +62,26 @@ public class VisaAgentInfo extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-   private void visaInfo(){
+    private void visaInfo() {
         //String id = cmbValjAgent.getItemAt(1);
-        try{
-        String fraga = "SELECT Agent_ID, Namn, Telefon FROM Agent JOIN  WHERE Omrade = 1";
-        HashMap<String, String> svar = idb.fetchRow(fraga);
-        String namn = svar.get("Namn");
-        String telefon = svar.get("Telefon");
-        String anstallningsdatum = svar.get("Anstallningsdatum");
-        System.out.println(namn + telefon + anstallningsdatum);
 
-        lblAgentInformation.setText(namn + telefon + anstallningsdatum);
-        }
-        catch(InfException e){
+        try {
+            //String fraga = "SELECT Agent_ID, Namn, Telefon, Anstallningsdatum FROM Agent WHERE Omrade = 1";
+            String fraga = "SELECT agent.Agent_ID, Namn, Telefon FROM agent \n"
+                    + "JOIN omradeschef ON omradeschef.`Agent_ID` = agent.`Agent_ID`\n"
+                    + "JOIN omrade ON omradeschef.`Agent_ID` = omrade.`Omrades_ID`\n"
+                    + "JOIN plats ON omrade.`Omrades_ID` = plats.`Plats_ID` WHERE Plats_ID =" + alienPlats;
+            HashMap<String, String> svar = idb.fetchRow(fraga);
+            String namn = svar.get("Namn");
+            String telefon = svar.get("Telefon");
+
+            System.out.println(namn + telefon);
+
+            lblAgentInformation.setText(" " + namn + " " + telefon);
+        } catch (InfException e) {
             JOptionPane.showMessageDialog(null, "Något gick fel");
         }
-   }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel lblAgentInformation;
