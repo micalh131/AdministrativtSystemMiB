@@ -13,10 +13,15 @@ import oru.inf.InfException;
  *
  * @author miche
  * carolina kommenterar
+ * åsa har också kommenterat :)
+ * 
+ * Databasen InfDB är en klass skapad av ORU och här skapar vi databaskopplingen
+ * 
  */
 public class Start {
     /**
      * @param args the command line arguments
+     * main metod som loggar in på databasen/upprättar kopplingen till databasen
      */
     private static InfDB idb;
     
@@ -54,7 +59,10 @@ public class Start {
         //</editor-fold>
         
 
-        /* Create and display the form */      
+        /* Create and display the form
+        initialiserar klassen LoginPage (fönster med logginsida öppnas) 
+        skickar med parametern idb
+        */
          new LoginPage(idb).setVisible(true);
            
         

@@ -9,8 +9,11 @@ import oru.inf.InfException;
  */
 
 /**
- *
- * @author miche
+ * @author miche, aaau, cAppelina
+ * Klassen hanterar byte av lösenord och anropas av metoder i andra klasser/användare.
+ * Databasuppkoppling sker, fält lagrar värden som ska användas i metoderna för att frågorna
+ * vi ställer till databasen utgår från vilken användare som försöker ändra lösenord.
+ * 
  */
 public class AndraLosenord extends javax.swing.JFrame {
     private InfDB idb;
@@ -40,7 +43,7 @@ public class AndraLosenord extends javax.swing.JFrame {
         txtNyttLosen = new javax.swing.JTextField();
         lblNyttLosen = new javax.swing.JLabel();
         lblNuvarandeLosen = new javax.swing.JLabel();
-        btnChagePassword = new javax.swing.JButton();
+        btnBytLosen = new javax.swing.JButton();
         lblLosenIsUpdated = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -49,10 +52,10 @@ public class AndraLosenord extends javax.swing.JFrame {
 
         lblNuvarandeLosen.setText("Skriv in nuvarande lösenord");
 
-        btnChagePassword.setText("Byt lösenord");
-        btnChagePassword.addActionListener(new java.awt.event.ActionListener() {
+        btnBytLosen.setText("Byt lösenord");
+        btnBytLosen.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnChagePasswordActionPerformed(evt);
+                btnBytLosenActionPerformed(evt);
             }
         });
 
@@ -67,7 +70,7 @@ public class AndraLosenord extends javax.swing.JFrame {
                 .addGap(93, 93, 93)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnChagePassword)
+                        .addComponent(btnBytLosen)
                         .addGap(46, 46, 46)
                         .addComponent(lblLosenIsUpdated, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(lblNuvarandeLosen)
@@ -91,14 +94,19 @@ public class AndraLosenord extends javax.swing.JFrame {
                 .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(lblLosenIsUpdated, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnChagePassword, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnBytLosen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(52, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnChagePasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChagePasswordActionPerformed
+    
+    /* 
+    metoden hämtar det nya lösenordet som användaren skriver in och försöker i en try catch 
+    uppdatera lösenordet till det nya. 
+    Om lösenordet byts blir textrutan tom och en label visas att du bytt lösenord.
+    */
+    private void btnBytLosenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBytLosenActionPerformed
         // TODO add your handling code here:
         String nyttLosenord = txtNyttLosen.getText();
         String fragaUpdateLosenord = "UPDATE " + valdUser + " SET Losenord = '" + nyttLosenord +"' WHERE Alien_ID =" + userName;
@@ -110,12 +118,12 @@ public class AndraLosenord extends javax.swing.JFrame {
         catch(InfException e){
             JOptionPane.showMessageDialog(null, "Något gick fel");
         }
-    }//GEN-LAST:event_btnChagePasswordActionPerformed
+    }//GEN-LAST:event_btnBytLosenActionPerformed
 
    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnChagePassword;
+    private javax.swing.JButton btnBytLosen;
     private javax.swing.JLabel lblLosenIsUpdated;
     private javax.swing.JLabel lblNuvarandeLosen;
     private javax.swing.JLabel lblNyttLosen;

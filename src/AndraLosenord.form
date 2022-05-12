@@ -27,7 +27,7 @@
               <EmptySpace min="-2" pref="93" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
-                      <Component id="btnChagePassword" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnBytLosen" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
                       <Component id="lblLosenIsUpdated" min="-2" pref="142" max="-2" attributes="0"/>
                   </Group>
@@ -56,7 +56,7 @@
               <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Component id="lblLosenIsUpdated" max="32767" attributes="0"/>
-                  <Component id="btnChagePassword" max="32767" attributes="0"/>
+                  <Component id="btnBytLosen" max="32767" attributes="0"/>
               </Group>
               <EmptySpace pref="52" max="32767" attributes="0"/>
           </Group>
@@ -78,12 +78,12 @@
         <Property name="text" type="java.lang.String" value="Skriv in nuvarande l&#xf6;senord"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="btnChagePassword">
+    <Component class="javax.swing.JButton" name="btnBytLosen">
       <Properties>
         <Property name="text" type="java.lang.String" value="Byt l&#xf6;senord"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnChagePasswordActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnBytLosenActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="lblLosenIsUpdated">
