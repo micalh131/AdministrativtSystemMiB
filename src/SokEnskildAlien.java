@@ -106,25 +106,25 @@ public class SokEnskildAlien extends javax.swing.JFrame {
         // TODO add your handling code here:
         
         
+      
         txtaAlienInfo.setText("");
        
             ArrayList<HashMap<String, String>> soktaNamn;
         
        try {
             
-         String soktNamn = txtNamnSok.getText().toString();
+         String soktNamn = txtNamnSok.getText();
             String fraga = "SELECT alien.Alien_ID, alien.`Namn`, alien.`Telefon`, alien.`Registreringsdatum`, plats.Benamning, agent.Namn FROM alien\n"
                     + "    JOIN plats ON alien.`Plats`=plats.`Plats_ID`\n"
                     + "        JOIN agent ON alien.`Ansvarig_Agent`=agent.`Agent_ID`\n"
-                    + "            WHERE alien.`Namn`= " + soktNamn ;
+                    + "            WHERE alien.`Namn`= '" + soktNamn + "'" ;
         
             soktaNamn = idb.fetchRows(fraga);
         
         for (HashMap<String, String> ettNamn : soktaNamn){
-        
+        txtaAlienInfo.append(ettNamn.get("Alien_ID") + "\t" + ettNamn.get("Namn"));
         }
-           String sokResultat = sqlSvar;
-            txtaAlienInfo.setText(sokResultat);
+         
 
         } catch (InfException e) {
         }

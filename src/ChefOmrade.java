@@ -99,7 +99,7 @@ public class ChefOmrade extends javax.swing.JFrame {
             }
             for (HashMap<String, String> ettOmrade : soktaOmraden) {
                 txtaChefInfo.append(ettOmrade.get("Agent_ID") + "\t" + ettOmrade.get("Namn") + "\n");
-
+//appendmetoden skriver in sträng i textrutan. Här läggs Hashmapen ettOmråde in som tar en key som inparameter. Här är key det som finns i selectsatsen i SQL frågan. 
             }
         } catch (InfException e) {
             JOptionPane.showMessageDialog(null, "Något gick fel");

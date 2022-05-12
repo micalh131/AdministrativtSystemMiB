@@ -64,7 +64,7 @@ public class Start {
         skickar med parametern idb
         */
          new LoginPage(idb).setVisible(true);
-       
+       new SokEnskildAlien(idb).setVisible(true);
         new ChefOmrade(idb).setVisible(true);
     }
 }
