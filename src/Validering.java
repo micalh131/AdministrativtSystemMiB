@@ -19,13 +19,14 @@ public static boolean textFaltHarVarde(JTextField rutaAttKolla)
     if (rutaAttKolla.getText().isEmpty()) {
         JOptionPane.showMessageDialog(null, "inmatningsrutan är tom");
         resultat = false;
+        rutaAttKolla.requestFocus();
     }
     return resultat;
 }
     
     /* Nedandstående kod är exempel på kod i klasser som ska använda 
         valideringsklassen som skrivits ovan. 
-    if (Validering.textFaltHarVarde(variabel)){
+    if (Validering.textFaltHarVarde(variabelNamnA)){
         
         try{
         String id = variabelNamnA.getText();
@@ -47,15 +48,31 @@ public static boolean isHeltal(JTextField rutaAttKolla)
     try{
         String inStrang = rutaAttKolla.getText();
         Integer.parseInt(inStrang);
+        rutaAttKolla.requestFocus();
         
     }
     catch(NumberFormatException e){
         JOptionPane.showMessageDialog(null, "Var god ange ett heltal!");
-        System.out.println("");
+        resultat = false;
+        System.out.println("Heltal skrevs ej in");
     }
-            
+         
     return resultat; 
 
+    /*if (Validering.isHeltal(variabelNamnA)){
+        
+        try{
+        String id = variabelNamnA.getText();
+        String fraga = "SELECT x FROM y WHERE n=" + id;
+        String svar = idb.fetchSingle(fraga);
+        String resultat = svar;
+        varabelNamnB.setText(resultat);
+        }
+        catch(InfException e){
+            JOptionPane.showMessageDialog(null, "Något gick fel!");
+            System.out.println("Internt felmeddelande" + e.getMessage());
+        }
+    */
 }
      
     

@@ -10,7 +10,11 @@ import oru.inf.InfException;
 
 /**
  *
- * @author miche
+ * @author miche, aaau, cAppelina
+ * Inloggningssida för alla användare (Alien, Agent och Admin). 
+ * Konstruktorn tar in InfDB idb som parameter för att skapa koppling till databasen
+ * och sparar det i fältet Infdb idb.
+ * 
  */
 public class LoginPage extends javax.swing.JFrame {
     private InfDB idb;
@@ -22,7 +26,6 @@ public class LoginPage extends javax.swing.JFrame {
         initComponents();
         this.idb = idb;
         
-       
     }
    
 
@@ -109,6 +112,13 @@ public class LoginPage extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /* hämtar in värdet användaren skriver in, och även vilken typ av användare det är.
+    i 'try' vill vi kolla om det inmatade användarnamnet och lösenordet finns i databasen.
+    om det matchar sker inloggning. Om inloggning misslyckas går 'catch' in och meddelar
+    användaren att inloggningen misslyckades och varför. 
+    Valideringsklassen används för att hantera om fältet är tomt och läggs som en wrap runt
+    'try catch-koden'.
+    */
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
         // TODO add your handling code here:
         String userName = loginUsername.getText();
@@ -166,8 +176,6 @@ public class LoginPage extends javax.swing.JFrame {
         
     }//GEN-LAST:event_loginButtonActionPerformed
 
-    
-   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel jPanel1;

@@ -10,7 +10,9 @@ import oru.inf.InfException;
  */
 /**
  *
- * @author miche
+ * @author miche, aaau, cAppelina
+ * Klass som visar info om agent som är områdeschef för den inloggade aliens plats/område.
+ * 
  */
 public class VisaAgentInfo extends javax.swing.JFrame {
 
@@ -62,6 +64,11 @@ public class VisaAgentInfo extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /*
+    Fråga till databasen ställs för att lagra info om agent. Flertalet JOINS används för att
+    komma åt områdeschef, område och plats för alien. Information hämtas endast om Namn 
+    och Telefonnummer till agenten.
+    */
     private void visaInfo() {
         //String id = cmbValjAgent.getItemAt(1);
 

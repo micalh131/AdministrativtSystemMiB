@@ -8,7 +8,12 @@ import oru.inf.InfDB;
 
 /**
  *
- * @author miche
+ * @author miche, aaau, cAppelina
+ * Aliens välkomstsida med funktionaliteter: Ändra lösenord samt se infor om 
+ * ansvarig områdeschef.
+ * Kopplar databasen. Vi använder fälten för att spara värden som vi skickar med via metoder
+ * i klassen när vi instantiserar nya objekt av andra klasser.
+ *  
  */
 public class AlienPage extends javax.swing.JFrame {
     private InfDB idb;
@@ -39,16 +44,16 @@ public class AlienPage extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
+        btnBytLosen = new javax.swing.JButton();
         btnVisaAgentInfo = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        lblValkommenAlien = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jButton1.setText("Byt lösenord");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnBytLosen.setText("Byt lösenord");
+        btnBytLosen.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnBytLosenActionPerformed(evt);
             }
         });
 
@@ -59,7 +64,7 @@ public class AlienPage extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setText("Välkommen Alien");
+        lblValkommenAlien.setText("Välkommen Alien");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -67,23 +72,23 @@ public class AlienPage extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(54, 54, 54)
-                .addComponent(jButton1)
+                .addComponent(btnBytLosen)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 73, Short.MAX_VALUE)
                 .addComponent(btnVisaAgentInfo)
                 .addGap(93, 93, 93))
             .addGroup(layout.createSequentialGroup()
                 .addGap(144, 144, 144)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblValkommenAlien, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(56, 56, 56)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblValkommenAlien, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 62, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
+                    .addComponent(btnBytLosen)
                     .addComponent(btnVisaAgentInfo))
                 .addGap(126, 126, 126))
         );
@@ -91,22 +96,30 @@ public class AlienPage extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /* 
+    Denna metod är till för att Alien ska kunna se info om områdeschefen för sitt område.
+    När knappen klickas instansieras objekt av 'VisaAgentInfo' som ställer relevant fråga till
+    databasen.
+    */
     private void btnVisaAgentInfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVisaAgentInfoActionPerformed
         // TODO add your handling code here:
         new VisaAgentInfo(idb, alienPlats).setVisible(true);
         
     }//GEN-LAST:event_btnVisaAgentInfoActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    /* 
+    Denna metod instansierar ett objekt av klassen AndraLosenord (som kommer användas av alla
+    användare). Klassen hanterar byte av lösenord.
+    */
+    private void btnBytLosenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBytLosenActionPerformed
         // TODO add your handling code here:
         new AndraLosenord(idb,alienUserName,valdUser).setVisible(true);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnBytLosenActionPerformed
 
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBytLosen;
     private javax.swing.JButton btnVisaAgentInfo;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel lblValkommenAlien;
     // End of variables declaration//GEN-END:variables
 }

@@ -12,7 +12,11 @@ import oru.inf.InfException;
 
 /**
  *
- * @author miche
+ @author miche, aaau, cAppelina
+ * Klassen skapades efter att åsa tittade på en film. 
+ * Klassen ser vilka Aliens som befinner sig på en angiven plats.
+ * Konstruktorn fyller på en combobox som används i metoden 'fyllValjPlatsNamn'
+ * som hämtar platser från databasen.
  */
 public class AliensPlats extends javax.swing.JFrame {
     private InfDB idb;
@@ -76,6 +80,10 @@ public class AliensPlats extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /*
+    Metoden visar vilken alien som finns på den valda platsen (Beroende på vilken 
+    plats som valts i fyllValjPlats) och finns ingen alien så får man ett felmeddelande.
+    */
     private void cboPlatserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboPlatserActionPerformed
         // TODO add your handling code here:
          //Nollställer texten i textrutan där information ska visas
@@ -84,47 +92,44 @@ public class AliensPlats extends javax.swing.JFrame {
         ArrayList<HashMap<String, String>> soktaAliens; 
 
         try {
-              String valdPlats = cboPlatser.getSelectedItem().toString();
-                String fraga = "SELECT Alien_ID, Namn, Plats, plats.Benamning FROM alien JOIN plats ON plats.Plats_ID=alien.Plats WHERE Benamning='" + valdPlats+"'"; 
-                // "='"+var+"'"
-                soktaAliens = idb.fetchRows(fraga);
-               // txtAreaVisaInfo.append("Nåning");
-                System.out.println(valdPlats);
-                if(soktaAliens.size()<1)
-                    txtAreaVisaInfo.append("Det finns ingen ailien på denna plats" );
-                for (HashMap<String, String> alien : soktaAliens) {
-                   txtAreaVisaInfo.append(alien.get("Alien_ID") + "\t" + alien.get("Namn")+ "\n" );
-
+            String valdPlats = cboPlatser.getSelectedItem().toString();
+            String fraga = "SELECT Alien_ID, Namn, Plats, plats.Benamning FROM alien \n"
+                    + "JOIN plats ON plats.Plats_ID=alien.Plats WHERE Benamning='" + valdPlats + "'";
+            // "='"+var+"'"
+            soktaAliens = idb.fetchRows(fraga);
+            // txtAreaVisaInfo.append("Nåning");
+            System.out.println(valdPlats);
+            if (soktaAliens.size() < 1) {
+                txtAreaVisaInfo.append("Det finns ingen ailien på denna plats");
+            }
+            for (HashMap<String, String> alien : soktaAliens) {
+                txtAreaVisaInfo.append(alien.get("Alien_ID") + "\t" + alien.get("Namn") + "\n");
                 //txtAreaVisaInfo.append("Alien_ID");
+            }
 
-                }
-
-
-    }
-
-        catch (InfException ex) {
+        } catch (InfException e) {
+            JOptionPane.showMessageDialog(null, "Något gick fel");
 
         }
     }//GEN-LAST:event_cboPlatserActionPerformed
-
+    /*
+    Hämtar information från db om alla platser som finns.
+    */
     private void fyllValjPlatsNamn(){
         String fraga = "SELECT Benamning FROM plats";
 
         ArrayList<String> allaPlatser;
 
-    try {
-        allaPlatser = idb.fetchColumn(fraga);
+        try {
+            allaPlatser = idb.fetchColumn(fraga);
 
-        for (String plats: allaPlatser){
-            cboPlatser.addItem(plats);
+            for (String plats : allaPlatser) {
+                cboPlatser.addItem(plats);
+            }
+        } catch (InfException e) {
+            JOptionPane.showMessageDialog(null, "Något gick fel");
         }
     }
-
-    catch(InfException e){
-            JOptionPane.showMessageDialog(null, "Något gick fel");
-    }
-    }
-  
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> cboPlatser;
