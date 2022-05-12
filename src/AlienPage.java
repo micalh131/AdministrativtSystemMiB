@@ -47,6 +47,7 @@ public class AlienPage extends javax.swing.JFrame {
         btnBytLosen = new javax.swing.JButton();
         btnVisaAgentInfo = new javax.swing.JButton();
         lblValkommenAlien = new javax.swing.JLabel();
+        lblBildAlien = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -64,33 +65,44 @@ public class AlienPage extends javax.swing.JFrame {
             }
         });
 
+        lblValkommenAlien.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
         lblValkommenAlien.setText("Välkommen Alien");
+
+        lblBildAlien.setIcon(new javax.swing.ImageIcon(getClass().getResource("/MiBAlien.jpeg"))); // NOI18N
+        lblBildAlien.setText("lblBild");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(54, 54, 54)
-                .addComponent(btnBytLosen)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 73, Short.MAX_VALUE)
-                .addComponent(btnVisaAgentInfo)
-                .addGap(93, 93, 93))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(144, 144, 144)
-                .addComponent(lblValkommenAlien, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(lblBildAlien, javax.swing.GroupLayout.PREFERRED_SIZE, 395, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 68, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(btnBytLosen)
+                            .addGap(83, 83, 83))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                            .addComponent(btnVisaAgentInfo)
+                            .addGap(94, 94, 94)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(lblValkommenAlien)
+                        .addGap(66, 66, 66))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(145, 145, 145)
+                .addComponent(lblValkommenAlien, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(34, 34, 34)
+                .addComponent(btnVisaAgentInfo)
+                .addGap(33, 33, 33)
+                .addComponent(btnBytLosen)
+                .addContainerGap(314, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(56, 56, 56)
-                .addComponent(lblValkommenAlien, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 62, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnBytLosen)
-                    .addComponent(btnVisaAgentInfo))
-                .addGap(126, 126, 126))
+                .addComponent(lblBildAlien, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
@@ -120,6 +132,7 @@ public class AlienPage extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBytLosen;
     private javax.swing.JButton btnVisaAgentInfo;
+    private javax.swing.JLabel lblBildAlien;
     private javax.swing.JLabel lblValkommenAlien;
     // End of variables declaration//GEN-END:variables
 }
