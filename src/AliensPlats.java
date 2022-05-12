@@ -95,16 +95,16 @@ public class AliensPlats extends javax.swing.JFrame {
             String valdPlats = cboPlatser.getSelectedItem().toString();
             String fraga = "SELECT Alien_ID, Namn, Plats, plats.Benamning FROM alien \n"
                     + "JOIN plats ON plats.Plats_ID=alien.Plats WHERE Benamning='" + valdPlats + "'";
-            // "='"+var+"'"
+           
             soktaAliens = idb.fetchRows(fraga);
-            // txtAreaVisaInfo.append("Nåning");
+          
             System.out.println(valdPlats);
             if (soktaAliens.size() < 1) {
                 txtAreaVisaInfo.append("Det finns ingen ailien på denna plats");
             }
             for (HashMap<String, String> alien : soktaAliens) {
                 txtAreaVisaInfo.append(alien.get("Alien_ID") + "\t" + alien.get("Namn") + "\n");
-                //txtAreaVisaInfo.append("Alien_ID");
+             
             }
 
         } catch (InfException e) {
