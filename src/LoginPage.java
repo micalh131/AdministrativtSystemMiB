@@ -51,7 +51,7 @@ public class LoginPage extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setForeground(new java.awt.Color(255, 255, 255));
 
-        loginImg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Men_in_Black_International_(Official_Film_Poster).png"))); // NOI18N
+        loginImg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/MiB LoginPage.jpeg"))); // NOI18N
 
         loginTitle.setText("Inloggning");
 
@@ -77,7 +77,7 @@ public class LoginPage extends javax.swing.JFrame {
                     .addComponent(loginUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(loginPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(loginButton))
-                .addGap(0, 67, Short.MAX_VALUE))
+                .addGap(0, 37, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

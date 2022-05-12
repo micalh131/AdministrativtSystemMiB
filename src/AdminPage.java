@@ -30,27 +30,74 @@ public class AdminPage extends javax.swing.JFrame {
     private void initComponents() {
 
         loginTitle = new javax.swing.JLabel();
+        lblBild = new javax.swing.JLabel();
+        btnTaBortAlien = new javax.swing.JButton();
+        btnTaBortUtr = new javax.swing.JButton();
+        btnNyregAgent = new javax.swing.JButton();
+        btnAgentSokningar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         loginTitle.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
-        loginTitle.setText("Login Page");
+        loginTitle.setText("Välkommen Super Admin");
+
+        lblBild.setIcon(new javax.swing.ImageIcon(getClass().getResource("/MiB SuperAdmin3.jpeg"))); // NOI18N
+        lblBild.setText("jLabel1");
+
+        btnTaBortAlien.setText("Ta bort Alien");
+
+        btnTaBortUtr.setText("Ta bort utrustning");
+
+        btnNyregAgent.setText("Nyregistrera Agenter");
+
+        btnAgentSokningar.setText("Se och ändra Agent info");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(152, 152, 152)
-                .addComponent(loginTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(158, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap(73, Short.MAX_VALUE)
+                        .addComponent(loginTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(80, 80, 80))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(125, 125, 125)
+                                .addComponent(btnTaBortAlien))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(109, 109, 109)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(btnNyregAgent)
+                                    .addComponent(btnTaBortUtr)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(101, 101, 101)
+                                .addComponent(btnAgentSokningar)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addComponent(lblBild, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addComponent(loginTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(249, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(lblBild, javax.swing.GroupLayout.PREFERRED_SIZE, 449, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(27, 27, 27)
+                        .addComponent(loginTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(40, 40, 40)
+                        .addComponent(btnTaBortAlien)
+                        .addGap(27, 27, 27)
+                        .addComponent(btnTaBortUtr)
+                        .addGap(29, 29, 29)
+                        .addComponent(btnNyregAgent)
+                        .addGap(29, 29, 29)
+                        .addComponent(btnAgentSokningar)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -59,6 +106,11 @@ public class AdminPage extends javax.swing.JFrame {
  
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAgentSokningar;
+    private javax.swing.JButton btnNyregAgent;
+    private javax.swing.JButton btnTaBortAlien;
+    private javax.swing.JButton btnTaBortUtr;
+    private javax.swing.JLabel lblBild;
     private javax.swing.JLabel loginTitle;
     // End of variables declaration//GEN-END:variables
  }
