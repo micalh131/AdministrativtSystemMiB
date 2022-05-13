@@ -74,6 +74,16 @@ public static boolean isHeltal(JTextField rutaAttKolla)
         }
     */
 }
+public static boolean kollaLosen(String dbLosen, String nyttLosen)
+{
+    boolean resultat = true;
+    System.out.println(dbLosen);
+    if (!dbLosen.equals(nyttLosen)) {
+        JOptionPane.showMessageDialog(null, "Nuvarande lösenord är fel");
+        resultat = false;
+    }
+    return resultat;
+}
      
     
 }

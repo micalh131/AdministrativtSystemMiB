@@ -19,6 +19,7 @@ public class AlienPage extends javax.swing.JFrame {
     private InfDB idb;
     private String alienPlats;
     private String alienUserName;
+    private String password;
     private String valdUser;
     /**
      * Creates new form AlienPage
@@ -26,12 +27,14 @@ public class AlienPage extends javax.swing.JFrame {
      * @param alienPlats
      * @param alienUserName
      * @param valdUser
+     * @param password
      */
-    public AlienPage(InfDB idb,String alienPlats, String alienUserName, String valdUser ) {
+    public AlienPage(InfDB idb,String alienPlats, String alienUserName, String valdUser, String password ) {
         initComponents();
         this.idb = idb;
         this.alienPlats = alienPlats;
         this.alienUserName = alienUserName;
+        this.password = password;
         this.valdUser = valdUser;
     }
 
@@ -124,7 +127,7 @@ public class AlienPage extends javax.swing.JFrame {
     */
     private void btnBytLosenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBytLosenActionPerformed
         // TODO add your handling code here:
-        new AndraLosenord(idb,alienUserName,valdUser).setVisible(true);
+        new AndraLosenord(idb,alienUserName,valdUser, password).setVisible(true);
     }//GEN-LAST:event_btnBytLosenActionPerformed
 
     

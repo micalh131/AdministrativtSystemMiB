@@ -18,15 +18,17 @@ import oru.inf.InfException;
 public class AndraLosenord extends javax.swing.JFrame {
     private InfDB idb;
     private String userName;
+    private String password;
     private String valdUser;
     /**
      * Creates new form AndraLosenord
      */
-    public AndraLosenord(InfDB idb, String userName, String valdUser) {
+    public AndraLosenord(InfDB idb, String userName, String valdUser,String password) {
         initComponents();
         lblLosenIsUpdated.setVisible(false);
         this.idb = idb;
         this.userName = userName;
+        this.password = password;
         this.valdUser = valdUser;
     }
 
@@ -78,7 +80,7 @@ public class AndraLosenord extends javax.swing.JFrame {
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addComponent(txtNyttLosen, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(txtNuvarandeLosen, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addContainerGap(136, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -95,7 +97,7 @@ public class AndraLosenord extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(lblLosenIsUpdated, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnBytLosen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(52, Short.MAX_VALUE))
+                .addContainerGap(76, Short.MAX_VALUE))
         );
 
         pack();
@@ -108,19 +110,32 @@ public class AndraLosenord extends javax.swing.JFrame {
     */
     private void btnBytLosenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBytLosenActionPerformed
         // TODO add your handling code here:
-        String nyttLosenord = txtNyttLosen.getText();
-        String fragaUpdateLosenord = "UPDATE " + valdUser + " SET Losenord = '" + nyttLosenord +"' WHERE Alien_ID =" + userName;
-        try{
-            idb.update(fragaUpdateLosenord);
-            txtNyttLosen.setText("");
-            lblLosenIsUpdated.setVisible(true);
-        }
-        catch(InfException e){
-            JOptionPane.showMessageDialog(null, "Något gick fel");
+        if (Validering.textFaltHarVarde(txtNyttLosen) && Validering.textFaltHarVarde(txtNuvarandeLosen)){
+            String nyttLosen = txtNyttLosen.getText();
+            String nuvarandeLosen = txtNuvarandeLosen.getText();
+            if(Validering.kollaLosen(password,nuvarandeLosen )){
+             String valtID = kollaValdUser(valdUser);
+            String fragaUpdateLosenord = "UPDATE " + valdUser + " SET Losenord = '" + nyttLosen +"' WHERE " +valtID +" =" + userName;
+                try{
+                    idb.update(fragaUpdateLosenord);
+                    txtNyttLosen.setText("");
+                    txtNuvarandeLosen.setText("");
+                    lblLosenIsUpdated.setVisible(true);
+                }
+                catch(InfException e){
+                    JOptionPane.showMessageDialog(null, "Något gick fel");
+                }
+            }
         }
     }//GEN-LAST:event_btnBytLosenActionPerformed
 
-   
+   private String kollaValdUser(String valdUser){
+       if(valdUser.equalsIgnoreCase("agent")){
+           return "Agent_ID";
+       }else{
+           return "Alien_ID";
+       }
+   }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBytLosen;

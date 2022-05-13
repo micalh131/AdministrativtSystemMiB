@@ -104,6 +104,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Byt L&#xf6;senord"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnBytLosenActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="lblValkommenAgent">
       <Properties>
