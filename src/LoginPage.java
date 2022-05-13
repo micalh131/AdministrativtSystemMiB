@@ -150,7 +150,7 @@ public class LoginPage extends javax.swing.JFrame {
             System.out.println(valdUser);
              if(userName.equals( svarUserName) && password.equals(svarPassword)){
                System.out.println("Inloggad som agent");
-               new AgentPage(idb).setVisible(true);
+               new AgentPage(idb, userName, valdUser, password).setVisible(true);
              }   
          }
             else  if(valdUser.equalsIgnoreCase("Alien")){
@@ -164,7 +164,7 @@ public class LoginPage extends javax.swing.JFrame {
             System.out.println(valdUser);
              if(userName.equals( svarUserName) && password.equals(svarPassword)){
                System.out.println("Inloggad som alien");
-               new AlienPage(idb, svarPlats, userName, valdUser).setVisible(true);
+               new AlienPage(idb, svarPlats, userName, valdUser,password).setVisible(true);
              }   
          }
          

@@ -12,12 +12,18 @@ import oru.inf.InfDB;
  */
 public class AgentPage extends javax.swing.JFrame {
 private InfDB idb;
+private String userName;
+private String password;
+private String valdUser;
     /**
      * Creates new form AgentPage
      */
-    public AgentPage(InfDB idb) {
+    public AgentPage(InfDB idb, String userName, String valdUser, String password) {
         initComponents();
         this.idb = idb;
+        this.userName = userName;
+        this.valdUser = valdUser;
+        this.password = password;
     }
 
     /**
@@ -46,6 +52,11 @@ private InfDB idb;
         lblBild.setPreferredSize(new java.awt.Dimension(220, 326));
 
         btnBytLosen.setText("Byt Lösenord");
+        btnBytLosen.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBytLosenActionPerformed(evt);
+            }
+        });
 
         lblValkommenAgent.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
         lblValkommenAgent.setText("Välkommen Agent");
@@ -135,6 +146,11 @@ private InfDB idb;
         // TODO add your handling code here:
         new SokEnskildAlien(idb).setVisible(true);
     }//GEN-LAST:event_btnAlienInfoActionPerformed
+
+    private void btnBytLosenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBytLosenActionPerformed
+        // TODO add your handling code here:
+        new AndraLosenord(idb, userName, valdUser, password).setVisible(true);
+    }//GEN-LAST:event_btnBytLosenActionPerformed
 
   
 
