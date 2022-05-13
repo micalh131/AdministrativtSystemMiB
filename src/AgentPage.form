@@ -120,8 +120,12 @@
     </Component>
     <Component class="javax.swing.JButton" name="btnAlienInfo">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Se &amp; &#xe4;ndra Alien Info"/>
+        <Property name="text" type="java.lang.String" value="S&#xf6;k Alien"/>
+        <Property name="toolTipText" type="java.lang.String" value=""/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAlienInfoActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnRegistreraUtr">
       <Properties>
@@ -132,6 +136,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Se vem som &#xe4;r omr&#xe5;deschef &#xf6;ver visst omr&#xe5;de"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAgentInfoActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnAdminInlogg">
       <Properties>

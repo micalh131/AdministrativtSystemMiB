@@ -150,7 +150,7 @@ public class LoginPage extends javax.swing.JFrame {
             System.out.println(valdUser);
              if(userName.equals( svarUserName) && password.equals(svarPassword)){
                System.out.println("Inloggad som agent");
-               new AliensPlats(idb).setVisible(true);
+               new AgentPage(idb).setVisible(true);
              }   
          }
             else  if(valdUser.equalsIgnoreCase("Alien")){

@@ -1,3 +1,6 @@
+
+import oru.inf.InfDB;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -8,12 +11,13 @@
  * @author carolinaappel
  */
 public class AgentPage extends javax.swing.JFrame {
-
+private InfDB idb;
     /**
      * Creates new form AgentPage
      */
-    public AgentPage() {
+    public AgentPage(InfDB idb) {
         initComponents();
+        this.idb = idb;
     }
 
     /**
@@ -48,11 +52,22 @@ public class AgentPage extends javax.swing.JFrame {
 
         btnNyregistreraAlien.setText("Registrera ny Alien");
 
-        btnAlienInfo.setText("Se & ändra Alien Info");
+        btnAlienInfo.setText("Sök Alien");
+        btnAlienInfo.setToolTipText("");
+        btnAlienInfo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAlienInfoActionPerformed(evt);
+            }
+        });
 
         btnRegistreraUtr.setText("Registrera utrustning");
 
         btnAgentInfo.setText("Se vem som är områdeschef över visst område");
+        btnAgentInfo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgentInfoActionPerformed(evt);
+            }
+        });
 
         btnAdminInlogg.setText("Administratör Inloggning");
 
@@ -111,40 +126,17 @@ public class AgentPage extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AgentPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AgentPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AgentPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AgentPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
+    private void btnAgentInfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgentInfoActionPerformed
+        // TODO add your handling code here:
+        new ChefOmrade(idb).setVisible(true);
+    }//GEN-LAST:event_btnAgentInfoActionPerformed
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new AgentPage().setVisible(true);
-            }
-        });
-    }
+    private void btnAlienInfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlienInfoActionPerformed
+        // TODO add your handling code here:
+        new SokEnskildAlien(idb).setVisible(true);
+    }//GEN-LAST:event_btnAlienInfoActionPerformed
+
+  
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAdminInlogg;
