@@ -58,7 +58,7 @@ public class AlienPage extends javax.swing.JFrame {
             }
         });
 
-        btnVisaAgentInfo.setText("AgentInfo");
+        btnVisaAgentInfo.setText("Agent Info");
         btnVisaAgentInfo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnVisaAgentInfoActionPerformed(evt);

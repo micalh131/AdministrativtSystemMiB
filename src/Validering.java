@@ -25,7 +25,7 @@ public static boolean textFaltHarVarde(JTextField rutaAttKolla)
 }
     
     /* Nedandstående kod är exempel på kod i klasser som ska använda 
-        valideringsklassen som skrivits ovan. 
+        valideringsklassen som skrivits ovan: 
     if (Validering.textFaltHarVarde(variabelNamnA)){
         
         try{

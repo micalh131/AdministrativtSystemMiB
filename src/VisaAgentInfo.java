@@ -38,11 +38,16 @@ public class VisaAgentInfo extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        lblAgentInformation = new javax.swing.JLabel();
+        lblAgentInformationNamn = new javax.swing.JLabel();
+        lblAgentInformationTelefon = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        lblAgentInformation.setText("jLabel1");
+        lblAgentInformationNamn.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        lblAgentInformationNamn.setText("lblAgentInformationNamn");
+
+        lblAgentInformationTelefon.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        lblAgentInformationTelefon.setText("lblAgentInformationTelefon");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -50,15 +55,19 @@ public class VisaAgentInfo extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(48, 48, 48)
-                .addComponent(lblAgentInformation, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblAgentInformationTelefon)
+                    .addComponent(lblAgentInformationNamn, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(160, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(97, 97, 97)
-                .addComponent(lblAgentInformation, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(157, Short.MAX_VALUE))
+                .addComponent(lblAgentInformationNamn, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lblAgentInformationTelefon)
+                .addContainerGap(127, Short.MAX_VALUE))
         );
 
         pack();
@@ -84,13 +93,15 @@ public class VisaAgentInfo extends javax.swing.JFrame {
 
             System.out.println(namn + telefon);
 
-            lblAgentInformation.setText(" " + namn + " " + telefon);
+            lblAgentInformationNamn.setText("Agent: " + namn);
+            lblAgentInformationTelefon.setText("Telefonnummer: " + telefon);
         } catch (InfException e) {
             JOptionPane.showMessageDialog(null, "Något gick fel");
         }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel lblAgentInformation;
+    private javax.swing.JLabel lblAgentInformationNamn;
+    private javax.swing.JLabel lblAgentInformationTelefon;
     // End of variables declaration//GEN-END:variables
 }

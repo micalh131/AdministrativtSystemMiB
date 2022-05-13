@@ -7,12 +7,12 @@
  *
  * @author carolinaappel
  */
-public class AgentDatabasSokningar extends javax.swing.JFrame {
+public class NULLAgentDatabasSokningar extends javax.swing.JFrame {
 
     /**
      * Creates new form AgentDatabasSokningar2
      */
-    public AgentDatabasSokningar() {
+    public NULLAgentDatabasSokningar() {
         initComponents();
     }
 
@@ -110,21 +110,23 @@ public class AgentDatabasSokningar extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AgentDatabasSokningar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(NULLAgentDatabasSokningar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AgentDatabasSokningar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(NULLAgentDatabasSokningar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AgentDatabasSokningar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(NULLAgentDatabasSokningar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AgentDatabasSokningar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(NULLAgentDatabasSokningar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AgentDatabasSokningar().setVisible(true);
+                new NULLAgentDatabasSokningar().setVisible(true);
             }
         });
     }

@@ -55,7 +55,7 @@ public class LoginPage extends javax.swing.JFrame {
 
         loginTitle.setText("Inloggning");
 
-        loginSelectUser.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Välj", "Agent", "Alien", "Admin" }));
+        loginSelectUser.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Välj", "Agent", "Alien" }));
 
         loginButton.setText("Logga in");
         loginButton.addActionListener(new java.awt.event.ActionListener() {
@@ -127,23 +127,15 @@ public class LoginPage extends javax.swing.JFrame {
         String valdUser = loginSelectUser.getSelectedItem().toString();
         System.out.println(valdUser);
         
-         try{
-             if(valdUser.equalsIgnoreCase("Admin")){
+        
+        if (Validering.textFaltHarVarde(loginUsername) && (Validering.textFaltHarVarde(loginPassword))){
+        
+         try{ 
+            if(valdUser.equalsIgnoreCase("Agent")){
             String fragaUserName = "SELECT Agent_ID FROM agent WHERE Agent_ID=" + userName;
             String fragaPassword = "SELECT Losenord FROM agent WHERE Losenord=" + "'" + password + "'";
             String fragaIsAdmin = "SELECT Administrator FROM agent";
             String svarIsAdmin = idb.fetchSingle(fragaIsAdmin);
-            String svarUserName = idb.fetchSingle(fragaUserName);
-            String svarPassword = idb.fetchSingle(fragaPassword);
-            
-            System.out.println(valdUser);
-             if(userName.equals( svarUserName) && password.equals(svarPassword) && svarIsAdmin.equalsIgnoreCase("J")){
-               System.out.println("Inloggad som admin");
-             }   
-            }
-             else  if(valdUser.equalsIgnoreCase("Agent")){
-            String fragaUserName = "SELECT Agent_ID FROM agent WHERE Agent_ID=" + userName;
-            String fragaPassword = "SELECT Losenord FROM agent WHERE Losenord=" + "'" + password + "'";
             String svarUserName = idb.fetchSingle(fragaUserName);
             String svarPassword = idb.fetchSingle(fragaPassword);
             
@@ -172,7 +164,7 @@ public class LoginPage extends javax.swing.JFrame {
     catch(InfException ex){
             JOptionPane.showMessageDialog(null, "Något gick fel");
     }
-        
+    }
         
     }//GEN-LAST:event_loginButtonActionPerformed
 
