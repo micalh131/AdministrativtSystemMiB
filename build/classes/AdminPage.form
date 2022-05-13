@@ -26,28 +26,26 @@
           <Group type="102" attributes="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
-                      <EmptySpace pref="73" max="32767" attributes="0"/>
-                      <Component id="loginTitle" min="-2" pref="217" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="80" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" attributes="0">
+                      <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <EmptySpace min="-2" pref="125" max="-2" attributes="0"/>
-                              <Component id="btnTaBortAlien" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="109" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="btnNyregAgent" min="-2" max="-2" attributes="0"/>
-                                  <Component id="btnTaBortUtr" alignment="0" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="101" max="-2" attributes="0"/>
-                              <Component id="btnAgentSokningar" min="-2" max="-2" attributes="0"/>
-                          </Group>
+                          <Component id="btnAgentSokningar" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnNyregAgent" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnAdminStatus" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnAndraInfoAgent" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnAndraOmradeschef" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnAndraKontorschef" min="-2" max="-2" attributes="0"/>
                       </Group>
+                      <EmptySpace pref="70" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="btnTaBortUtr" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnTaBortAlien" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnTaBortAgent" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="67" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="146" max="-2" attributes="0"/>
+                      <Component id="loginTitle" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
@@ -65,16 +63,29 @@
                       <Component id="lblBild" min="-2" pref="449" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
                       <Component id="loginTitle" min="-2" pref="28" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
-                      <Component id="btnTaBortAlien" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
-                      <Component id="btnTaBortUtr" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
-                      <Component id="btnNyregAgent" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
-                      <Component id="btnAgentSokningar" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="btnAgentSokningar" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnTaBortAgent" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="btnNyregAgent" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnTaBortAlien" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="btnAdminStatus" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnTaBortUtr" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="btnAndraInfoAgent" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="btnAndraOmradeschef" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="btnAndraKontorschef" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
@@ -116,7 +127,32 @@
     </Component>
     <Component class="javax.swing.JButton" name="btnAgentSokningar">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Se och &#xe4;ndra Agent info"/>
+        <Property name="text" type="java.lang.String" value="S&#xf6;k info enskild agent"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnAdminStatus">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Ge annan Agent admin status"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnTaBortAgent">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Ta bort agent"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnAndraInfoAgent">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="&#xc4;ndra info om Agent"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnAndraOmradeschef">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="&#xc4;ndra omr&#xe5;deschef"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnAndraKontorschef">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="&#xc4;ndra kontorschef"/>
       </Properties>
     </Component>
   </SubComponents>

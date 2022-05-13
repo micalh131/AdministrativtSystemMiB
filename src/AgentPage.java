@@ -44,6 +44,10 @@ private String valdUser;
         btnRegistreraUtr = new javax.swing.JButton();
         btnAgentInfo = new javax.swing.JButton();
         btnAdminInlogg = new javax.swing.JButton();
+        btnListaAlienPlats = new javax.swing.JButton();
+        btnListaAlienRas = new javax.swing.JButton();
+        btnListaAlienRas1 = new javax.swing.JButton();
+        btnListaAlienRas2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -82,55 +86,82 @@ private String valdUser;
 
         btnAdminInlogg.setText("Administratör Inloggning");
 
+        btnListaAlienPlats.setText("Lista Alien på plats");
+
+        btnListaAlienRas.setText("Lista Alien på ras");
+
+        btnListaAlienRas1.setText("Lista Alien registrerad MELLAN TVÅ datum");
+
+        btnListaAlienRas2.setText("Ändra info om Alien");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(lblBild, javax.swing.GroupLayout.PREFERRED_SIZE, 306, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addGap(83, 83, 83)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnNyregistreraAlien, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblValkommenAgent)
-                            .addComponent(btnRegistreraUtr)
-                            .addComponent(btnAlienInfo))
-                        .addGap(0, 0, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnAdminInlogg)
-                        .addGap(19, 19, 19))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addGap(104, 104, 104)
-                                .addComponent(btnBytLosen))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addComponent(btnAgentInfo)))
-                        .addContainerGap(92, Short.MAX_VALUE))))
+                        .addGap(27, 27, 27)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btnBytLosen)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnAdminInlogg)
+                                .addGap(19, 19, 19))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(btnNyregistreraAlien, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btnAlienInfo))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(26, 26, 26)
+                                        .addComponent(btnRegistreraUtr)
+                                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                                        .addComponent(btnAgentInfo)
+                                        .addContainerGap())))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(btnListaAlienRas1, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btnListaAlienRas2, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btnListaAlienRas, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btnListaAlienPlats, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(0, 0, Short.MAX_VALUE))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(97, 97, 97)
+                        .addComponent(lblValkommenAgent)
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(lblBild, javax.swing.GroupLayout.PREFERRED_SIZE, 564, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 1, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
-                .addGap(49, 49, 49)
+                .addGap(39, 39, 39)
                 .addComponent(lblValkommenAgent)
-                .addGap(44, 44, 44)
-                .addComponent(btnAlienInfo)
-                .addGap(34, 34, 34)
-                .addComponent(btnNyregistreraAlien)
-                .addGap(33, 33, 33)
-                .addComponent(btnRegistreraUtr)
-                .addGap(30, 30, 30)
-                .addComponent(btnAgentInfo)
-                .addGap(43, 43, 43)
-                .addComponent(btnBytLosen)
+                .addGap(52, 52, 52)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnAlienInfo)
+                    .addComponent(btnRegistreraUtr))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnNyregistreraAlien)
+                    .addComponent(btnAgentInfo))
+                .addGap(18, 18, 18)
+                .addComponent(btnListaAlienRas2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnListaAlienPlats)
+                .addGap(18, 18, 18)
+                .addComponent(btnListaAlienRas)
+                .addGap(23, 23, 23)
+                .addComponent(btnListaAlienRas1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnAdminInlogg)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnAdminInlogg)
+                    .addComponent(btnBytLosen))
                 .addGap(22, 22, 22))
         );
 
@@ -159,6 +190,10 @@ private String valdUser;
     private javax.swing.JButton btnAgentInfo;
     private javax.swing.JButton btnAlienInfo;
     private javax.swing.JButton btnBytLosen;
+    private javax.swing.JButton btnListaAlienPlats;
+    private javax.swing.JButton btnListaAlienRas;
+    private javax.swing.JButton btnListaAlienRas1;
+    private javax.swing.JButton btnListaAlienRas2;
     private javax.swing.JButton btnNyregistreraAlien;
     private javax.swing.JButton btnRegistreraUtr;
     private javax.swing.JSpinner jSpinner1;

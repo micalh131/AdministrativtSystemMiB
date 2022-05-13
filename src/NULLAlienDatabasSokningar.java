@@ -7,12 +7,12 @@
  *
  * @author carolinaappel
  */
-public class AlienDatabasSokningar extends javax.swing.JFrame {
+public class NULLAlienDatabasSokningar extends javax.swing.JFrame {
 
     /**
      * Creates new form AlienDatabasSokningar
      */
-    public AlienDatabasSokningar() {
+    public NULLAlienDatabasSokningar() {
         initComponents();
     }
 
@@ -100,20 +100,21 @@ public class AlienDatabasSokningar extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AlienDatabasSokningar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(NULLAlienDatabasSokningar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AlienDatabasSokningar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(NULLAlienDatabasSokningar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AlienDatabasSokningar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(NULLAlienDatabasSokningar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AlienDatabasSokningar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(NULLAlienDatabasSokningar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AlienDatabasSokningar().setVisible(true);
+                new NULLAlienDatabasSokningar().setVisible(true);
             }
         });
     }
