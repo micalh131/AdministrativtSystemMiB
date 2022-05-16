@@ -63,9 +63,10 @@ public class Start {
         initialiserar klassen LoginPage (fönster med logginsida öppnas) 
         skickar med parametern idb
         */
-         new LoginPage(idb).setVisible(true);
-         new NyregistreraAlien(idb).setVisible(true);
-         new AliensPerRas(idb).setVisible(true);
+         //new LoginPage(idb).setVisible(true);
+         //new NyregistreraAlien(idb).setVisible(true);
+         //new AliensPerRas(idb).setVisible(true);
+         new SokEnskildAgent(idb).setVisible(true);
         
         
     }

@@ -1,6 +1,7 @@
 
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+import java.util.regex.Pattern;  
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -8,7 +9,7 @@ import javax.swing.JTextField;
  */
 
 /**
- *
+ 
  * @author carolinaappel
  */
 public class Validering {
@@ -40,7 +41,24 @@ public static boolean textFaltHarVarde(JTextField rutaAttKolla)
             System.out.println("Internt felmeddelande" + e.getMessage());
         }
     */
+
+public static boolean textFaltEjTomtRegEx(String textAttKolla)
+{
+    boolean resultat= true;
+    //Pattern Pat= new Pattern("\s*");
+    boolean rutaTom = Pattern.matches("^\\s*$", textAttKolla);
     
+  
+    if (rutaTom) {
+        JOptionPane.showMessageDialog(null, "rutan är tom eller innehåller bara space, vänligen ange något i rutan");
+        resultat = false;
+       
+    }
+    return resultat;
+}
+
+
+
 public static boolean isHeltal(JTextField rutaAttKolla)
 {
     boolean resultat = true;
