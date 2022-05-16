@@ -10,12 +10,14 @@ import oru.inf.InfException;
  * @author miche
  */
 public class AdminPage extends javax.swing.JFrame {
+    private InfDB idb;
     private String userName;
     /**
      * Creates new form LoginPage
      */
-    public AdminPage(String userName) {
+    public AdminPage(InfDB idb, String userName) {
         initComponents();
+        this.idb = idb;
         this.userName = userName;
         loginTitle.setText("Welcome" + userName);
     }
@@ -58,6 +60,11 @@ public class AdminPage extends javax.swing.JFrame {
         btnAgentSokningar.setText("Sök info enskild agent");
 
         btnAdminStatus.setText("Ge annan Agent admin status");
+        btnAdminStatus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAdminStatusActionPerformed(evt);
+            }
+        });
 
         btnTaBortAgent.setText("Ta bort agent");
 
@@ -128,6 +135,10 @@ public class AdminPage extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnAdminStatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdminStatusActionPerformed
+        new AdminStatus(idb).setVisible(true);
+    }//GEN-LAST:event_btnAdminStatusActionPerformed
 
  
 
