@@ -132,7 +132,9 @@ public class AndraOmradesChef extends javax.swing.JFrame {
             
             String svar = idb.fetchSingle(fraga);
             lblNuvarandeOmradeschef.setText(svar);
+            System.out.println(svar);
             this.agentID = faUtAgentID(svar);
+            
             
             if(svar == null) {
                 System.out.println("Agent hittades inte");
@@ -147,26 +149,27 @@ public class AndraOmradesChef extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSokActionPerformed
 
     private String faUtAgentID(String agentNamn){
-        String agentID = "";
+        String idAgent ="";
         try{
            
-            String fraga = "SELECT Agent_ID FROM Agent WHERE Namn = '"+ agentNamn + " '";
-            agentID = idb.fetchSingle(fraga);
+            String fraga = "SELECT Agent_ID FROM Agent WHERE Namn = '"+ agentNamn + "'";
+            idAgent = idb.fetchSingle(fraga);
+            
         }
         catch(InfException e){
             JOptionPane.showMessageDialog(null, "Nått gick fel");
         }
-        return agentID;
+      return idAgent;
     
     }
     
     
     private void btnAndraChefActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAndraChefActionPerformed
         
-        String nyOmradeschef = lblNyOmradeschef.getText();
+        String nyOmradeschef = txtNyOmradeschef.getText();
         
-        String fragaAgentID = "SELECT Agent_ID FROM Agent WHERE Namn = '"+ nyOmradeschef + " '";
-       
+        String fragaAgentID = "SELECT Agent_ID FROM Agent WHERE Namn = '"+ nyOmradeschef + "'";
+       System.out.println(fragaAgentID);
         try {
             
             String agentIDnyOmradeschef = idb.fetchSingle(fragaAgentID);
