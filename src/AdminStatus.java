@@ -1,3 +1,12 @@
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import oru.inf.InfDB;
+import oru.inf.InfException;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -8,12 +17,13 @@
  * @author carolinaappel
  */
 public class AdminStatus extends javax.swing.JFrame {
-
+    private InfDB idb;
     /**
      * Creates new form AdminStatus
      */
-    public AdminStatus() {
+    public AdminStatus(InfDB idb) {
         initComponents();
+        this.idb = idb;
     }
 
     /**
@@ -25,57 +35,112 @@ public class AdminStatus extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        btnSok = new javax.swing.JButton();
+        txtNamnSok = new javax.swing.JTextField();
+        lblAgentHittad = new javax.swing.JLabel();
+        cbxAdminRatt = new javax.swing.JCheckBox();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        btnSok.setText("Sök");
+        btnSok.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSokActionPerformed(evt);
+            }
+        });
+
+        txtNamnSok.setColumns(6);
+        txtNamnSok.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNamnSokActionPerformed(evt);
+            }
+        });
+
+        lblAgentHittad.setText("lblAgentHittad");
+
+        cbxAdminRatt.setText("Ge admin rättighet");
+        cbxAdminRatt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbxAdminRattActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(79, 79, 79)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnSok)
+                    .addComponent(txtNamnSok, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lblAgentHittad)
+                        .addGap(45, 45, 45)
+                        .addComponent(cbxAdminRatt)))
+                .addGap(0, 78, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(33, 33, 33)
+                .addComponent(txtNamnSok, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnSok)
+                .addGap(28, 28, 28)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblAgentHittad)
+                    .addComponent(cbxAdminRatt))
+                .addContainerGap(154, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
+    private void btnSokActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSokActionPerformed
+       
+        try{
+            String soktNamn = txtNamnSok.getText();
+            String fraga = "SELECT Namn FROM Agent WHERE Agent.namn = '" + soktNamn + "'";
+            String svar = idb.fetchSingle(fraga);
+            lblAgentHittad.setText(svar);
+            
+            if(svar == null) {
+                System.out.println("Agent hittades inte");
+                JOptionPane.showMessageDialog(null, "Agent hittades inte, skriv in rätt Agentnamn"); 
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AdminStatus.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AdminStatus.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AdminStatus.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AdminStatus.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            
         }
-        //</editor-fold>
+        catch(InfException e){
+            System.out.println("Något gick fel");
+            JOptionPane.showMessageDialog(null, "Något gick fel");  
+        }
+        
+        
+    }//GEN-LAST:event_btnSokActionPerformed
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new AdminStatus().setVisible(true);
-            }
-        });
-    }
+    private void txtNamnSokActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNamnSokActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNamnSokActionPerformed
+
+    private void cbxAdminRattActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxAdminRattActionPerformed
+        
+        String agentNamn = lblAgentHittad.getText();
+        String fraga = "UPDATE Agent SET Administrator = 'J' WHERE Namn =" + "'" + agentNamn + "'" + ";";
+        try {
+            idb.update(fraga);
+            System.out.println("funkar");
+        } catch (InfException ex) {
+            JOptionPane.showMessageDialog(null, "Något gick fel");
+        }
+        System.out.println(fraga);
+    }//GEN-LAST:event_cbxAdminRattActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnSok;
+    private javax.swing.JCheckBox cbxAdminRatt;
+    private javax.swing.JLabel lblAgentHittad;
+    private javax.swing.JTextField txtNamnSok;
     // End of variables declaration//GEN-END:variables
 }
