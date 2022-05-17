@@ -4,6 +4,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import java.util.regex.Pattern;  
 
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
@@ -115,6 +116,16 @@ public static boolean kollaAgentId(ArrayList<String> ids, String nyOmradesChef)
     }
    
     return resultat;
+}
+
+public static boolean kollaTaBort(String namn)
+{
+    int response = JOptionPane.showConfirmDialog(null, "Är du säker på att du vill ta bort " + namn ,"Select option", JOptionPane.YES_NO_CANCEL_OPTION);
+    if(response == JOptionPane.YES_OPTION){
+        return true;
+    }else{
+        return false;
+    }
 }
      
     
