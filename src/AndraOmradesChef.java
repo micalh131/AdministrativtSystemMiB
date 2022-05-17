@@ -1,4 +1,5 @@
 
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import oru.inf.InfDB;
 import oru.inf.InfException;
@@ -126,7 +127,7 @@ public class AndraOmradesChef extends javax.swing.JFrame {
             String soktOmrade = txtSokOmrade.getText();
             String fraga = "SELECT agent.Namn FROM agent \n"
                     + "    JOIN omradeschef ON omradeschef.Agent_ID = agent.Agent_ID\n"
-                    + "        JOIN omrade ON omrade.Omrades_ID=omradeschef.Agent_ID\n"
+                    + "        JOIN omrade ON omrade.Omrades_ID=omradeschef.Omrade\n"
                     + "            WHERE omrade.Benamning= '" + soktOmrade + "'";
             
             
@@ -163,6 +164,18 @@ public class AndraOmradesChef extends javax.swing.JFrame {
     
     }
     
+    private ArrayList getAllaAgentid(){
+         ArrayList<String> agentIds = null;
+        
+        try{
+         agentIds = idb.fetchColumn("SELECT Agent_ID FROM agent");
+        }
+        catch (InfException ex) {
+            JOptionPane.showMessageDialog(null, "Gick inte att hämta agent idn");
+        }
+        return agentIds;
+    }
+    
     
     private void btnAndraChefActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAndraChefActionPerformed
         
@@ -173,10 +186,11 @@ public class AndraOmradesChef extends javax.swing.JFrame {
         try {
             
             String agentIDnyOmradeschef = idb.fetchSingle(fragaAgentID);
-             System.out.println(agentID + agentIDnyOmradeschef);
-            String fraga = "UPDATE Omradeschef SET Agent_ID = " + agentIDnyOmradeschef + " WHERE agent_ID = " + agentID + "";
-            idb.update(fraga);
+            if(Validering.kollaAgentId(getAllaAgentid(), agentIDnyOmradeschef)){
+                String fraga = "UPDATE Omradeschef SET Agent_ID = " + agentIDnyOmradeschef + " WHERE agent_ID = " + agentID + "";
+                idb.update(fraga);
             System.out.println("funkar");
+            }
         } catch (InfException ex) {
             JOptionPane.showMessageDialog(null, "Något gick fel");
         }

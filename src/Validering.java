@@ -1,4 +1,5 @@
 
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
@@ -82,6 +83,19 @@ public static boolean kollaLosen(String dbLosen, String nyttLosen)
         JOptionPane.showMessageDialog(null, "Nuvarande lösenord är fel");
         resultat = false;
     }
+    return resultat;
+}
+
+public static boolean kollaAgentId(ArrayList<String> ids, String nyOmradesChef)
+{
+    boolean resultat = true;
+    for(String i : ids){
+        if (i.equalsIgnoreCase(nyOmradesChef)) {
+        JOptionPane.showMessageDialog(null, "Denna agent är redan asvarig för ett område \n Vänligen välj en annan agent");
+        resultat = false;
+        }
+    }
+   
     return resultat;
 }
      
