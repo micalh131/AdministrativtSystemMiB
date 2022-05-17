@@ -65,8 +65,7 @@ public class Start {
         */
 
          new LoginPage(idb).setVisible(true);
-         new NyregistreraAlien(idb).setVisible(true);
-         new AndraOmradesChef(idb).setVisible(true);
+         new NyregistreraUtrustning(idb).setVisible(true);
            
 
     }
