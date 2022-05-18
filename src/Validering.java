@@ -1,6 +1,9 @@
 
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+import java.util.regex.Pattern;  
+
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -8,7 +11,7 @@ import javax.swing.JTextField;
  */
 
 /**
- *
+ 
  * @author carolinaappel
  */
 public class Validering {
@@ -40,7 +43,24 @@ public static boolean textFaltHarVarde(JTextField rutaAttKolla)
             System.out.println("Internt felmeddelande" + e.getMessage());
         }
     */
+
+public static boolean textFaltEjTomtRegEx(String textAttKolla)
+{
+    boolean resultat= true;
+    //Pattern Pat= new Pattern("\s*");
+    boolean rutaTom = Pattern.matches("^\\s*$", textAttKolla);
     
+  
+    if (rutaTom) {
+        JOptionPane.showMessageDialog(null, "rutan är tom eller innehåller bara space, vänligen ange något i rutan");
+        resultat = false;
+       
+    }
+    return resultat;
+}
+
+
+
 public static boolean isHeltal(JTextField rutaAttKolla)
 {
     boolean resultat = true;
@@ -83,6 +103,29 @@ public static boolean kollaLosen(String dbLosen, String nyttLosen)
         resultat = false;
     }
     return resultat;
+}
+
+public static boolean kollaAgentId(ArrayList<String> ids, String nyOmradesChef)
+{
+    boolean resultat = true;
+    for(String i : ids){
+        if (i.equalsIgnoreCase(nyOmradesChef)) {
+        JOptionPane.showMessageDialog(null, "Denna agent är redan asvarig för ett område \n Vänligen välj en annan agent");
+        resultat = false;
+        }
+    }
+   
+    return resultat;
+}
+
+public static boolean kollaTaBort(String namn)
+{
+    int response = JOptionPane.showConfirmDialog(null, "Är du säker på att du vill ta bort " + namn ,"Select option", JOptionPane.YES_NO_CANCEL_OPTION);
+    if(response == JOptionPane.YES_OPTION){
+        return true;
+    }else{
+        return false;
+    }
 }
      
     

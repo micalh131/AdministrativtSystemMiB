@@ -1,4 +1,5 @@
 
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import oru.inf.InfDB;
 import oru.inf.InfException;
@@ -126,13 +127,15 @@ public class AndraOmradesChef extends javax.swing.JFrame {
             String soktOmrade = txtSokOmrade.getText();
             String fraga = "SELECT agent.Namn FROM agent \n"
                     + "    JOIN omradeschef ON omradeschef.Agent_ID = agent.Agent_ID\n"
-                    + "        JOIN omrade ON omrade.Omrades_ID=omradeschef.Agent_ID\n"
+                    + "        JOIN omrade ON omrade.Omrades_ID=omradeschef.Omrade\n"
                     + "            WHERE omrade.Benamning= '" + soktOmrade + "'";
             
             
             String svar = idb.fetchSingle(fraga);
             lblNuvarandeOmradeschef.setText(svar);
+            System.out.println(svar);
             this.agentID = faUtAgentID(svar);
+            
             
             if(svar == null) {
                 System.out.println("Agent hittades inte");
@@ -147,33 +150,47 @@ public class AndraOmradesChef extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSokActionPerformed
 
     private String faUtAgentID(String agentNamn){
-        String agentID = "";
+        String idAgent ="";
         try{
            
-            String fraga = "SELECT Agent_ID FROM Agent WHERE Namn = '"+ agentNamn + " '";
-            agentID = idb.fetchSingle(fraga);
+            String fraga = "SELECT Agent_ID FROM Agent WHERE Namn = '"+ agentNamn + "'";
+            idAgent = idb.fetchSingle(fraga);
+            
         }
         catch(InfException e){
             JOptionPane.showMessageDialog(null, "Nått gick fel");
         }
-        return agentID;
+      return idAgent;
     
+    }
+    
+    private ArrayList getAllaAgentid(){
+         ArrayList<String> agentIds = null;
+        
+        try{
+         agentIds = idb.fetchColumn("SELECT Agent_ID FROM agent");
+        }
+        catch (InfException ex) {
+            JOptionPane.showMessageDialog(null, "Gick inte att hämta agent idn");
+        }
+        return agentIds;
     }
     
     
     private void btnAndraChefActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAndraChefActionPerformed
         
-        String nyOmradeschef = lblNyOmradeschef.getText();
+        String nyOmradeschef = txtNyOmradeschef.getText();
         
-        String fragaAgentID = "SELECT Agent_ID FROM Agent WHERE Namn = '"+ nyOmradeschef + " '";
-       
+        String fragaAgentID = "SELECT Agent_ID FROM Agent WHERE Namn = '"+ nyOmradeschef + "'";
+       System.out.println(fragaAgentID);
         try {
             
             String agentIDnyOmradeschef = idb.fetchSingle(fragaAgentID);
-             System.out.println(agentID + agentIDnyOmradeschef);
-            String fraga = "UPDATE Omradeschef SET Agent_ID = " + agentIDnyOmradeschef + " WHERE agent_ID = " + agentID + "";
-            idb.update(fraga);
+            if(Validering.kollaAgentId(getAllaAgentid(), agentIDnyOmradeschef)){
+                String fraga = "UPDATE Omradeschef SET Agent_ID = " + agentIDnyOmradeschef + " WHERE agent_ID = " + agentID + "";
+                idb.update(fraga);
             System.out.println("funkar");
+            }
         } catch (InfException ex) {
             JOptionPane.showMessageDialog(null, "Något gick fel");
         }

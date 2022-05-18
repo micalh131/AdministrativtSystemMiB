@@ -25,8 +25,12 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="64" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="1" attributes="0">
-                  <Component id="btnRegistrera" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                  <Group type="102" attributes="0">
+                      <Component id="lblReg" max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
+                      <Component id="btnRegistrera" min="-2" max="-2" attributes="0"/>
+                  </Group>
                   <Group type="102" alignment="1" attributes="0">
                       <Group type="103" groupAlignment="1" attributes="0">
                           <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
@@ -36,18 +40,18 @@
                           <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="txtName" alignment="1" min="-2" pref="71" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="55" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Component id="txtNamn" alignment="1" min="-2" pref="71" max="-2" attributes="0"/>
                           <Component id="txtLosen" alignment="1" min="-2" pref="71" max="-2" attributes="0"/>
                           <Component id="txtTel" alignment="1" min="-2" pref="71" max="-2" attributes="0"/>
                           <Component id="txtAnstDatum" alignment="1" min="-2" pref="71" max="-2" attributes="0"/>
-                          <Component id="txtOmrade" alignment="1" min="-2" pref="71" max="-2" attributes="0"/>
-                          <Component id="txtAdmin" alignment="1" min="-2" pref="71" max="-2" attributes="0"/>
+                          <Component id="cboxOmrade" min="-2" max="-2" attributes="0"/>
+                          <Component id="cboxAdmin" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
-              <EmptySpace pref="104" max="32767" attributes="0"/>
+              <EmptySpace pref="100" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -56,7 +60,7 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="txtName" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtNamn" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -76,33 +80,32 @@
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="txtOmrade" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="cboxOmrade" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="txtAdmin" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="cboxAdmin" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="btnRegistrera" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="btnRegistrera" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblReg" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
               <EmptySpace pref="31" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JTextField" name="txtName">
+    <Component class="javax.swing.JTextField" name="txtNamn">
     </Component>
     <Component class="javax.swing.JTextField" name="txtLosen">
     </Component>
     <Component class="javax.swing.JTextField" name="txtTel">
     </Component>
     <Component class="javax.swing.JTextField" name="txtAnstDatum">
-    </Component>
-    <Component class="javax.swing.JTextField" name="txtOmrade">
-    </Component>
-    <Component class="javax.swing.JTextField" name="txtAdmin">
     </Component>
     <Component class="javax.swing.JButton" name="btnRegistrera">
       <Properties>
@@ -139,8 +142,42 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel6">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Administrat&#xf6;r ja/nej"/>
+        <Property name="text" type="java.lang.String" value="Administrat&#xf6;r J/N"/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblReg">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Agent har registrerats"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JComboBox" name="cboxOmrade">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="4">
+            <StringItem index="0" value="V&#xe4;lj"/>
+            <StringItem index="1" value="Svealand"/>
+            <StringItem index="2" value="G&#xf6;taland"/>
+            <StringItem index="3" value="Norrland"/>
+          </StringArray>
+        </Property>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+      </AuxValues>
+    </Component>
+    <Component class="javax.swing.JComboBox" name="cboxAdmin">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="3">
+            <StringItem index="0" value="V&#xe4;lj"/>
+            <StringItem index="1" value="Ja"/>
+            <StringItem index="2" value="Nej"/>
+          </StringArray>
+        </Property>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+      </AuxValues>
     </Component>
   </SubComponents>
 </Form>

@@ -95,12 +95,26 @@ public class SokEnskildAgent extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSokActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSokActionPerformed
-     txtaAgentInfo.setText("");
+    
+        txtaAgentInfo.setText("");
+        String soktNamn = txtNamnSok.getText();
+        boolean inmatningOk= false;
+        if(!inmatningOk){
+           soktNamn = txtNamnSok.getText();  
+           inmatningOk= Validering.textFaltEjTomtRegEx(soktNamn);
+            
+           txtNamnSok.requestFocus();
+          
+        }
+      
+       
+        
+       
      
      ArrayList<HashMap<String, String>> soktaNamn;
      
      try {
-         String soktNamn = txtNamnSok.getText();
+         
          String fraga = "SELECT agent.Agent_ID, agent.Namn, agent.Telefon, agent.Administrator, \n"
                  +  "omrade.Benamning, fordon.Fordons_ID, fordon.Fordonsbeskrivning FROM agent \n"
                  +  "JOIN omrade ON omrade.Omrades_ID = agent.Omrade \n"
@@ -112,7 +126,7 @@ public class SokEnskildAgent extends javax.swing.JFrame {
             txtaAgentInfo.append("AgentID" + "\t" + "Agentnamn" + "\t" + "telefonnr" + "\t" 
                     + "Admin J/N" + "\t" + "Område" + "\t" + "FordonsID" + "\t" + "UtlånatFordon" + "\n");
             for (HashMap<String, String> ettNamn : soktaNamn) {
-                txtaAgentInfo.append(ettNamn.get("Aget_ID") + "\t" + ettNamn.get("Namn") + "\t" + ettNamn.get("Telefon") + "\t" + ettNamn.get("Administrator") + "\t" + ettNamn.get("Benamnning") + "\t" + ettNamn.get("Telefon") + "\t" + ettNamn.get("Fordons_ID") + "\t" + ettNamn.get("Fordonsbeskrivning"));
+                txtaAgentInfo.append(ettNamn.get("Agent_ID") + "\t" + ettNamn.get("Namn") + "\t" + ettNamn.get("Telefon") + "\t" + ettNamn.get("Administrator") + "\t" + ettNamn.get("Benamnning") + "\t" + ettNamn.get("Telefon") + "\t" + ettNamn.get("Fordons_ID") + "\t" + ettNamn.get("Fordonsbeskrivning"));
             }
 
         } catch (InfException e) {
