@@ -139,10 +139,10 @@ public class LoginPage extends javax.swing.JFrame {
             String svarUserName = idb.fetchSingle(fragaUserName);
             String svarPassword = idb.fetchSingle(fragaPassword);
             
-            System.out.println(valdUser);
+            System.out.println(svarIsAdmin);
              if(userName.equals( svarUserName) && password.equals(svarPassword)){
                System.out.println("Inloggad som agent");
-               new AgentPage(idb, userName, valdUser, password).setVisible(true);
+               new AgentPage(idb, userName, valdUser, password, svarIsAdmin).setVisible(true);
              }   
          }
             else  if(valdUser.equalsIgnoreCase("Alien")){
