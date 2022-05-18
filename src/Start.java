@@ -65,7 +65,7 @@ public class Start {
         */
 
          new LoginPage(idb).setVisible(true);
-         new TaBortAlien(idb).setVisible(true);
+
            
 
     }
