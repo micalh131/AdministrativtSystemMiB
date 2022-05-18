@@ -1,7 +1,9 @@
 
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import java.util.regex.Pattern;  
+
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -109,6 +111,40 @@ public static boolean kollaLosen(String dbLosen, String nyttLosen)
     }
     return resultat;
 }
-     
-    
+
+public static boolean kollaAgentId(ArrayList<String> ids, String nyOmradesChef)
+{
+    boolean resultat = true;
+    for(String i : ids){
+        if (i.equalsIgnoreCase(nyOmradesChef)) {
+        JOptionPane.showMessageDialog(null, "Denna agent är redan asvarig för ett område \n Vänligen välj en annan agent");
+        resultat = false;
+        }
+    }
+   
+    return resultat;
+}
+
+ public static String kollaIsAdmin(String admin){
+       
+        if(admin.equals("Ja")){
+            return "J";
+        }
+        else{
+            return "N";
+        }
+    }
+
+
+public static boolean kollaTaBort(String namn)
+{
+    int response = JOptionPane.showConfirmDialog(null, "Är du säker på att du vill ta bort " + namn ,"Select option", JOptionPane.YES_NO_CANCEL_OPTION);
+    if(response == JOptionPane.YES_OPTION){
+        return true;
+    }else{
+        return false;
+    }
+}
+
+
 }

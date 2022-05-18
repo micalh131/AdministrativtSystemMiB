@@ -163,15 +163,7 @@ public class NyregistreraAgent extends javax.swing.JFrame {
         return omradeId;
     }
     
-    private String kollaIsAdmin(String admin){
-       
-        if(admin.equals("Ja")){
-            return "J";
-        }
-        else{
-            return "N";
-        }
-    }
+   
     
     private void btnRegistreraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistreraActionPerformed
         // TODO add your handling code here:
@@ -180,7 +172,7 @@ public class NyregistreraAgent extends javax.swing.JFrame {
         String tel = txtTel.getText();
         String datum = txtAnstDatum.getText();
         String omrade = valjOmrade(cboxOmrade.getSelectedItem().toString());
-        String isAdmin = kollaIsAdmin(cboxAdmin.getSelectedItem().toString());
+        String isAdmin = Validering.kollaIsAdmin(cboxAdmin.getSelectedItem().toString());
         
         //Behöver lägga till en koll så användaren har valt ett område 
         if (Validering.textFaltHarVarde(txtNamn) && Validering.textFaltHarVarde(txtLosen) && Validering.textFaltHarVarde(txtTel) && Validering.textFaltHarVarde(txtAnstDatum)){
