@@ -182,6 +182,12 @@ public class AndraInfoAlien extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /*
+        Läser av att anmatningsfält 
+        Validerar så att textrutorna inte är tomma efter inmatning
+        anropar metoden för att uppdatera aliens ras, plus tar bort den gamla rasen
+        Uppdaterar sedan all info om en viss alien
+    */
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         String alienId = getAlienId(cboxValAlien.getSelectedItem().toString());
@@ -195,10 +201,11 @@ public class AndraInfoAlien extends javax.swing.JFrame {
         String ansvarigAgent = getAgentId(cboxAnsvarigAgent.getSelectedItem().toString());
         String ras = cboxRas.getSelectedItem().toString();
         
-        //ändrar ras och tar bort gammal ras
-        andraRas(alienId,ras);
+        
         
         if (Validering.textFaltHarVarde(txtNamn) && Validering.textFaltHarVarde(txtLosen) && Validering.textFaltHarVarde(txtTel) && Validering.textFaltHarVarde(txtDatum)){
+            //ändrar ras och tar bort gammal ras
+            andraRas(alienId,ras);
             try{
                 String fraga = "UPDATE alien SET Namn = '" + namn + "', Losenord = '"+ losen +"', Telefon = '" +tel + "', Registreringsdatum= '"+ datum +"', Plats = "+plats+", Ansvarig_Agent = "+ansvarigAgent+" WHERE Alien_ID = "+alienId+"";
                 idb.update(fraga);
@@ -215,7 +222,9 @@ public class AndraInfoAlien extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_jButton1ActionPerformed
- private String getAlienId(String Namn){
+ 
+    //Hittar och returnerar den sökta aliens id
+    private String getAlienId(String Namn){
         String alienId = "";
         try{
             String fraga = "SELECT Alien_ID FROM alien WHERE Namn = '"+ Namn +"'";
@@ -227,6 +236,7 @@ public class AndraInfoAlien extends javax.swing.JFrame {
         return alienId;
     }
     
+    //Fyller i comboboxen för väljAlien 
     private void fyllValjAlienNamn(){
         String fraga = "SELECT Namn FROM alien";
 
@@ -243,6 +253,7 @@ public class AndraInfoAlien extends javax.swing.JFrame {
         }
     }
     
+    // Får in ett valt platsnamn och returnerar platsens id
     private String getPlatsId(String platsNamn){
         String platsId = "";
         try{
@@ -255,6 +266,7 @@ public class AndraInfoAlien extends javax.swing.JFrame {
         return platsId;
     }
     
+    //Får in en vald ansvarig agent och returnerar agentens id
     private String getAgentId(String agentNamn){
         String agentId = "";
         try{
@@ -267,9 +279,11 @@ public class AndraInfoAlien extends javax.swing.JFrame {
         return agentId;
     }
     
+    //Kollar vilken ras som är vald som ny ras , anropar metoden för att 
+    //ta bort den gamla rasen och lägger sedan till aliens id i den nya rasens tabell
     private void andraRas(String alienID, String ras){
         
-       //taBortRas(alienID);
+       taBortRas(alienID);
        if(ras.equals("Worm")){
            try{
             String fraga = "INSERT INTO worm (Alien_ID) VALUES ('"+ alienID +"')";
@@ -296,7 +310,8 @@ public class AndraInfoAlien extends javax.swing.JFrame {
             }
        }
     }
-    // Letar reda på 
+    // Letar i varje ras tabell för att se vilken ras alien tillhörde
+    // Hittar den aliens id så tar den bort hela den raden ur databasen.
     private void taBortRas(String alienID){
         //ArrayList<String> bogAgentId;
         //ArrayList<String> worAgentId;

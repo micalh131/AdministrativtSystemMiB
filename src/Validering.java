@@ -118,6 +118,17 @@ public static boolean kollaAgentId(ArrayList<String> ids, String nyOmradesChef)
     return resultat;
 }
 
+ public static String kollaIsAdmin(String admin){
+       
+        if(admin.equals("Ja")){
+            return "J";
+        }
+        else{
+            return "N";
+        }
+    }
+
+
 public static boolean kollaTaBort(String namn)
 {
     int response = JOptionPane.showConfirmDialog(null, "Är du säker på att du vill ta bort " + namn ,"Select option", JOptionPane.YES_NO_CANCEL_OPTION);
@@ -127,6 +138,6 @@ public static boolean kollaTaBort(String namn)
         return false;
     }
 }
-     
-    
+
+
 }
