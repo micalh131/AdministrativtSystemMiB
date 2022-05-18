@@ -107,10 +107,7 @@ public class SokEnskildAgent extends javax.swing.JFrame {
           
         }
       
-       
-        
-       
-     
+      
      ArrayList<HashMap<String, String>> soktaNamn;
      
      try {

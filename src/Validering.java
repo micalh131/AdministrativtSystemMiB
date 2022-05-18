@@ -44,11 +44,18 @@ public static boolean textFaltHarVarde(JTextField rutaAttKolla)
 
 public static boolean textFaltEjTomtRegEx(String textAttKolla)
 {
+    /* Metoden kollar om rutan är tom genom att använda metoden matches i klassen Pattern. 
+    Klassen pattern är Javas implementation av regular expresions. Regular expression är avancerade söksträngar där 
+    man genom olika notationer kan söka efter teckenklasser (siffror, bokstäver, white space etc). 
+    Ett regular expression är en sträng. ("^\\s*$") ^början, \\s white space, * 0 eller flera, $ slutet)
+    Om man ska göra för heltal så blir det ("\d+") det matchas på siffror, en eller flera. 
+    
+    */
     boolean resultat= true;
     //Pattern Pat= new Pattern("\s*");
     boolean rutaTom = Pattern.matches("^\\s*$", textAttKolla);
     
-  
+ 
     if (rutaTom) {
         JOptionPane.showMessageDialog(null, "rutan är tom eller innehåller bara space, vänligen ange något i rutan");
         resultat = false;
