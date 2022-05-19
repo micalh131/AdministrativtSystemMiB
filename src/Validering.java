@@ -45,8 +45,9 @@ public static boolean textFaltHarVarde(JTextField rutaAttKolla)
     */
 
 public static boolean textFaltEjTomtRegEx(String textAttKolla)
-{
-    /* Metoden kollar om rutan är tom genom att använda metoden matches i klassen Pattern. 
+
+{  /* Metoden kollar om rutan är tom genom att använda metoden matches i klassen Pattern. 
+
     Klassen pattern är Javas implementation av regular expresions. Regular expression är avancerade söksträngar där 
     man genom olika notationer kan söka efter teckenklasser (siffror, bokstäver, white space etc). 
     Ett regular expression är en sträng. ("^\\s*$") ^början, \\s white space, * 0 eller flera, $ slutet)
@@ -66,7 +67,20 @@ public static boolean textFaltEjTomtRegEx(String textAttKolla)
     return resultat;
 }
 
-
+public static boolean kollaCboxRegEx(String textAttKolla)
+{  
+   
+    boolean resultat= true;
+    //Pattern Pat= new Pattern("\s*");
+    boolean rutaTom = Pattern.matches("\\W*((?i)välj(?-i))\\W*", textAttKolla);
+  
+    if (rutaTom) {
+        JOptionPane.showMessageDialog(null, "Välj något av alternativen i dropdown menyn");
+        resultat = false;
+       
+    }
+    return resultat;
+}
 
 public static boolean isHeltal(JTextField rutaAttKolla)
 {
@@ -126,13 +140,16 @@ public static boolean kollaAgentId(ArrayList<String> ids, String nyOmradesChef)
 }
 
  public static String kollaIsAdmin(String admin){
-       
-        if(admin.equals("Ja")){
-            return "J";
-        }
-        else{
-            return "N";
-        }
+        String val = admin;
+       if(!admin.equalsIgnoreCase("Välj")){
+            if(admin.equals("Ja")){
+                val = "J";
+            }
+            else{
+                val = "N";
+            }
+       }
+       return val;
     }
 
 

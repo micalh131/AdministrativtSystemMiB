@@ -15,15 +15,28 @@ private InfDB idb;
 private String userName;
 private String password;
 private String valdUser;
+private String isAdmin;
     /**
      * Creates new form AgentPage
      */
-    public AgentPage(InfDB idb, String userName, String valdUser, String password) {
+    public AgentPage(InfDB idb, String userName, String valdUser, String password, String isAdmin) {
         initComponents();
         this.idb = idb;
         this.userName = userName;
         this.valdUser = valdUser;
         this.password = password;
+        this.isAdmin = isAdmin;
+        btnAdminInlogg.setVisible(kollaIsAdmin(isAdmin));
+        
+    }
+    
+    // Helps to set btn visible or not
+    // If isAdmin the button is visible and if not the button is hidden
+    private boolean kollaIsAdmin(String isAdmin){
+        if(isAdmin.equals("J")){
+            return true;
+        }
+        return false;
     }
 
     /**
