@@ -67,10 +67,10 @@ public static boolean textFaltEjTomtRegEx(String textAttKolla)
 
 public static boolean kollaCboxRegEx(String textAttKolla)
 {  
+   
     boolean resultat= true;
     //Pattern Pat= new Pattern("\s*");
     boolean rutaTom = Pattern.matches("\\W*((?i)välj(?-i))\\W*", textAttKolla);
-    
   
     if (rutaTom) {
         JOptionPane.showMessageDialog(null, "Välj något av alternativen i dropdown menyn");
@@ -138,13 +138,16 @@ public static boolean kollaAgentId(ArrayList<String> ids, String nyOmradesChef)
 }
 
  public static String kollaIsAdmin(String admin){
-       
-        if(admin.equals("Ja")){
-            return "J";
-        }
-        else{
-            return "N";
-        }
+        String val = admin;
+       if(!admin.equalsIgnoreCase("Välj")){
+            if(admin.equals("Ja")){
+                val = "J";
+            }
+            else{
+                val = "N";
+            }
+       }
+       return val;
     }
 
 

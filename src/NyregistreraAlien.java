@@ -170,7 +170,8 @@ public class NyregistreraAlien extends javax.swing.JFrame {
     }
     
     private String getPlatsId(String platsNamn){
-        String platsId = "";
+        String platsId = platsNamn;
+        if(!platsNamn.equalsIgnoreCase("Välj")){
         try{
             String fraga = "SELECT Plats_ID FROM plats WHERE Benamning = '"+ platsNamn +"'";
             platsId = idb.fetchSingle(fraga);
@@ -178,11 +179,13 @@ public class NyregistreraAlien extends javax.swing.JFrame {
         catch(InfException ex){
                 JOptionPane.showMessageDialog(null, "Gick inte att hämta platsent id");
             }
+        }
         return platsId;
     }
     
     private String getAgentId(String agentNamn){
-        String agentId = "";
+        String agentId = agentNamn;
+        if(!agentNamn.equalsIgnoreCase("Välj")){
         try{
             String fraga = "SELECT Agent_ID FROM agent WHERE namn = '"+ agentNamn +"'";
             agentId = idb.fetchSingle(fraga);
@@ -190,6 +193,7 @@ public class NyregistreraAlien extends javax.swing.JFrame {
         catch(InfException ex){
                 JOptionPane.showMessageDialog(null, "Gick inte att hämta agentens id");
             }
+        }
         return agentId;
     }
     
@@ -203,7 +207,7 @@ public class NyregistreraAlien extends javax.swing.JFrame {
         String ansvarigAgent = getAgentId(cboxAnsvarigAgent.getSelectedItem().toString());
         
         
-        if (Validering.textFaltHarVarde(txtNamn) && Validering.textFaltHarVarde(txtLosen) && Validering.textFaltHarVarde(txtTel) && Validering.textFaltHarVarde(txtDatum)){
+        if (Validering.textFaltEjTomtRegEx(namn) && Validering.textFaltEjTomtRegEx(losen) && Validering.textFaltEjTomtRegEx(tel) && Validering.textFaltEjTomtRegEx(datum) && Validering.kollaCboxRegEx(plats) && Validering.kollaCboxRegEx(ansvarigAgent)){
             try{
                 String nextId = getAlienId();
                 
