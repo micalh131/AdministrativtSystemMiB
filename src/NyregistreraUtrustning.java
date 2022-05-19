@@ -104,7 +104,7 @@ public class NyregistreraUtrustning extends javax.swing.JFrame {
         // TODO add your handling code here:
         String benamning = txtBenamning.getText();
         
-        if(Validering.textFaltHarVarde(txtBenamning)){
+        if(Validering.textFaltEjTomtRegEx(benamning)){
           try{
               String nextId = getUtrustningsId();
               String fraga = "INSERT INTO utrustning (Utrustnings_Id, Benamning) VALUES ( "+ nextId +", '"+ benamning +"')";
