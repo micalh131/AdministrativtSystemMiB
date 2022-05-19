@@ -27,14 +27,16 @@ private String isAdmin;
         this.password = password;
         this.isAdmin = isAdmin;
         btnAdminInlogg.setVisible(kollaIsAdmin(isAdmin));
+        
     }
     
+    // Helps to set btn visible or not
+    // If isAdmin the button is visible and if not the button is hidden
     private boolean kollaIsAdmin(String isAdmin){
         if(isAdmin.equals("J")){
             return true;
-        }else{
-            return false;
         }
+        return false;
     }
 
     /**
