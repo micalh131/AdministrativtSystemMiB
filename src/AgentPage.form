@@ -59,8 +59,8 @@
                           </Group>
                           <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="btnListaAlienRas1" min="-2" pref="287" max="-2" attributes="0"/>
-                                  <Component id="btnListaAlienRas2" min="-2" pref="147" max="-2" attributes="0"/>
+                                  <Component id="btnSokAlienDatum" min="-2" pref="287" max="-2" attributes="0"/>
+                                  <Component id="btnAndraInfoAlien" min="-2" pref="147" max="-2" attributes="0"/>
                                   <Component id="btnListaAlienRas" alignment="0" min="-2" pref="147" max="-2" attributes="0"/>
                                   <Component id="btnListaAlienPlats" alignment="0" min="-2" pref="147" max="-2" attributes="0"/>
                               </Group>
@@ -97,13 +97,13 @@
                   <Component id="btnAgentInfo" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-              <Component id="btnListaAlienRas2" min="-2" max="-2" attributes="0"/>
+              <Component id="btnAndraInfoAlien" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="btnListaAlienPlats" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="btnListaAlienRas" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
-              <Component id="btnListaAlienRas1" min="-2" max="-2" attributes="0"/>
+              <Component id="btnSokAlienDatum" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="btnAdminInlogg" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -146,6 +146,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Registrera ny Alien"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnNyregistreraAlienActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnAlienInfo">
       <Properties>
@@ -160,6 +163,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Registrera utrustning"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnRegistreraUtrActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnAgentInfo">
       <Properties>
@@ -173,26 +179,41 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Administrat&#xf6;r Inloggning"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAdminInloggActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnListaAlienPlats">
       <Properties>
         <Property name="text" type="java.lang.String" value="Lista Alien p&#xe5; plats"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnListaAlienPlatsActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnListaAlienRas">
       <Properties>
         <Property name="text" type="java.lang.String" value="Lista Alien p&#xe5; ras"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnListaAlienRasActionPerformed"/>
+      </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="btnListaAlienRas1">
+    <Component class="javax.swing.JButton" name="btnSokAlienDatum">
       <Properties>
         <Property name="text" type="java.lang.String" value="Lista Alien registrerad MELLAN TV&#xc5; datum"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSokAlienDatumActionPerformed"/>
+      </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="btnListaAlienRas2">
+    <Component class="javax.swing.JButton" name="btnAndraInfoAlien">
       <Properties>
         <Property name="text" type="java.lang.String" value="&#xc4;ndra info om Alien"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAndraInfoAlienActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>
