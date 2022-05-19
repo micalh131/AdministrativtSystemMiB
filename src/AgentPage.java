@@ -59,8 +59,8 @@ private String isAdmin;
         btnAdminInlogg = new javax.swing.JButton();
         btnListaAlienPlats = new javax.swing.JButton();
         btnListaAlienRas = new javax.swing.JButton();
-        btnListaAlienRas1 = new javax.swing.JButton();
-        btnListaAlienRas2 = new javax.swing.JButton();
+        btnSokAlienDatum = new javax.swing.JButton();
+        btnAndraInfoAlien = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -79,6 +79,11 @@ private String isAdmin;
         lblValkommenAgent.setText("Välkommen Agent");
 
         btnNyregistreraAlien.setText("Registrera ny Alien");
+        btnNyregistreraAlien.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNyregistreraAlienActionPerformed(evt);
+            }
+        });
 
         btnAlienInfo.setText("Sök Alien");
         btnAlienInfo.setToolTipText("");
@@ -89,6 +94,11 @@ private String isAdmin;
         });
 
         btnRegistreraUtr.setText("Registrera utrustning");
+        btnRegistreraUtr.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegistreraUtrActionPerformed(evt);
+            }
+        });
 
         btnAgentInfo.setText("Se vem som är områdeschef över visst område");
         btnAgentInfo.addActionListener(new java.awt.event.ActionListener() {
@@ -98,14 +108,39 @@ private String isAdmin;
         });
 
         btnAdminInlogg.setText("Administratör Inloggning");
+        btnAdminInlogg.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAdminInloggActionPerformed(evt);
+            }
+        });
 
         btnListaAlienPlats.setText("Lista Alien på plats");
+        btnListaAlienPlats.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnListaAlienPlatsActionPerformed(evt);
+            }
+        });
 
         btnListaAlienRas.setText("Lista Alien på ras");
+        btnListaAlienRas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnListaAlienRasActionPerformed(evt);
+            }
+        });
 
-        btnListaAlienRas1.setText("Lista Alien registrerad MELLAN TVÅ datum");
+        btnSokAlienDatum.setText("Lista Alien registrerad MELLAN TVÅ datum");
+        btnSokAlienDatum.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSokAlienDatumActionPerformed(evt);
+            }
+        });
 
-        btnListaAlienRas2.setText("Ändra info om Alien");
+        btnAndraInfoAlien.setText("Ändra info om Alien");
+        btnAndraInfoAlien.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAndraInfoAlienActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -137,8 +172,8 @@ private String isAdmin;
                                         .addContainerGap())))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(btnListaAlienRas1, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(btnListaAlienRas2, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btnSokAlienDatum, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btnAndraInfoAlien, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(btnListaAlienRas, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(btnListaAlienPlats, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(0, 0, Short.MAX_VALUE))))
@@ -164,13 +199,13 @@ private String isAdmin;
                     .addComponent(btnNyregistreraAlien)
                     .addComponent(btnAgentInfo))
                 .addGap(18, 18, 18)
-                .addComponent(btnListaAlienRas2)
+                .addComponent(btnAndraInfoAlien)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnListaAlienPlats)
                 .addGap(18, 18, 18)
                 .addComponent(btnListaAlienRas)
                 .addGap(23, 23, 23)
-                .addComponent(btnListaAlienRas1)
+                .addComponent(btnSokAlienDatum)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAdminInlogg)
@@ -196,19 +231,54 @@ private String isAdmin;
         new AndraLosenord(idb, userName, valdUser, password).setVisible(true);
     }//GEN-LAST:event_btnBytLosenActionPerformed
 
+    private void btnNyregistreraAlienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNyregistreraAlienActionPerformed
+        // TODO add your handling code here:
+        new NyregistreraAlien(idb).setVisible(true);
+    }//GEN-LAST:event_btnNyregistreraAlienActionPerformed
+
+    private void btnAndraInfoAlienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAndraInfoAlienActionPerformed
+        // TODO add your handling code here:
+        new AndraInfoAlien(idb).setVisible(true);
+    }//GEN-LAST:event_btnAndraInfoAlienActionPerformed
+
+    private void btnListaAlienPlatsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListaAlienPlatsActionPerformed
+        // TODO add your handling code here:
+        new AliensPlats(idb).setVisible(true);
+    }//GEN-LAST:event_btnListaAlienPlatsActionPerformed
+
+    private void btnListaAlienRasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListaAlienRasActionPerformed
+        // TODO add your handling code here:
+        new AliensPerRas(idb).setVisible(true);
+    }//GEN-LAST:event_btnListaAlienRasActionPerformed
+
+    private void btnSokAlienDatumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSokAlienDatumActionPerformed
+        // TODO add your handling code here:
+        new SokAlienDatum(idb).setVisible(true);
+    }//GEN-LAST:event_btnSokAlienDatumActionPerformed
+
+    private void btnRegistreraUtrActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistreraUtrActionPerformed
+        // TODO add your handling code here:
+        new NyregistreraUtrustning(idb).setVisible(true);
+    }//GEN-LAST:event_btnRegistreraUtrActionPerformed
+
+    private void btnAdminInloggActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdminInloggActionPerformed
+        // TODO add your handling code here:
+        new AdminPage(idb, userName).setVisible(true);
+    }//GEN-LAST:event_btnAdminInloggActionPerformed
+
   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAdminInlogg;
     private javax.swing.JButton btnAgentInfo;
     private javax.swing.JButton btnAlienInfo;
+    private javax.swing.JButton btnAndraInfoAlien;
     private javax.swing.JButton btnBytLosen;
     private javax.swing.JButton btnListaAlienPlats;
     private javax.swing.JButton btnListaAlienRas;
-    private javax.swing.JButton btnListaAlienRas1;
-    private javax.swing.JButton btnListaAlienRas2;
     private javax.swing.JButton btnNyregistreraAlien;
     private javax.swing.JButton btnRegistreraUtr;
+    private javax.swing.JButton btnSokAlienDatum;
     private javax.swing.JSpinner jSpinner1;
     private javax.swing.JLabel lblBild;
     private javax.swing.JLabel lblValkommenAgent;

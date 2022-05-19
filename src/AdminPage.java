@@ -52,12 +52,32 @@ public class AdminPage extends javax.swing.JFrame {
         lblBild.setText("jLabel1");
 
         btnTaBortAlien.setText("Ta bort Alien");
+        btnTaBortAlien.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTaBortAlienActionPerformed(evt);
+            }
+        });
 
         btnTaBortUtr.setText("Ta bort utrustning");
+        btnTaBortUtr.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTaBortUtrActionPerformed(evt);
+            }
+        });
 
         btnNyregAgent.setText("Nyregistrera Agenter");
+        btnNyregAgent.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNyregAgentActionPerformed(evt);
+            }
+        });
 
         btnAgentSokningar.setText("Sök info enskild agent");
+        btnAgentSokningar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgentSokningarActionPerformed(evt);
+            }
+        });
 
         btnAdminStatus.setText("Ge annan Agent admin status");
         btnAdminStatus.addActionListener(new java.awt.event.ActionListener() {
@@ -67,12 +87,32 @@ public class AdminPage extends javax.swing.JFrame {
         });
 
         btnTaBortAgent.setText("Ta bort agent");
+        btnTaBortAgent.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTaBortAgentActionPerformed(evt);
+            }
+        });
 
         btnAndraInfoAgent.setText("Ändra info om Agent");
+        btnAndraInfoAgent.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAndraInfoAgentActionPerformed(evt);
+            }
+        });
 
         btnAndraOmradeschef.setText("Ändra områdeschef");
+        btnAndraOmradeschef.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAndraOmradeschefActionPerformed(evt);
+            }
+        });
 
         btnAndraKontorschef.setText("Ändra kontorschef");
+        btnAndraKontorschef.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAndraKontorschefActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -139,6 +179,46 @@ public class AdminPage extends javax.swing.JFrame {
     private void btnAdminStatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdminStatusActionPerformed
         new AdminStatus(idb).setVisible(true);
     }//GEN-LAST:event_btnAdminStatusActionPerformed
+
+    private void btnAgentSokningarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgentSokningarActionPerformed
+        // TODO add your handling code here:
+        new SokEnskildAgent(idb).setVisible(true);
+    }//GEN-LAST:event_btnAgentSokningarActionPerformed
+
+    private void btnNyregAgentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNyregAgentActionPerformed
+        // TODO add your handling code here:
+        new NyregistreraAgent(idb).setVisible(true);
+    }//GEN-LAST:event_btnNyregAgentActionPerformed
+
+    private void btnAndraInfoAgentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAndraInfoAgentActionPerformed
+        // TODO add your handling code here:
+        new AndraInfoAgent(idb).setVisible(true);
+    }//GEN-LAST:event_btnAndraInfoAgentActionPerformed
+
+    private void btnAndraOmradeschefActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAndraOmradeschefActionPerformed
+        // TODO add your handling code here:
+        new AndraOmradesChef(idb).setVisible(true);
+    }//GEN-LAST:event_btnAndraOmradeschefActionPerformed
+
+    private void btnAndraKontorschefActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAndraKontorschefActionPerformed
+        // TODO add your handling code here:
+        new AndraKontorsChef(idb).setVisible(true);
+    }//GEN-LAST:event_btnAndraKontorschefActionPerformed
+
+    private void btnTaBortAgentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTaBortAgentActionPerformed
+        // TODO add your handling code here:
+        new TaBortAgent(idb).setVisible(true);
+    }//GEN-LAST:event_btnTaBortAgentActionPerformed
+
+    private void btnTaBortAlienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTaBortAlienActionPerformed
+        // TODO add your handling code here:
+        new TaBortAlien(idb).setVisible(true);
+    }//GEN-LAST:event_btnTaBortAlienActionPerformed
+
+    private void btnTaBortUtrActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTaBortUtrActionPerformed
+        // TODO add your handling code here:
+        new TaBortUtrustning(idb).setVisible(true);
+    }//GEN-LAST:event_btnTaBortUtrActionPerformed
 
  
 
