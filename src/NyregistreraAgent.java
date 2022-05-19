@@ -66,7 +66,7 @@ public class NyregistreraAgent extends javax.swing.JFrame {
 
         jLabel5.setText("Område");
 
-        jLabel6.setText("Administratör J/N");
+        jLabel6.setText("Administratör");
 
         lblReg.setText("Agent har registrerats");
 

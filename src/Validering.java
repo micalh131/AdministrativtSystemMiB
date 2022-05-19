@@ -65,7 +65,20 @@ public static boolean textFaltEjTomtRegEx(String textAttKolla)
     return resultat;
 }
 
-
+public static boolean kollaCboxRegEx(String textAttKolla)
+{  
+    boolean resultat= true;
+    //Pattern Pat= new Pattern("\s*");
+    boolean rutaTom = Pattern.matches("\\W*((?i)välj(?-i))\\W*", textAttKolla);
+    
+  
+    if (rutaTom) {
+        JOptionPane.showMessageDialog(null, "Välj något av alternativen i dropdown menyn");
+        resultat = false;
+       
+    }
+    return resultat;
+}
 
 public static boolean isHeltal(JTextField rutaAttKolla)
 {

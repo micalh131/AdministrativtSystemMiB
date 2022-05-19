@@ -123,28 +123,23 @@ public class LoginPage extends javax.swing.JFrame {
         // TODO add your handling code here:
         String userName = loginUsername.getText();
         String password = loginPassword.getText();
-        System.out.println(password);
         String valdUser = loginSelectUser.getSelectedItem().toString();
-        System.out.println(valdUser);
         
-        
-        if (Validering.textFaltHarVarde(loginUsername) && (Validering.textFaltHarVarde(loginPassword))){
+        if (Validering.textFaltEjTomtRegEx(userName) && (Validering.textFaltEjTomtRegEx(password)) && Validering.kollaCboxRegEx(valdUser)){
         
          try{ 
             if(valdUser.equalsIgnoreCase("Agent")){
             String fragaUserName = "SELECT Agent_ID FROM agent WHERE Agent_ID=" + userName;
             String fragaPassword = "SELECT Losenord FROM agent WHERE Losenord=" + "'" + password + "'";
-            String fragaIsAdmin = "SELECT Administrator FROM agent";
+            String fragaIsAdmin = "SELECT Administrator FROM agent WHERE Agent_ID=" + userName;
             String svarIsAdmin = idb.fetchSingle(fragaIsAdmin);
             String svarUserName = idb.fetchSingle(fragaUserName);
             String svarPassword = idb.fetchSingle(fragaPassword);
             
-            System.out.println(svarIsAdmin);
-             if(userName.equals( svarUserName) && password.equals(svarPassword)){
-               System.out.println("Inloggad som agent");
-               new AgentPage(idb, userName, valdUser, password, svarIsAdmin).setVisible(true);
-             }   
-         }
+                if(userName.equals( svarUserName) && password.equals(svarPassword)){
+                    new AgentPage(idb, userName, valdUser, password, svarIsAdmin).setVisible(true);
+                }   
+            }
             else  if(valdUser.equalsIgnoreCase("Alien")){
             String fragaUserName = "SELECT Alien_ID FROM alien WHERE Alien_ID=" + userName;
             String fragaPassword = "SELECT Losenord FROM alien WHERE Losenord=" + "'" + password + "'";
@@ -153,9 +148,7 @@ public class LoginPage extends javax.swing.JFrame {
             String svarUserName = idb.fetchSingle(fragaUserName);
             String svarPassword = idb.fetchSingle(fragaPassword);
             
-            System.out.println(valdUser);
              if(userName.equals( svarUserName) && password.equals(svarPassword)){
-               System.out.println("Inloggad som alien");
                new AlienPage(idb, svarPlats, userName, valdUser,password).setVisible(true);
              }   
          }
