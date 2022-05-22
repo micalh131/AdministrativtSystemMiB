@@ -41,6 +41,7 @@
                           </Group>
                           <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
+
                                   <Component id="btnNyregistreraAlien" min="-2" pref="147" max="-2" attributes="0"/>
                                   <Component id="btnAndraInfoAlien" min="-2" pref="147" max="-2" attributes="0"/>
                               </Group>
@@ -57,6 +58,30 @@
                                   <Component id="btnSokAlienDatum" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="btnListaAlienPlats" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="btnAlienInfo" alignment="0" min="-2" max="-2" attributes="0"/>
+
+                                  <Component id="btnNyregistreraAlien" alignment="0" min="-2" pref="147" max="-2" attributes="0"/>
+                                  <Component id="btnAlienInfo" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                                      <Component id="btnRegistreraUtr" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="32767" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <EmptySpace pref="26" max="32767" attributes="0"/>
+                                      <Component id="btnAgentInfo" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="btnSokAlienDatum" min="-2" pref="287" max="-2" attributes="0"/>
+                                  <Component id="btnAndraInfoAlien" min="-2" pref="147" max="-2" attributes="0"/>
+                                  <Component id="btnListaAlienRas" alignment="0" min="-2" pref="147" max="-2" attributes="0"/>
+                                  <Component id="btnListaAlienPlats" alignment="0" min="-2" pref="147" max="-2" attributes="0"/>
+
                               </Group>
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           </Group>
@@ -82,17 +107,30 @@
               <Component id="lblValkommenAgent" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
+
                   <Component id="btnNyregistreraAlien" alignment="3" min="-2" max="-2" attributes="0"/>
+
+                  <Component id="btnAlienInfo" alignment="3" min="-2" max="-2" attributes="0"/>
+
                   <Component id="btnRegistreraUtr" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
+
                   <Component id="btnAgentInfo" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btnAndraInfoAlien" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
               <Component id="btnAlienInfo" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
+
+                  <Component id="btnNyregistreraAlien" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnAgentInfo" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+              <Component id="btnAndraInfoAlien" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+
               <Component id="btnListaAlienPlats" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="btnListaAlienRas" min="-2" max="-2" attributes="0"/>
@@ -146,7 +184,11 @@
     </Component>
     <Component class="javax.swing.JButton" name="btnAlienInfo">
       <Properties>
+
         <Property name="text" type="java.lang.String" value="S&#xf6;k Ansvarig Agent f&#xf6;r Alien"/>
+
+        <Property name="text" type="java.lang.String" value="S&#xf6;k Alien"/>
+
         <Property name="toolTipText" type="java.lang.String" value=""/>
       </Properties>
       <Events>
@@ -163,7 +205,11 @@
     </Component>
     <Component class="javax.swing.JButton" name="btnAgentInfo">
       <Properties>
+
         <Property name="text" type="java.lang.String" value="S&#xf6;k omr&#xe5;deschef"/>
+
+        <Property name="text" type="java.lang.String" value="Se vem som &#xe4;r omr&#xe5;deschef &#xf6;ver visst omr&#xe5;de"/>
+
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAgentInfoActionPerformed"/>
@@ -179,7 +225,11 @@
     </Component>
     <Component class="javax.swing.JButton" name="btnListaAlienPlats">
       <Properties>
+
         <Property name="text" type="java.lang.String" value="S&#xf6;k Alien utifr&#xe5;n plats"/>
+
+        <Property name="text" type="java.lang.String" value="Lista Alien p&#xe5; plats"/>
+
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnListaAlienPlatsActionPerformed"/>
@@ -187,7 +237,11 @@
     </Component>
     <Component class="javax.swing.JButton" name="btnListaAlienRas">
       <Properties>
+
         <Property name="text" type="java.lang.String" value="S&#xf6;k Alien utifr&#xe5;n ras"/>
+
+        <Property name="text" type="java.lang.String" value="Lista Alien p&#xe5; ras"/>
+
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnListaAlienRasActionPerformed"/>
@@ -195,7 +249,11 @@
     </Component>
     <Component class="javax.swing.JButton" name="btnSokAlienDatum">
       <Properties>
+
         <Property name="text" type="java.lang.String" value="S&#xf6;k n&#xe4;r Alien registrerats"/>
+
+        <Property name="text" type="java.lang.String" value="Lista Alien registrerad MELLAN TV&#xc5; datum"/>
+
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSokAlienDatumActionPerformed"/>
