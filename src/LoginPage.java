@@ -155,7 +155,7 @@ public class LoginPage extends javax.swing.JFrame {
          
     }
     catch(InfException ex){
-            JOptionPane.showMessageDialog(null, "Något gick fel");
+            JOptionPane.showMessageDialog(null, "Du har skrivit in fel användaruppgifter, försök igen");
     }
     }
         

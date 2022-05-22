@@ -39,66 +39,116 @@ public class TaBortUtrustning extends javax.swing.JFrame {
 
         cmbUtrustning = new javax.swing.JComboBox<>();
         lblRubrik = new javax.swing.JLabel();
-        cbxTaBort = new javax.swing.JCheckBox();
         lblBorttagenUtrustning = new javax.swing.JLabel();
+        btnTaBort = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         cmbUtrustning.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Välj" }));
-        cmbUtrustning.addActionListener(new java.awt.event.ActionListener() {
+
+        lblRubrik.setText("Välj utrusting att ta bort");
+
+        lblBorttagenUtrustning.setText("Utr har tagits bort");
+
+        btnTaBort.setText("Ta bort");
+        btnTaBort.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cmbUtrustningActionPerformed(evt);
+                btnTaBortActionPerformed(evt);
             }
         });
-
-        lblRubrik.setText("Välj utrusting");
-
-        cbxTaBort.setText("Ta bort vald utrustning");
-        cbxTaBort.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbxTaBortActionPerformed(evt);
-            }
-        });
-
-        lblBorttagenUtrustning.setText("Utrustningen har tagits bort");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(119, Short.MAX_VALUE)
+                .addComponent(lblRubrik)
+                .addGap(140, 140, 140))
             .addGroup(layout.createSequentialGroup()
-                .addGap(27, 27, 27)
+                .addGap(141, 141, 141)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblBorttagenUtrustning)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(cmbUtrustning, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(61, 61, 61)
-                        .addComponent(cbxTaBort))
-                    .addComponent(lblRubrik))
-                .addContainerGap(104, Short.MAX_VALUE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblBorttagenUtrustning)
+                            .addComponent(btnTaBort))
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(48, 48, 48)
+                .addGap(36, 36, 36)
                 .addComponent(lblRubrik)
+                .addGap(18, 18, 18)
+                .addComponent(cmbUtrustning, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(70, 70, 70)
+                .addComponent(btnTaBort)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cmbUtrustning, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cbxTaBort))
-                .addGap(31, 31, 31)
                 .addComponent(lblBorttagenUtrustning)
-                .addContainerGap(152, Short.MAX_VALUE))
+                .addContainerGap(84, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void cmbUtrustningActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbUtrustningActionPerformed
-        // metoden används inte men jag har inte tid att klura ut varför jag inte kan ta bort den.
+    private void btnTaBortActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTaBortActionPerformed
+        String namn = cmbUtrustning.getSelectedItem().toString();
+        if (Validering.kollaTaBort(namn)) {
+            String fraga = "DELETE FROM Utrustning WHERE Benamning =" + "'" + namn + "'" + ";";
+            try {
+                idb.delete(fraga);
+                
+                lblBorttagenUtrustning.setVisible(true);
+                lblBorttagenUtrustning.setText(namn + " är borttagen ur systemet");
+
+            } catch (InfException ex) {
+                JOptionPane.showMessageDialog(null, "Gick inte att ta bort");
+            }
+        }
+    }//GEN-LAST:event_btnTaBortActionPerformed
+
+    private void fyllValjUtrustning(){
+            String fraga = "SELECT Benamning FROM Utrustning";
+
+        ArrayList<String> allUtrustning;
+
+        try {
+            allUtrustning = idb.fetchColumn(fraga);
+
+            for (String plats : allUtrustning) {
+                cmbUtrustning.addItem(plats);
+            }
+        } catch (InfException e) {
+            JOptionPane.showMessageDialog(null, "Något gick fel");
+        }
+
+    }
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnTaBort;
+    private javax.swing.JComboBox<String> cmbUtrustning;
+    private javax.swing.JLabel lblBorttagenUtrustning;
+    private javax.swing.JLabel lblRubrik;
+    // End of variables declaration//GEN-END:variables
+}
+// SKRÄP:
+ // OBS! Va försiktig med att klicka i rutan då data tas bort från tabell 
+        /*String namn = cmbUtrustning.getSelectedItem().toString();
+        if(Validering.kollaTaBort(namn)){
+        String fraga = "DELETE FROM Utrustning WHERE Benamning =" + "'" + namn + "'" + ";";
         
-        
-       /* ArrayList<HashMap<String, String>> soktUtrustning;
+        try {
+            idb.delete(fraga);
+            lblBorttagenUtrustning.setVisible(true);
+            
+        } catch (InfException ex) {
+            JOptionPane.showMessageDialog(null, "Något gick fel");
+        }
+    }*/
+
+/* ArrayList<HashMap<String, String>> soktUtrustning;
         
         try{
             String valdUtrustning = cmbUtrustning.getSelectedItem().toString();
@@ -116,48 +166,3 @@ public class TaBortUtrustning extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Något gick fel");
         
         } */ 
-    }//GEN-LAST:event_cmbUtrustningActionPerformed
-
-    private void cbxTaBortActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxTaBortActionPerformed
-        // OBS! Va försiktig med att klicka i rutan då data tas bort från tabell 
-        String utrustningNamn = cmbUtrustning.getSelectedItem().toString();
-        
-        String fraga = "DELETE FROM Utrustning WHERE Benamning =" + "'" + utrustningNamn + "'" + ";";
-        
-        try {
-            idb.delete(fraga);
-            lblBorttagenUtrustning.setVisible(true);
-            System.out.println("funkar");
-        } catch (InfException ex) {
-            JOptionPane.showMessageDialog(null, "Något gick fel");
-        }
-    }//GEN-LAST:event_cbxTaBortActionPerformed
-
-    private void fyllValjUtrustning(){
-    
-        String fraga = "SELECT Benamning FROM Utrustning";
-    
-        ArrayList<String> allUtrustning;
-        
-        try
-        {
-            allUtrustning = idb.fetchColumn(fraga);
-
-            for (String plats : allUtrustning) {
-                cmbUtrustning.addItem(plats);
-            }
-        }
-        catch(InfException e) {
-            JOptionPane.showMessageDialog(null, "Något gick fel");
-        
-        }
-        
-        
-    }
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JCheckBox cbxTaBort;
-    private javax.swing.JComboBox<String> cmbUtrustning;
-    private javax.swing.JLabel lblBorttagenUtrustning;
-    private javax.swing.JLabel lblRubrik;
-    // End of variables declaration//GEN-END:variables
-}
