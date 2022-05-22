@@ -13,21 +13,23 @@ import oru.inf.InfException;
 /**
  *
  @author miche, aaau, cAppelina
- * Klassen skapades efter att åsa tittade på en film. 
- * Klassen ser vilka Aliens som befinner sig på en angiven plats.
- * Konstruktorn fyller på en combobox som används i metoden 'fyllValjPlatsNamn'
- * som hämtar platser från databasen.
+ * 
+ * Klassen visar nuvarande kontorschef för ett angivet kontor. Klassen kan även uppdatera det 
+ * angivna kontoret med en ny chef genom att välja en av de agenter som finns i databasen. 
+ 
  */
 public class AndraKontorsChef extends javax.swing.JFrame {
     private InfDB idb;
+    private HjalpDbFunktioner konv;
 
     /**
-     * Creates new form AliensPlats
+     *
      */
     public AndraKontorsChef(InfDB idb) {
         initComponents();
         this.idb = idb;
         fyllValjKontor();
+        konv = new HjalpDbFunktioner(idb);
     }
 
     /**
@@ -40,13 +42,11 @@ public class AndraKontorsChef extends javax.swing.JFrame {
     private void initComponents() {
 
         cboKontor = new javax.swing.JComboBox<>();
-        scpAliens = new javax.swing.JScrollPane();
-        txtAreaVisaInfo = new javax.swing.JTextArea();
         lblNuvarandeChef = new javax.swing.JLabel();
         txtNuChefInfo = new javax.swing.JTextField();
         lblNyChef = new javax.swing.JLabel();
-        CboxNyChefLista = new javax.swing.JComboBox<>();
-        Spara = new javax.swing.JButton();
+        cboxNyChefLista = new javax.swing.JComboBox<>();
+        spara = new javax.swing.JButton();
         lblRubrik = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -58,25 +58,21 @@ public class AndraKontorsChef extends javax.swing.JFrame {
             }
         });
 
-        txtAreaVisaInfo.setColumns(20);
-        txtAreaVisaInfo.setRows(5);
-        scpAliens.setViewportView(txtAreaVisaInfo);
-
         lblNuvarandeChef.setText("Nuvarande chef");
         lblNuvarandeChef.setToolTipText("");
 
         txtNuChefInfo.setColumns(6);
-        txtNuChefInfo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNuChefInfoActionPerformed(evt);
-            }
-        });
 
         lblNyChef.setText("Välj en ny chef i listan");
 
-        CboxNyChefLista.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Välj" }));
+        cboxNyChefLista.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Välj" }));
 
-        Spara.setText("Spara");
+        spara.setText("Spara");
+        spara.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sparaActionPerformed(evt);
+            }
+        });
 
         lblRubrik.setText("Ändra kontorschef ");
 
@@ -85,27 +81,21 @@ public class AndraKontorsChef extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(42, 42, 42)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(42, 42, 42)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(scpAliens, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(cboKontor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(lblNuvarandeChef, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(42, 42, 42)
-                                    .addComponent(txtNuChefInfo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addComponent(lblRubrik)))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(50, 50, 50)
-                            .addComponent(lblNyChef)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(CboxNyChefLista, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(263, 263, 263)
-                        .addComponent(Spara)))
+                        .addComponent(cboKontor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(lblNuvarandeChef, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(42, 42, 42)
+                        .addComponent(txtNuChefInfo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblRubrik)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lblNyChef)
+                        .addGap(51, 51, 51)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(spara)
+                            .addComponent(cboxNyChefLista, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(49, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -118,15 +108,13 @@ public class AndraKontorsChef extends javax.swing.JFrame {
                     .addComponent(cboKontor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblNuvarandeChef)
                     .addComponent(txtNuChefInfo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(scpAliens, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(40, 40, 40)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblNyChef)
-                    .addComponent(CboxNyChefLista, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(Spara)
-                .addContainerGap(16, Short.MAX_VALUE))
+                    .addComponent(cboxNyChefLista, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(39, 39, 39)
+                .addComponent(spara)
+                .addContainerGap(77, Short.MAX_VALUE))
         );
 
         pack();
@@ -137,34 +125,61 @@ public class AndraKontorsChef extends javax.swing.JFrame {
     plats som valts i fyllValjPlats) och finns ingen alien så får man ett felmeddelande.
     */
     private void cboKontorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboKontorActionPerformed
-      
-    }//GEN-LAST:event_cboKontorActionPerformed
 
-    private void txtNuChefInfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNuChefInfoActionPerformed
-         txtNuChefInfo.setText("");
+        /*Hämtar information från databasen om vilken agent som är chef på det 
+        aktuella kontoret som valts i dropdownlistan. Resultatet visas i textrutan */
+        txtNuChefInfo.setText("");
 
-        ArrayList<HashMap<String, String>> soktaChefer; 
+        ArrayList<HashMap<String, String>> soktaChefer;
+        String valtKontor = cboKontor.getSelectedItem().toString();
+        String fraga = "SELECT Namn FROM agent JOIN kontorschef ON kontorschef.`Agent_ID`=agent.`Agent_ID`"
+                + "WHERE kontorschef.`Kontorsbeteckning`= '" + valtKontor + "'";
+        if (Validering.kollaCboxRegEx(valtKontor)) {
+            try {
 
-        try {
-            String valtKontor = cboKontor.getSelectedItem().toString();
-            String fraga = "SELECT Namn FROM agent JOIN kontorschef ON kontorschef.`Agent_ID`=agent.`Agent_ID`WHERE kontorschef.`Kontorsbeteckning`= '" + valtKontor + "'";
-            // "='"+var+"'"
+
             soktaChefer = idb.fetchRows(fraga);
-            // txtAreaVisaInfo.append("Nåning");
-            System.out.println(valtKontor);
+          
             if (soktaChefer.size() < 1) {
                 txtNuChefInfo.setText("Det finns ingen chef på detta kontor");
             }
             for (HashMap<String, String> chefer : soktaChefer) {
                 txtNuChefInfo.setText(chefer.get("Namn"));
-                //txtAreaVisaInfo.append("Alien_ID");
+               
             }
 
         } catch (InfException e) {
-            JOptionPane.showMessageDialog(null, "Något gick fel");
+            JOptionPane.showMessageDialog(null, "Något gick fel \n" + e.getMessage());
+           System.out.println(e.getMessage());
 
         }
-    }//GEN-LAST:event_txtNuChefInfoActionPerformed
+        
+        fyllValjAgenter();
+ }
+    }//GEN-LAST:event_cboKontorActionPerformed
+
+    private void sparaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sparaActionPerformed
+        
+            String valtKontor = cboKontor.getSelectedItem().toString();
+            String valdChefsAgent = cboxNyChefLista.getSelectedItem().toString();
+            String valdChefsAgentId = konv.faUtAgentID(valdChefsAgent);
+            
+            if(Validering.kollaCboxRegEx(valdChefsAgent)){
+        try {
+            
+            String fraga = "UPDATE kontorschef SET Agent_ID = '" + valdChefsAgentId + "'" + 
+                    "WHERE Kontorsbeteckning = '" + valtKontor + "'";
+            
+                 idb.update(fraga); 
+                 JOptionPane.showMessageDialog(null, valdChefsAgent + " är nu ny chef för " + valtKontor);
+        
+            }
+
+         catch (InfException e) {
+            JOptionPane.showMessageDialog(null, "Något gick fel");
+
+        }}
+    }//GEN-LAST:event_sparaActionPerformed
     /*
     Hämtar information från db om alla platser som finns.
     */
@@ -184,16 +199,31 @@ public class AndraKontorsChef extends javax.swing.JFrame {
         }
         
     }
+    
+     private void fyllValjAgenter(){
+        String fraga = "SELECT Namn FROM agent";
+
+        ArrayList<String> allaAgenter;
+
+        try {
+            allaAgenter = idb.fetchColumn(fraga);
+
+            for (String enAgent : allaAgenter) {
+                cboxNyChefLista.addItem(enAgent);
+            }
+        } catch (InfException e) {
+            JOptionPane.showMessageDialog(null, "Något gick fel");
+        }
+        
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> CboxNyChefLista;
-    private javax.swing.JButton Spara;
     private javax.swing.JComboBox<String> cboKontor;
+    private javax.swing.JComboBox<String> cboxNyChefLista;
     private javax.swing.JLabel lblNuvarandeChef;
     private javax.swing.JLabel lblNyChef;
     private javax.swing.JLabel lblRubrik;
-    private javax.swing.JScrollPane scpAliens;
-    private javax.swing.JTextArea txtAreaVisaInfo;
+    private javax.swing.JButton spara;
     private javax.swing.JTextField txtNuChefInfo;
     // End of variables declaration//GEN-END:variables
 }
