@@ -1,4 +1,5 @@
 
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import oru.inf.InfDB;
 import oru.inf.InfException;
@@ -165,6 +166,30 @@ public class NyregistreraAgent extends javax.swing.JFrame {
         return omradeId;
     }
     
+    private boolean kollaAgentNamnReadanFinns(String namn){
+   ArrayList<String> AgentNamn = null;
+    boolean result = false;
+    try{
+        
+        String fraga = "SELECT Namn FROM agent";
+        AgentNamn = idb.fetchColumn(fraga);
+    
+    }catch(InfException ex){
+                JOptionPane.showMessageDialog(null, "Gick inte hämta namn från agent");
+            
+    }
+    
+    for(String n : AgentNamn){
+        if(n.equals(namn)){
+            result = true;
+            JOptionPane.showMessageDialog(null, "Finns redan en Agent med det namnet");
+        }
+   }
+    return result;
+}
+        
+
+    
    
     
     private void btnRegistreraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistreraActionPerformed
@@ -175,11 +200,12 @@ public class NyregistreraAgent extends javax.swing.JFrame {
         String datum = txtAnstDatum.getText();
         String omrade = valjOmrade(cboxOmrade.getSelectedItem().toString());
         String isAdmin = Validering.kollaIsAdmin(cboxAdmin.getSelectedItem().toString());
+        Boolean isLikaNamn =  kollaAgentNamnReadanFinns(namn);
         System.out.println(omrade);
         System.out.println(isAdmin);
         
         //Behöver lägga till en koll så användaren har valt ett område 
-        if (Validering.textFaltEjTomtRegEx(namn) && Validering.textFaltEjTomtRegEx(losen) && Validering.textFaltEjTomtRegEx(tel) && Validering.textFaltEjTomtRegEx(datum) && Validering.kollaCboxRegEx(omrade) && Validering.kollaCboxRegEx(isAdmin)){
+        if (Validering.textFaltEjTomtRegEx(namn) && Validering.textFaltEjTomtRegEx(losen) && Validering.textFaltEjTomtRegEx(tel) && Validering.textFaltEjTomtRegEx(datum) && Validering.kollaCboxRegEx(omrade) && Validering.kollaCboxRegEx(isAdmin) && !isLikaNamn){
             try{
                 String nextId = getAgentId();
                 

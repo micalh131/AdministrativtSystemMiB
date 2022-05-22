@@ -67,6 +67,9 @@ public class Start {
          new LoginPage(idb).setVisible(true);
          new AndraKontorsChef(idb).setVisible(true);
 
+           new AndraInfoAgent(idb).setVisible(true);
+
+
 
     }
 }

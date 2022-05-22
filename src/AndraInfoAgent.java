@@ -1,5 +1,6 @@
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import javax.swing.JOptionPane;
 import oru.inf.InfException;
 import oru.inf.InfDB;
@@ -22,6 +23,7 @@ public class AndraInfoAgent extends javax.swing.JFrame {
         initComponents();
         this.idb = idb;
         fyllValjAlienNamn();
+        fyllValjOmrade();
         lblAndra.setVisible(false);
     }
 
@@ -55,6 +57,11 @@ public class AndraInfoAgent extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         cboxValAgent.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Välj" }));
+        cboxValAgent.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cboxValAgentActionPerformed(evt);
+            }
+        });
 
         jLabel1.setText("Namn");
 
@@ -79,7 +86,7 @@ public class AndraInfoAgent extends javax.swing.JFrame {
 
         jLabel9.setText("Agent");
 
-        cboxOmrade.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Välj", "Svealand", "Götaland", "Norrland" }));
+        cboxOmrade.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Välj" }));
 
         cboxAdmin.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Välj", "Ja", "Nej" }));
 
@@ -119,7 +126,7 @@ public class AndraInfoAgent extends javax.swing.JFrame {
                         .addGap(40, 40, 40))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(18, 18, 18)
-                        .addComponent(lblAndra, javax.swing.GroupLayout.DEFAULT_SIZE, 119, Short.MAX_VALUE)
+                        .addComponent(lblAndra, javax.swing.GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE)
                         .addContainerGap())))
         );
         layout.setVerticalGroup(
@@ -169,7 +176,7 @@ public class AndraInfoAgent extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        
         String agentId = getAgentId(cboxValAgent.getSelectedItem().toString());
         String namn = txtNamn.getText();
         String losen = txtLosen.getText();
@@ -197,7 +204,41 @@ public class AndraInfoAgent extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_jButton1ActionPerformed
- private String getAgentId(String Namn){
+
+    //När användaren valt Agent att ändra hämtas all info om agent
+    //Infon fylls i respektive taxtruta så att användaren inte behöver fylla i allt själv
+    private void cboxValAgentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboxValAgentActionPerformed
+        // TODO add your handling code here:
+         HashMap<String, String> soktAgent; 
+
+        try {
+            String agentNamn = cboxValAgent.getSelectedItem().toString();
+            String fraga = "SELECT Namn, Losenord, Telefon, Anstallningsdatum, Administrator, omrade.Benamning FROM agent \n"
+                    + "JOIN omrade ON Omrades_ID= agent.Omrade WHERE Namn='" + agentNamn + "'";
+            // "='"+var+"'"
+            soktAgent = idb.fetchRow(fraga);
+            // txtAreaVisaInfo.append("Nåning");
+            System.out.println(soktAgent);
+         
+            txtNamn.setText(soktAgent.get("Namn"));
+            txtLosen.setText(soktAgent.get("Losenord"));
+            txtTel.setText(soktAgent.get("Telefon"));
+            txtDatum.setText(soktAgent.get("Anstallningsdatum"));
+            cboxOmrade.setSelectedItem(soktAgent.get("Benamning"));
+            String admin = soktAgent.get("Administrator");
+            if(admin.equals("J")){
+            cboxAdmin.setSelectedItem("Ja");
+            }else{
+            cboxAdmin.setSelectedItem("Nej");
+            }
+
+        } catch (InfException e) {
+            JOptionPane.showMessageDialog(null, "Gick inte att hämta info om alien");
+
+        }
+    }//GEN-LAST:event_cboxValAgentActionPerformed
+ 
+        private String getAgentId(String Namn){
         String alienId = "";
         try{
             String fraga = "SELECT Agent_ID FROM agent WHERE Namn = '"+ Namn +"'";
@@ -225,6 +266,23 @@ public class AndraInfoAgent extends javax.swing.JFrame {
         }
     }
     
+        //Fyller i comboboxen för väljAlien 
+    private void fyllValjOmrade(){
+        String fraga = "SELECT Benamning FROM omrade";
+
+        ArrayList<String> allaOmraden;
+
+        try {
+            allaOmraden = idb.fetchColumn(fraga);
+
+            for (String namn : allaOmraden) {
+                cboxOmrade.addItem(namn);
+            }
+        } catch (InfException e) {
+            JOptionPane.showMessageDialog(null, "Gick inte att fylla combobox");
+        }
+    }
+    
     private String getOmradeId(String omradeNamn){
         String omradeId = "";
         try{
@@ -236,15 +294,7 @@ public class AndraInfoAgent extends javax.swing.JFrame {
             }
         return omradeId;
     }
-    
-   
   
-           
-      
-    
-     
-     
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> cboxAdmin;
     private javax.swing.JComboBox<String> cboxOmrade;

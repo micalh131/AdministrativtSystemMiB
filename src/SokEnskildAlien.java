@@ -37,6 +37,8 @@ public class SokEnskildAlien extends javax.swing.JFrame {
         txtaAlienInfo = new javax.swing.JTextArea();
         txtNamnSok = new javax.swing.JTextField();
         btnSok = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -51,6 +53,10 @@ public class SokEnskildAlien extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setText("Skriv in Aliens namn");
+
+        jLabel2.setText("Ansvarig agent:");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -58,26 +64,25 @@ public class SokEnskildAlien extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(74, 74, 74)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(193, 193, 193)
-                                .addComponent(btnSok))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(61, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(txtNamnSok, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(62, 62, 62))))
+                    .addComponent(jLabel2)
+                    .addComponent(btnSok)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1)
+                    .addComponent(txtNamnSok, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(92, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(32, 32, 32)
+                .addGap(31, 31, 31)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtNamnSok, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnSok)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(57, 57, 57))
         );
@@ -86,30 +91,27 @@ public class SokEnskildAlien extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSokActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSokActionPerformed
-        // TODO add your handling code here:
         txtaAlienInfo.setText("");
 
-            ArrayList<HashMap<String, String>> soktaNamn;
+        ArrayList<HashMap<String, String>> soktaNamn;
+        
+        try {
 
-       try {
-
-         String soktNamn = txtNamnSok.getText();
+            String soktNamn = txtNamnSok.getText();
             String fraga = "SELECT alien.Alien_ID, alien.Namn, alien.Telefon, alien.Registreringsdatum, plats.Benamning, agent.Namn FROM alien\n"
                     + "    JOIN plats ON alien.Plats=plats.Plats_ID\n"
                     + "        JOIN agent ON alien.Ansvarig_Agent=agent.Agent_ID\n"
-                    + "            WHERE alien.Namn= '" + soktNamn + "'" ;
+                    + "            WHERE alien.Namn= '" + soktNamn + "'";
 
             soktaNamn = idb.fetchRows(fraga);
 
-        for (HashMap<String, String> ettNamn : soktaNamn){
-        txtaAlienInfo.append(ettNamn.get("Alien_ID") + "\t" + ettNamn.get("Namn"));
-        }
-
+            for (HashMap<String, String> ettNamn : soktaNamn) {
+                txtaAlienInfo.append(ettNamn.get("Alien_ID") + "\t" + ettNamn.get("Namn"));
+            }
 
         } catch (InfException e) {
-            JOptionPane.showMessageDialog(null, "Något gick fel");
-
-    }
+            JOptionPane.showMessageDialog(null, "Kunde inte nå databasen");
+        }
 
     }//GEN-LAST:event_btnSokActionPerformed
 
@@ -117,6 +119,8 @@ public class SokEnskildAlien extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnSok;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField txtNamnSok;
     private javax.swing.JTextArea txtaAlienInfo;

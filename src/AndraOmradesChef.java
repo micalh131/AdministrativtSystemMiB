@@ -22,6 +22,8 @@ public class AndraOmradesChef extends javax.swing.JFrame {
     public AndraOmradesChef(InfDB idb) {
         initComponents();
         this.idb = idb;
+        lblNuvarandeOmradeschef.setVisible(false);
+        lblOmradeschefAndrad.setVisible(false);
     }
 
     /**
@@ -93,7 +95,7 @@ public class AndraOmradesChef extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblNuvarandeOmradeschef)
                             .addComponent(lblOmradeschefAndrad))))
-                .addContainerGap(51, Short.MAX_VALUE))
+                .addContainerGap(84, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -116,7 +118,7 @@ public class AndraOmradesChef extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAndraChef)
                     .addComponent(lblOmradeschefAndrad))
-                .addContainerGap(51, Short.MAX_VALUE))
+                .addContainerGap(77, Short.MAX_VALUE))
         );
 
         pack();
@@ -133,6 +135,7 @@ public class AndraOmradesChef extends javax.swing.JFrame {
             
             String svar = idb.fetchSingle(fraga);
             lblNuvarandeOmradeschef.setText(svar);
+            lblNuvarandeOmradeschef.setVisible(true);
             System.out.println(svar);
             this.agentID = faUtAgentID(svar);
             
@@ -164,11 +167,11 @@ public class AndraOmradesChef extends javax.swing.JFrame {
     
     }
     
-    private ArrayList getAllaAgentid(){
+    private ArrayList getAllaAgentidOmradesChaf(){
          ArrayList<String> agentIds = null;
         
         try{
-         agentIds = idb.fetchColumn("SELECT Agent_ID FROM agent");
+         agentIds = idb.fetchColumn("SELECT Agent_ID FROM omradeschef");
         }
         catch (InfException ex) {
             JOptionPane.showMessageDialog(null, "Gick inte att hämta agent idn");
@@ -186,9 +189,11 @@ public class AndraOmradesChef extends javax.swing.JFrame {
         try {
             
             String agentIDnyOmradeschef = idb.fetchSingle(fragaAgentID);
-            if(Validering.kollaAgentId(getAllaAgentid(), agentIDnyOmradeschef)){
+            if(Validering.kollaAgentId(getAllaAgentidOmradesChaf(), agentIDnyOmradeschef)){
                 String fraga = "UPDATE Omradeschef SET Agent_ID = " + agentIDnyOmradeschef + " WHERE agent_ID = " + agentID + "";
                 idb.update(fraga);
+                lblOmradeschefAndrad.setText("Områdeschefen är ändrad till " +nyOmradeschef);
+                lblOmradeschefAndrad.setVisible(true);
             System.out.println("funkar");
             }
         } catch (InfException ex) {

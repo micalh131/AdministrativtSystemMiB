@@ -24,6 +24,8 @@ public class AdminStatus extends javax.swing.JFrame {
     public AdminStatus(InfDB idb) {
         initComponents();
         this.idb = idb;
+        lblAgentHittad.setVisible(false);
+        lblAgentFattAdmin.setVisible(false);
     }
 
     /**
@@ -39,6 +41,8 @@ public class AdminStatus extends javax.swing.JFrame {
         txtNamnSok = new javax.swing.JTextField();
         lblAgentHittad = new javax.swing.JLabel();
         cbxAdminRatt = new javax.swing.JCheckBox();
+        lblAgentFattAdmin = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -50,11 +54,6 @@ public class AdminStatus extends javax.swing.JFrame {
         });
 
         txtNamnSok.setColumns(6);
-        txtNamnSok.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNamnSokActionPerformed(evt);
-            }
-        });
 
         lblAgentHittad.setText("lblAgentHittad");
 
@@ -65,6 +64,10 @@ public class AdminStatus extends javax.swing.JFrame {
             }
         });
 
+        lblAgentFattAdmin.setText("lblAgentFattAdminstatus");
+
+        jLabel1.setText("Skriv in agentens namn");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -72,37 +75,44 @@ public class AdminStatus extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(79, 79, 79)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
                     .addComponent(btnSok)
                     .addComponent(txtNamnSok, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(lblAgentHittad)
-                        .addGap(45, 45, 45)
-                        .addComponent(cbxAdminRatt)))
-                .addGap(0, 78, Short.MAX_VALUE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblAgentFattAdmin)
+                            .addComponent(cbxAdminRatt))))
+                .addGap(0, 94, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(33, 33, 33)
+                .addGap(22, 22, 22)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtNamnSok, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(15, 15, 15)
                 .addComponent(btnSok)
-                .addGap(28, 28, 28)
+                .addGap(33, 33, 33)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblAgentHittad)
                     .addComponent(cbxAdminRatt))
-                .addContainerGap(154, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblAgentFattAdmin)
+                .addContainerGap(117, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSokActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSokActionPerformed
-       
         try{
             String soktNamn = txtNamnSok.getText();
             String fraga = "SELECT Namn FROM Agent WHERE Agent.namn = '" + soktNamn + "'";
             String svar = idb.fetchSingle(fraga);
+            lblAgentHittad.setVisible(true);
             lblAgentHittad.setText(svar);
             
             if(svar == null) {
@@ -115,31 +125,27 @@ public class AdminStatus extends javax.swing.JFrame {
             System.out.println("Något gick fel");
             JOptionPane.showMessageDialog(null, "Något gick fel");  
         }
-        
-        
     }//GEN-LAST:event_btnSokActionPerformed
 
-    private void txtNamnSokActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNamnSokActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtNamnSokActionPerformed
-
     private void cbxAdminRattActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxAdminRattActionPerformed
-        
         String agentNamn = lblAgentHittad.getText();
         String fraga = "UPDATE Agent SET Administrator = 'J' WHERE Namn =" + "'" + agentNamn + "'" + ";";
         try {
             idb.update(fraga);
-            System.out.println("funkar");
-        } catch (InfException ex) {
+            lblAgentFattAdmin.setVisible(true);
+            lblAgentFattAdmin.setText(agentNamn + " har fått adminstatus");
+        } 
+        catch (InfException ex) {
             JOptionPane.showMessageDialog(null, "Något gick fel");
         }
         System.out.println(fraga);
     }//GEN-LAST:event_cbxAdminRattActionPerformed
 
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnSok;
     private javax.swing.JCheckBox cbxAdminRatt;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel lblAgentFattAdmin;
     private javax.swing.JLabel lblAgentHittad;
     private javax.swing.JTextField txtNamnSok;
     // End of variables declaration//GEN-END:variables
