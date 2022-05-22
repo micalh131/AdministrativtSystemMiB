@@ -176,7 +176,7 @@ public class AndraInfoAgent extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        
         String agentId = getAgentId(cboxValAgent.getSelectedItem().toString());
         String namn = txtNamn.getText();
         String losen = txtLosen.getText();
@@ -294,15 +294,7 @@ public class AndraInfoAgent extends javax.swing.JFrame {
             }
         return omradeId;
     }
-    
-   
   
-           
-      
-    
-     
-     
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> cboxAdmin;
     private javax.swing.JComboBox<String> cboxOmrade;

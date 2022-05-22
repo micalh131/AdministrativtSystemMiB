@@ -77,9 +77,9 @@ public class TaBortAlien extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(35, 35, 35)
                 .addComponent(jLabel1)
-                .addGap(37, 37, 37)
+                .addGap(18, 18, 18)
                 .addComponent(cboxValAlien, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(75, 75, 75)
+                .addGap(94, 94, 94)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnTaBort)
                     .addComponent(lblTaBort))
@@ -120,7 +120,7 @@ public class TaBortAlien extends javax.swing.JFrame {
                 cboxValAlien.addItem(namn);
             }
         } catch (InfException e) {
-            JOptionPane.showMessageDialog(null, "Gick inte att fylla combobox");
+            JOptionPane.showMessageDialog(null, "Gick inte att ladda Aliens");
         }
     }
   

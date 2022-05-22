@@ -441,12 +441,7 @@ public class AndraInfoAlien extends javax.swing.JFrame {
             catch(InfException ex){
                 JOptionPane.showMessageDialog(null, "Gick inte att ta bort alien från ras");
             }
-           
-           
-      
     }
-     
-     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> cboxAnsvarigAgent;

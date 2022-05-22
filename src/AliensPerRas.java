@@ -41,7 +41,7 @@ public class AliensPerRas extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        lblRubrik.setText("Aliens per ras");
+        lblRubrik.setText("Välj Alienras");
 
         cboxRaser.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Välj", "Squid", "Worm", "Boglodite" }));
         cboxRaser.addActionListener(new java.awt.event.ActionListener() {
@@ -62,19 +62,18 @@ public class AliensPerRas extends javax.swing.JFrame {
                 .addGap(45, 45, 45)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(cboxRaser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(lblRubrik)))
+                    .addComponent(cboxRaser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblRubrik))
                 .addContainerGap(121, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(25, 25, 25)
+                .addGap(49, 49, 49)
                 .addComponent(lblRubrik)
-                .addGap(56, 56, 56)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(cboxRaser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28)
+                .addGap(54, 54, 54)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(67, Short.MAX_VALUE))
         );
@@ -83,8 +82,6 @@ public class AliensPerRas extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void cboxRaserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboxRaserActionPerformed
-        // TODO add your handling code here:
-
         txtaAlienLista.setText("");
         ArrayList<HashMap<String, String>> soktaAliens;
         String valdRas = cboxRaser.getSelectedItem().toString();
@@ -100,42 +97,48 @@ public class AliensPerRas extends javax.swing.JFrame {
                     return;
                 }
             }
-                
-              if (valdRas.equals("Worm"))
-                      {
+            if (valdRas.equals("Worm")) {
 
                 String fragaWorm = "SELECT worm.Alien_ID, alien.Namn FROM worm JOIN alien ON alien.`Alien_ID`= worm.`Alien_ID`";
                 soktaAliens = idb.fetchRows(fragaWorm);
-               
+
                 for (HashMap<String, String> enAlien : soktaAliens) {
                     txtaAlienLista.append(enAlien.get("Alien_ID") + "\t" + enAlien.get("Namn") + "\n");
                     return;
                 }
             }
-              if (valdRas.equals("Boglodite"))
-                      {
+            if (valdRas.equals("Boglodite")) {
 
                 String fragaBoglodite = "SELECT boglodite.Alien_ID, alien.Namn FROM boglodite JOIN alien ON alien.`Alien_ID`= boglodite.`Alien_ID`";
                 soktaAliens = idb.fetchRows(fragaBoglodite);
-               
+
                 for (HashMap<String, String> enAlien : soktaAliens) {
                     txtaAlienLista.append(enAlien.get("Alien_ID") + "\t" + enAlien.get("Namn") + "\n");
                     return;
                 }
             }
 
-        
     }//GEN-LAST:event_cboxRaserActionPerformed
        
-   catch (InfException e) {
+        catch (InfException e) {
             JOptionPane.showMessageDialog(null, "Något gick fel");
-
-        }          
+        }
     }
         
-    /**
-     * @param args the command line arguments
-     */
+    /*private void fyllValjAlienNamn(){
+        String fraga = "SELECT ras FROM alien"; SELECT FRÅGAN MÅSTE SKRIVAS OM MED FLERA JOINS IOM RASER EJ ÄR ORDNADE I DB
+
+        ArrayList<String> allaRaswe;
+
+        try {
+            allaRaser = idb.fetchColumn(fraga);
+
+            for (String namn : allaRaser) {
+                cboxRaser.addItem(namn);
+            }
+        } catch (InfException e) {
+            JOptionPane.showMessageDialog(null, "Gick inte att ladda raser");
+        }*/
    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

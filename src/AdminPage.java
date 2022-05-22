@@ -19,7 +19,7 @@ public class AdminPage extends javax.swing.JFrame {
         initComponents();
         this.idb = idb;
         this.userName = userName;
-        loginTitle.setText("Welcome" + userName);
+        loginTitle.setText("Welcome" + " " + userName);
     }
 
     /**

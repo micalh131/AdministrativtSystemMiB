@@ -38,20 +38,20 @@ public class TaBortAgent extends javax.swing.JFrame {
         lblRubrik = new javax.swing.JLabel();
         cmbAgenter = new javax.swing.JComboBox<>();
         lblBorttagenAgent = new javax.swing.JLabel();
-        cbxTaBortAgent = new javax.swing.JCheckBox();
+        btnTaBort = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        lblRubrik.setText("Välj Agent");
+        lblRubrik.setText("Välj Agent att ta bort");
 
         cmbAgenter.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Välj" }));
 
         lblBorttagenAgent.setText("Agenten har tagits bort");
 
-        cbxTaBortAgent.setText("Ta bort Agent");
-        cbxTaBortAgent.addActionListener(new java.awt.event.ActionListener() {
+        btnTaBort.setText("Ta bort");
+        btnTaBort.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbxTaBortAgentActionPerformed(evt);
+                btnTaBortActionPerformed(evt);
             }
         });
 
@@ -60,15 +60,18 @@ public class TaBortAgent extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(57, 57, 57)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblBorttagenAgent)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(cmbAgenter, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(52, 52, 52)
-                        .addComponent(cbxTaBortAgent))
-                    .addComponent(lblRubrik))
-                .addContainerGap(118, Short.MAX_VALUE))
+                        .addGap(157, 157, 157)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(cmbAgenter, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnTaBort))
+                        .addGap(18, 18, 18)
+                        .addComponent(lblBorttagenAgent))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(138, 138, 138)
+                        .addComponent(lblRubrik)))
+                .addContainerGap(21, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -76,30 +79,32 @@ public class TaBortAgent extends javax.swing.JFrame {
                 .addGap(31, 31, 31)
                 .addComponent(lblRubrik)
                 .addGap(18, 18, 18)
+                .addComponent(cmbAgenter, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 76, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cmbAgenter, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cbxTaBortAgent))
-                .addGap(24, 24, 24)
-                .addComponent(lblBorttagenAgent)
-                .addContainerGap(170, Short.MAX_VALUE))
+                    .addComponent(lblBorttagenAgent)
+                    .addComponent(btnTaBort))
+                .addGap(112, 112, 112))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void cbxTaBortAgentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxTaBortAgentActionPerformed
-        // OBS! Va försiktig med att klicka i rutan då data tas bort från tabell
-        String agentNamn = cmbAgenter.getSelectedItem().toString();
-        
-        String fraga = "DELETE FROM Agent WHERE Namn =" + "'" + agentNamn + "'" + ";";
-        try {
-            idb.delete(fraga);
-            lblBorttagenAgent.setVisible(true);
-            System.out.println("funkar");
-        } catch (InfException ex) {
-            JOptionPane.showMessageDialog(null, "Något gick fel");
+    private void btnTaBortActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTaBortActionPerformed
+        String namn = cmbAgenter.getSelectedItem().toString();
+        if(Validering.kollaTaBort(namn)){
+            String fraga = "DELETE FROM Agent WHERE Namn =" + "'" + namn + "'" + ";";
+            try {
+                idb.delete(fraga);
+                
+                lblBorttagenAgent.setVisible(true);
+                lblBorttagenAgent.setText(namn + "är borttagen ur systemet");
+            }
+           catch (InfException e) {
+                JOptionPane.showMessageDialog(null, "Gick inte att ta bort");
+            }
         }
-    }//GEN-LAST:event_cbxTaBortAgentActionPerformed
+    }//GEN-LAST:event_btnTaBortActionPerformed
 
     private void fyllValjAgent(){
         String fraga = "SELECT Namn FROM Agent";
@@ -112,16 +117,14 @@ public class TaBortAgent extends javax.swing.JFrame {
             for (String plats : allaAgenter) {
                 cmbAgenter.addItem(plats);
             }
-                    
-        }
-        catch (InfException e) {
-            JOptionPane.showMessageDialog(null, "Något gick fel");
+        } catch (InfException e) {
+            JOptionPane.showMessageDialog(null, "Gick ej att ladda agenter");
         }
     
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JCheckBox cbxTaBortAgent;
+    private javax.swing.JButton btnTaBort;
     private javax.swing.JComboBox<String> cmbAgenter;
     private javax.swing.JLabel lblBorttagenAgent;
     private javax.swing.JLabel lblRubrik;
@@ -148,3 +151,18 @@ try{
             JOptionPane.showMessageDialog(null, "Något gick fel");  
     }
 */
+
+ // OBS! Va försiktig med att klicka i rutan då data tas bort från tabell
+       /* String namn = cmbAgenter.getSelectedItem().toString();
+        if(Validering.kollaTaBort(namn)){
+            String fraga = "DELETE FROM Agent WHERE Namn =" + "'" + namn + "'" + ";";
+            try {
+                idb.delete(fraga);
+                
+                lblBorttagenAgent.setVisible(true);
+                lblBorttagenAgent.setText(namn + "är borttagen ur systemet");
+            }
+           catch (InfException e) {
+                JOptionPane.showMessageDialog(null, "Gick inte att ta bort");
+            }
+        }*/

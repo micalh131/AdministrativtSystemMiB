@@ -85,7 +85,7 @@ private String isAdmin;
             }
         });
 
-        btnAlienInfo.setText("Sök Alien");
+        btnAlienInfo.setText("Sök Ansvarig Agent för Alien");
         btnAlienInfo.setToolTipText("");
         btnAlienInfo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -100,7 +100,7 @@ private String isAdmin;
             }
         });
 
-        btnAgentInfo.setText("Se vem som är områdeschef över visst område");
+        btnAgentInfo.setText("Sök områdeschef");
         btnAgentInfo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAgentInfoActionPerformed(evt);
@@ -114,21 +114,21 @@ private String isAdmin;
             }
         });
 
-        btnListaAlienPlats.setText("Lista Alien på plats");
+        btnListaAlienPlats.setText("Sök Alien utifrån plats");
         btnListaAlienPlats.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnListaAlienPlatsActionPerformed(evt);
             }
         });
 
-        btnListaAlienRas.setText("Lista Alien på ras");
+        btnListaAlienRas.setText("Sök Alien utifrån ras");
         btnListaAlienRas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnListaAlienRasActionPerformed(evt);
             }
         });
 
-        btnSokAlienDatum.setText("Lista Alien registrerad MELLAN TVÅ datum");
+        btnSokAlienDatum.setText("Sök när Alien registrerats");
         btnSokAlienDatum.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSokAlienDatumActionPerformed(evt);
@@ -160,22 +160,18 @@ private String isAdmin;
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(btnNyregistreraAlien, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(btnAlienInfo))
+                                    .addComponent(btnAndraInfoAlien, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(85, 85, 85)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(26, 26, 26)
-                                        .addComponent(btnRegistreraUtr)
-                                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
-                                        .addComponent(btnAgentInfo)
-                                        .addContainerGap())))
+                                    .addComponent(btnRegistreraUtr)
+                                    .addComponent(btnAgentInfo))
+                                .addContainerGap(131, Short.MAX_VALUE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(btnSokAlienDatum, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(btnAndraInfoAlien, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(btnListaAlienRas, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(btnListaAlienPlats, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(btnSokAlienDatum)
+                                    .addComponent(btnListaAlienPlats)
+                                    .addComponent(btnAlienInfo))
                                 .addGap(0, 0, Short.MAX_VALUE))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(97, 97, 97)
@@ -192,15 +188,15 @@ private String isAdmin;
                 .addComponent(lblValkommenAgent)
                 .addGap(52, 52, 52)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnAlienInfo)
+                    .addComponent(btnNyregistreraAlien)
                     .addComponent(btnRegistreraUtr))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnNyregistreraAlien)
-                    .addComponent(btnAgentInfo))
+                    .addComponent(btnAgentInfo)
+                    .addComponent(btnAndraInfoAlien))
+                .addGap(12, 12, 12)
+                .addComponent(btnAlienInfo)
                 .addGap(18, 18, 18)
-                .addComponent(btnAndraInfoAlien)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnListaAlienPlats)
                 .addGap(18, 18, 18)
                 .addComponent(btnListaAlienRas)
