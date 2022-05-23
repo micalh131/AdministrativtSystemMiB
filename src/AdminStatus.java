@@ -52,6 +52,7 @@ public class AdminStatus extends javax.swing.JFrame {
 
         txtNamnSok.setColumns(6);
 
+        lblAgentHittad.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         lblAgentHittad.setText("lblAgentHittad");
 
         cbxAdminRatt.setText("Ge admin rättighet");
@@ -63,7 +64,8 @@ public class AdminStatus extends javax.swing.JFrame {
 
         lblAgentFattAdmin.setText("lblAgentFattAdminstatus");
 
-        jLabel1.setText("Skriv in agentens namn");
+        jLabel1.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
+        jLabel1.setText("Skriv in Agentens namn");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -76,29 +78,29 @@ public class AdminStatus extends javax.swing.JFrame {
                     .addComponent(btnSok)
                     .addComponent(txtNamnSok, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(lblAgentHittad)
-                        .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblAgentFattAdmin)
-                            .addComponent(cbxAdminRatt))))
-                .addGap(0, 94, Short.MAX_VALUE))
+                            .addComponent(lblAgentHittad)
+                            .addComponent(cbxAdminRatt))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(lblAgentFattAdmin)))
+                .addGap(0, 86, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(22, 22, 22)
+                .addGap(57, 57, 57)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtNamnSok, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(15, 15, 15)
+                .addGap(18, 18, 18)
                 .addComponent(btnSok)
-                .addGap(33, 33, 33)
+                .addGap(24, 24, 24)
+                .addComponent(lblAgentHittad)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblAgentHittad)
-                    .addComponent(cbxAdminRatt))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblAgentFattAdmin)
-                .addContainerGap(117, Short.MAX_VALUE))
+                    .addComponent(cbxAdminRatt)
+                    .addComponent(lblAgentFattAdmin))
+                .addContainerGap(75, Short.MAX_VALUE))
         );
 
         pack();

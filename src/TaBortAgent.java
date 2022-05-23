@@ -44,6 +44,7 @@ public class TaBortAgent extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        lblRubrik.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         lblRubrik.setText("Välj Agent att ta bort");
 
         cmbAgenter.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Välj" }));
@@ -62,31 +63,28 @@ public class TaBortAgent extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(41, 41, 41)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(cmbAgenter, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblRubrik)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(157, 157, 157)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cmbAgenter, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnTaBort))
-                        .addGap(18, 18, 18)
-                        .addComponent(lblBorttagenAgent))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(138, 138, 138)
-                        .addComponent(lblRubrik)))
-                .addContainerGap(21, Short.MAX_VALUE))
+                        .addComponent(btnTaBort)
+                        .addGap(31, 31, 31)
+                        .addComponent(lblBorttagenAgent)))
+                .addContainerGap(124, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(31, 31, 31)
                 .addComponent(lblRubrik)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(cmbAgenter, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 76, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblBorttagenAgent)
-                    .addComponent(btnTaBort))
-                .addGap(112, 112, 112))
+                    .addComponent(btnTaBort)
+                    .addComponent(lblBorttagenAgent))
+                .addContainerGap(182, Short.MAX_VALUE))
         );
 
         pack();

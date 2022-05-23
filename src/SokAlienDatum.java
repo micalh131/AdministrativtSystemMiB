@@ -44,6 +44,7 @@ private InfDB idb;
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        lblRubrik.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         lblRubrik.setText("Registrerade alien mellan vissa datum");
 
         lblRubrikFranDatum.setText("Skriv in sökdatum från (yyyy-mm-dd)");
@@ -85,7 +86,7 @@ private InfDB idb;
                             .addComponent(lblRubrikFranDatum)
                             .addComponent(lblRubrikTillDatum1)
                             .addComponent(lblRubrik))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(ftxtfFranDatum)
                             .addComponent(ftxtfTillDatum))
@@ -94,9 +95,9 @@ private InfDB idb;
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(17, 17, 17)
+                .addGap(27, 27, 27)
                 .addComponent(lblRubrik)
-                .addGap(28, 28, 28)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblRubrikFranDatum)
                     .addComponent(ftxtfFranDatum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))

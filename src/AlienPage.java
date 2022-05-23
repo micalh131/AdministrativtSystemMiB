@@ -9,11 +9,8 @@ import oru.inf.InfDB;
 /**
  *
  * @author miche, aaau, cAppelina
- * Aliens välkomstsida med funktionaliteter: Ändra lösenord samt se infor om 
- * ansvarig områdeschef.
- * Kopplar databasen. Vi använder fälten för att spara värden som vi skickar med via metoder
- * i klassen när vi instantiserar nya objekt av andra klasser.
- *  
+ * Klassen innehåller att antal knappar som länkar till nya fönster med
+ * funktioner som endast för Aliens.
  */
 public class AlienPage extends javax.swing.JFrame {
 
