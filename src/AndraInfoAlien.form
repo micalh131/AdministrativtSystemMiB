@@ -232,12 +232,8 @@
     <Component class="javax.swing.JComboBox" name="cboxPlats">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="5">
+          <StringArray count="1">
             <StringItem index="0" value="V&#xe4;lj"/>
-            <StringItem index="1" value="&#xd6;rebro"/>
-            <StringItem index="2" value="V&#xe4;ster&#xe5;s"/>
-            <StringItem index="3" value="Vilhelmina"/>
-            <StringItem index="4" value="Bor&#xe5;s"/>
           </StringArray>
         </Property>
       </Properties>

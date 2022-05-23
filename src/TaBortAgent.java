@@ -94,7 +94,7 @@ public class TaBortAgent extends javax.swing.JFrame {
 
     private void btnTaBortActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTaBortActionPerformed
         String namn = cmbAgenter.getSelectedItem().toString();
-        String agentId = konv.faUtAgentID(namn);
+        String agentId = konv.getAgentId(namn);
         
         if(Validering.kollaTaBort(namn)){
             String fragaAgent = "DELETE FROM Agent WHERE Agent_ID ='" + agentId + "'";
