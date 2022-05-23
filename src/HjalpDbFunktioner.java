@@ -21,11 +21,19 @@ public class HjalpDbFunktioner {
     }
     
     
-    
+ public String getAlienId(String Namn){
+        String alienId = "";
+        try{
+            String fraga = "SELECT Alien_ID FROM alien WHERE Namn = '"+ Namn +"'";
+            alienId = idb.fetchSingle(fraga);
+        }
+        catch(InfException ex){
+                JOptionPane.showMessageDialog(null, "Gick inte att hämta alien id");
+            }
+        return alienId;
+    }
 
-
-
-public String faUtAgentID(String agentNamn){
+public String getAgentId(String agentNamn){
         String idAgent ="";
         try{
            
@@ -34,9 +42,23 @@ public String faUtAgentID(String agentNamn){
             
         }
         catch(InfException e){
-            JOptionPane.showMessageDialog(null, "Nått gick fel");
+            JOptionPane.showMessageDialog(null, "Något gick fel med uppkopplingen till databasen");
+            System.out.println(e.getMessage());
         }
       return idAgent;
     
+    }
+
+ // Får in ett valt platsnamn och returnerar platsens id
+    public String getPlatsId(String platsNamn){
+        String platsId = "";
+        try{
+            String fraga = "SELECT Plats_ID FROM plats WHERE Benamning = '"+ platsNamn +"'";
+            platsId = idb.fetchSingle(fraga);
+        }
+        catch(InfException ex){
+                JOptionPane.showMessageDialog(null, "Gick inte att hämta platsent id");
+            }
+        return platsId;
     }
 }
