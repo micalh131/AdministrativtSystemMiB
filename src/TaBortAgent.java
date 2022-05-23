@@ -16,6 +16,7 @@ import oru.inf.InfException;
  */
 public class TaBortAgent extends javax.swing.JFrame {
     private InfDB idb;
+    private HjalpDbFunktioner konv;
     /**
      * Creates new form TaBortAgent
      */
@@ -24,6 +25,7 @@ public class TaBortAgent extends javax.swing.JFrame {
         this.idb = idb;
         fyllValjAgent();
         lblBorttagenAgent.setVisible(false);
+        konv = new HjalpDbFunktioner(idb);
     }
 
     /**
@@ -92,10 +94,18 @@ public class TaBortAgent extends javax.swing.JFrame {
 
     private void btnTaBortActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTaBortActionPerformed
         String namn = cmbAgenter.getSelectedItem().toString();
+        String agentId = konv.faUtAgentID(namn);
+        
         if(Validering.kollaTaBort(namn)){
-            String fraga = "DELETE FROM Agent WHERE Namn =" + "'" + namn + "'" + ";";
+            String fragaAgent = "DELETE FROM Agent WHERE Agent_ID ='" + agentId + "'";
+            String fragaFaltAgent = "DELETE FROM Agent WHERE Agent_ID ='" + agentId + "'";
+            String fragaKontChef = "DELETE FROM Agent WHERE Agent_ID ='" + agentId + "'";
+            String fragaOmrChef = "DELETE FROM Agent WHERE Agent_ID ='" + agentId + "'";
             try {
-                idb.delete(fraga);
+                idb.delete(fragaAgent);
+                idb.delete(fragaFaltAgent);
+                idb.delete(fragaKontChef);
+                idb.delete(fragaOmrChef);
                 
                 lblBorttagenAgent.setVisible(true);
                 lblBorttagenAgent.setText(namn + "är borttagen ur systemet");
