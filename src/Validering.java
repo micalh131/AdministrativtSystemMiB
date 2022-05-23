@@ -30,17 +30,19 @@ public class Validering {
 
     public static boolean valideraDatum(String datum) {
         boolean resultat = false;
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        //använder javas klass SimpleDateFormat för att parsa/tolka en datumsträng
+        //När objetet skapas sätts formateringen till det önskade datumformatet (yyyy-mm-dd)
+        SimpleDateFormat datumLasare = new SimpleDateFormat("yyyy-MM-dd");
 
         try {
-            //Konverterar datumet till en sträng
-            Date javaDatum = sdf.parse(datum);
+            //Konverterar datumet till javas datumtyp
+            Date javaDatum = datumLasare.parse(datum);
 
-            //Om datumet inte är null sätts valideringen till true
-            if (javaDatum != null) {
-                resultat = true;
-            }
+            //Om datumvalideringen ovan gick bra sätts reultatet till true
+            resultat = true;
 
+//Felhantering med javas Exceptionklasser enligt Javas föreslag enl API. 
+//Den första ger ett felmeddelande om ingen sträng finns. Den andra ger felmeddelande om man tex anger bokstäber. 
         } catch (NullPointerException e) {
             JOptionPane.showMessageDialog(null, "Ange datumet i korrekt format (yyyy-mm-dd)");
         } catch (java.text.ParseException e) {
