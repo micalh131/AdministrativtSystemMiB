@@ -18,6 +18,7 @@ import oru.inf.InfException;
  */
 public class LoginPage extends javax.swing.JFrame {
     private InfDB idb;
+    private HjalpDbFunktioner konv;
     /**
      * Creates new form LoginPage
      */
@@ -25,6 +26,7 @@ public class LoginPage extends javax.swing.JFrame {
         
         initComponents();
         this.idb = idb;
+        konv= new HjalpDbFunktioner(idb);
         
     }
    
@@ -124,11 +126,15 @@ public class LoginPage extends javax.swing.JFrame {
         String userName = loginUsername.getText();
         String password = loginPassword.getText();
         String valdUser = loginSelectUser.getSelectedItem().toString();
+      
         
-        if (Validering.textFaltEjTomtRegEx(userName) && (Validering.textFaltEjTomtRegEx(password)) && Validering.kollaCboxRegEx(valdUser)){
+        
+        if (Validering.textFaltEjTomtRegEx(userName) && (Validering.textFaltEjTomtRegEx(password)) 
+                && Validering.kollaCboxRegEx(valdUser)){
         
          try{ 
             if(valdUser.equalsIgnoreCase("Agent")){
+            
             String fragaUserName = "SELECT Agent_ID FROM agent WHERE Agent_ID=" + userName;
             String fragaPassword = "SELECT Losenord FROM agent WHERE Losenord=" + "'" + password + "'";
             String fragaIsAdmin = "SELECT Administrator FROM agent WHERE Agent_ID=" + userName;

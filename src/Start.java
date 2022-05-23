@@ -65,5 +65,6 @@ public class Start {
         */
 
          new LoginPage(idb).setVisible(true);
+         new SokAlienDatum(idb).setVisible(true);
     }
 }

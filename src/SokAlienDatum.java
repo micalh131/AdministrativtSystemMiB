@@ -5,6 +5,7 @@ import javax.swing.JOptionPane;
 import oru.inf.InfDB;
 import oru.inf.InfException;
 
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -36,11 +37,11 @@ private InfDB idb;
         lblRubrik = new javax.swing.JLabel();
         lblRubrikFranDatum = new javax.swing.JLabel();
         lblRubrikTillDatum1 = new javax.swing.JLabel();
-        ftxtfFranDatum = new javax.swing.JFormattedTextField();
-        ftxtfTillDatum = new javax.swing.JFormattedTextField();
         btnSok = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtaAliens = new javax.swing.JTextArea();
+        txtfFranDatum = new javax.swing.JTextField();
+        txtfTillDatum = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -49,12 +50,6 @@ private InfDB idb;
         lblRubrikFranDatum.setText("Skriv in sökdatum från (yyyy-mm-dd)");
 
         lblRubrikTillDatum1.setText("Skriv in sökdatum till (yyyy-mm-dd)");
-
-        ftxtfFranDatum.setColumns(8);
-        ftxtfFranDatum.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getDateInstance(java.text.DateFormat.SHORT))));
-
-        ftxtfTillDatum.setColumns(8);
-        ftxtfTillDatum.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getDateInstance(java.text.DateFormat.SHORT))));
 
         btnSok.setText("Sök");
         btnSok.addActionListener(new java.awt.event.ActionListener() {
@@ -67,6 +62,10 @@ private InfDB idb;
         txtaAliens.setRows(5);
         jScrollPane1.setViewportView(txtaAliens);
 
+        txtfFranDatum.setColumns(6);
+
+        txtfTillDatum.setColumns(6);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -75,40 +74,36 @@ private InfDB idb;
                 .addGap(23, 23, 23)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnSok)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblRubrikFranDatum)
                             .addComponent(lblRubrikTillDatum1)
                             .addComponent(lblRubrik))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(ftxtfFranDatum)
-                            .addComponent(ftxtfTillDatum))
-                        .addGap(17, 17, 17))))
+                        .addGap(46, 46, 46)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtfTillDatum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtfFranDatum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(btnSok)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(52, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(17, 17, 17)
                 .addComponent(lblRubrik)
-                .addGap(28, 28, 28)
+                .addGap(31, 31, 31)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblRubrikFranDatum)
-                    .addComponent(ftxtfFranDatum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtfTillDatum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblRubrikTillDatum1)
-                    .addComponent(ftxtfTillDatum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(27, 27, 27)
+                    .addComponent(txtfFranDatum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(24, 24, 24)
                 .addComponent(btnSok)
-                .addGap(18, 18, 18)
+                .addGap(35, 35, 35)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(24, Short.MAX_VALUE))
+                .addContainerGap(12, Short.MAX_VALUE))
         );
 
         pack();
@@ -117,18 +112,18 @@ private InfDB idb;
     private void btnSokActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSokActionPerformed
         
         txtaAliens.setText("");
-        String soktFranDatum = ftxtfFranDatum.getText();
-        String soktTillDatum = ftxtfTillDatum.getText();
+        String soktFranDatum = txtfFranDatum.getText();
+        String soktTillDatum = txtfTillDatum.getText();
         
         ArrayList<HashMap<String, String>> soktaAliens;
-     
+     if(Validering.valideraDatum(soktFranDatum) && Validering.valideraDatum(soktTillDatum)){
      try {
          
          String fraga = "SELECT Alien_ID, Namn FROM alien \n" +
 "WHERE Registreringsdatum BETWEEN '" + soktFranDatum + "'AND'" + soktTillDatum + "'";
          
      soktaAliens = idb.fetchRows(fraga);
-            txtaAliens.append("Alien*_ID" + "\t" + "Namn" + "\n");
+            txtaAliens.append("Alien_ID" + "\t" + "Namn" + "\n");
             for (HashMap<String, String> enAlien : soktaAliens) {
                 txtaAliens.append(enAlien.get("Alien_ID") + "\t" + enAlien.get("Namn") + "\n");
             }
@@ -140,19 +135,19 @@ private InfDB idb;
         }
 
         
-        
+     }
     }//GEN-LAST:event_btnSokActionPerformed
 
    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnSok;
-    private javax.swing.JFormattedTextField ftxtfFranDatum;
-    private javax.swing.JFormattedTextField ftxtfTillDatum;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblRubrik;
     private javax.swing.JLabel lblRubrikFranDatum;
     private javax.swing.JLabel lblRubrikTillDatum1;
     private javax.swing.JTextArea txtaAliens;
+    private javax.swing.JTextField txtfFranDatum;
+    private javax.swing.JTextField txtfTillDatum;
     // End of variables declaration//GEN-END:variables
 }
