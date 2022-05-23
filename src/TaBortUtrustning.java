@@ -95,14 +95,28 @@ public class TaBortUtrustning extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnTaBortActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTaBortActionPerformed
-        String namn = cmbUtrustning.getSelectedItem().toString();
-        if (Validering.kollaTaBort(namn)) {
-            String fraga = "DELETE FROM Utrustning WHERE Benamning =" + "'" + namn + "'" + ";";
+        String benamning = cmbUtrustning.getSelectedItem().toString();
+        String utrusningsId = getUtrustningsId(benamning);
+        
+        if (Validering.kollaTaBort(benamning)) {
+            String fragaUtrustning = "DELETE FROM Utrustning WHERE Utrustnings_ID ='" + utrusningsId + "'";
+            String fragaVapen = "DELETE FROM vapen WHERE Utrustnings_ID ='" + utrusningsId + "'";
+            String fragaTeknik = "DELETE FROM teknik WHERE Utrustnings_ID ='" + utrusningsId + "'";
+            String fragaKommunikation = "DELETE FROM kommunikation WHERE Utrustnings_ID ='" + utrusningsId + "'";
+            //Fråga för att hämta ut agent id i tabell inneahar_utrustning för att kunna deleta
+            String inneharUtrustning_AgentId = "SELECT Agent_ID FROM innehar_utrustning WHERE Utrustnings_ID ='" + utrusningsId + "'";
+            System.out.println(inneharUtrustning_AgentId);
             try {
-                idb.delete(fraga);
-                
+                String svarAgentId = idb.fetchSingle(inneharUtrustning_AgentId);
+                System.out.println(svarAgentId);
+                String fragaInneharUtrusning = "DELETE FROM innehar_utrustning WHERE (Utrustnings_ID, Agent_ID) IN ('"+utrusningsId+"','"+svarAgentId+"')";
+                idb.delete(fragaUtrustning);
+                idb.delete(fragaVapen);
+                idb.delete(fragaTeknik);
+                idb.delete(fragaKommunikation);
+                idb.delete(fragaInneharUtrusning);
                 lblBorttagenUtrustning.setVisible(true);
-                lblBorttagenUtrustning.setText(namn + " är borttagen ur systemet");
+                lblBorttagenUtrustning.setText(benamning + " är borttagen ur systemet");
 
             } catch (InfException ex) {
                 JOptionPane.showMessageDialog(null, "Gick inte att ta bort");
@@ -125,6 +139,19 @@ public class TaBortUtrustning extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Något gick fel");
         }
 
+    }
+    
+    private String getUtrustningsId(String benamning){
+        String svar= "";
+        String fraga = "SELECT Utrustnings_ID FROM utrustning WHERE Benamning ='"+ benamning +"'";
+        try{
+            svar = idb.fetchSingle(fraga);
+        }
+        catch (InfException e) {
+            JOptionPane.showMessageDialog(null, "Gick inte att hämta id till utrustning");
+        }
+        return svar;
+        
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnTaBort;
