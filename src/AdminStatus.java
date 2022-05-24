@@ -14,7 +14,7 @@ import oru.inf.InfException;
 
 /**
  *
- * @author miche, cappelina, aaau
+ * @author miche, aaau, cAppelina
  * 
  * Denna klass möjliggör för en adminagent att lägga 
  * till andra agenter som administrtörer i systemet.

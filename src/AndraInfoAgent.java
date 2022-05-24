@@ -278,16 +278,6 @@ public class AndraInfoAgent extends javax.swing.JFrame {
         }
     }
 
-   /* private String getOmradeId(String omradeNamn) {
-        String omradeId = "";
-        try {
-            String fraga = "SELECT Omrades_ID FROM omrade WHERE Benamning = '" + omradeNamn + "'";
-            omradeId = idb.fetchSingle(fraga);
-        } catch (InfException ex) {
-            JOptionPane.showMessageDialog(null, "Gick inte att hämta omrade id");
-        }
-        return omradeId;
-    }*/
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> cboxAdmin;

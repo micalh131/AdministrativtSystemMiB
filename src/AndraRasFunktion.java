@@ -10,7 +10,7 @@ import oru.inf.InfException;
 
 /**
  *
- * @author miche
+ * @author miche, aaau, cAppelina
  */
 public class AndraRasFunktion {
     private InfDB idb;

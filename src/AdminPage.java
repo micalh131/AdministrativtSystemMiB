@@ -8,7 +8,7 @@ import oru.inf.InfException;
 
 /**
  *
- * @author miche, cappelina, aaau
+ * @author miche, aaau, cAppelina
  *
  * Klassen innehåller att antal knappar som länkar till nya fönster med
  * funktioner som endast en administratör kommer åt.

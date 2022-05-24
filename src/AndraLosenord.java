@@ -8,7 +8,8 @@ import oru.inf.InfException;
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 /**
- * @author miche, aaau, cAppelina Klassen hanterar byte av lösenord och anropas
+ * @author miche, aaau, cAppelina 
+ * Klassen hanterar byte av lösenord och anropas
  * av metoder i andra klasser/användare. Databasuppkoppling sker, fält lagrar
  * värden som ska användas i metoderna för att frågorna vi ställer till
  * databasen utgår från vilken användare som försöker ändra lösenord.
