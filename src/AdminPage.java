@@ -49,7 +49,7 @@ public class AdminPage extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        loginTitle.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        loginTitle.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
         loginTitle.setText("Välkommen Super Admin");
 
         lblBild.setIcon(new javax.swing.ImageIcon(getClass().getResource("/MiB SuperAdmin3.jpeg"))); // NOI18N
