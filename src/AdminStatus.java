@@ -41,8 +41,6 @@ public class AdminStatus extends javax.swing.JFrame {
         lblAgentFattAdmin = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
         btnSok.setText("Sök");
         btnSok.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -63,6 +61,7 @@ public class AdminStatus extends javax.swing.JFrame {
 
         lblAgentFattAdmin.setText("lblAgentFattAdminstatus");
 
+        jLabel1.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         jLabel1.setText("Skriv in agentens namn");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
