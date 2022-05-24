@@ -7,7 +7,7 @@ import oru.inf.InfDB;
  */
 
 /**
- * @author miche, cappelina, aaau
+ * @author miche, aaau, cAppelina
  *
  * Klassen innehåller att antal knappar som länkar till nya fönster med olika
  * funktioner som en inloggad agent kommer åt.

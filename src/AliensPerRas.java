@@ -10,7 +10,7 @@ import oru.inf.InfException;
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 /**
- ** @author miche, cappelina, aaau
+ ** @author miche, aaau, cAppelina
  *
  * Klassen möjliggör för användaren att i en lista välja en viss ras. De aliens
  * som tillhör den rasen visas.
