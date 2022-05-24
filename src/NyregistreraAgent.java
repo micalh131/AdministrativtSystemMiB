@@ -203,13 +203,18 @@ public class NyregistreraAgent extends javax.swing.JFrame {
         Boolean isLikaNamn = kollaAgentNamnReadanFinns(namn);
 
         //Behöver lägga till en koll så användaren har valt ett område 
-        if (Validering.textFaltEjTomtRegEx(namn) && Validering.textFaltEjTomtRegEx(losen) && Validering.textFaltEjTomtRegEx(tel) && Validering.textFaltEjTomtRegEx(datum) && Validering.kollaCboxRegEx(omrade) && Validering.kollaCboxRegEx(isAdmin) && !isLikaNamn) {
+        if (Validering.textFaltEjTomtRegEx(namn) && Validering.textFaltEjTomtRegEx(losen)
+                && Validering.textFaltEjTomtRegEx(tel) && Validering.textFaltEjTomtRegEx(datum)
+                && Validering.kollaCboxRegEx(omrade) && Validering.kollaCboxRegEx(isAdmin)
+                && !isLikaNamn) {
             try {
                 String omradeId = konv.getOmradeId(omrade);
                 String nextId = getNextAgentId();
 
-                String fraga = "INSERT INTO agent (Agent_ID, Namn, Telefon, Anstallningsdatum, Administrator, Losenord, Omrade) \n"
-                        + "VALUES ( " + nextId + ", '" + namn + "', '" + tel + "', '" + datum + "', '" + isAdmin + "'," + losen + ", " + omradeId + ")";
+                String fraga = "INSERT INTO agent (Agent_ID, Namn, Telefon, Anstallningsdatum, "
+                        + "Administrator, Losenord, Omrade) \n"
+                        + "VALUES ( " + nextId + ", '" + namn + "', '" + tel + "', '" + datum
+                        + "', '" + isAdmin + "'," + losen + ", " + omradeId + ")";
                 idb.insert(fraga);
 
                 txtNamn.setText("");

@@ -7,20 +7,21 @@ import oru.inf.InfDB;
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-
 /**
  *
- * @author miche
+ * @author miche, aaau, cAppelina
  */
 public class NyregistreraUtrustning extends javax.swing.JFrame {
+
     private InfDB idb;
+
     /**
      * Creates new form NyregistreraUtrustning
      */
     public NyregistreraUtrustning(InfDB idb) {
         initComponents();
         this.idb = idb;
-        lblUtrustningsID.setText(getUtrustningsId());
+        lblUtrustningsID.setText(getNextUtrustningsId());
         lblReg.setVisible(false);
     }
 
@@ -100,35 +101,36 @@ public class NyregistreraUtrustning extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    //Lägger till ny utrustning
     private void btnRegActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegActionPerformed
-        // TODO add your handling code here:
+
         String benamning = txtBenamning.getText();
-        
-        if(Validering.textFaltEjTomtRegEx(benamning)){
-          try{
-              String nextId = getUtrustningsId();
-              String fraga = "INSERT INTO utrustning (Utrustnings_Id, Benamning) VALUES ( "+ nextId +", '"+ benamning +"')";
-              idb.insert(fraga);
-              
-              txtBenamning.setText("");
-              lblReg.setVisible(true);
-          }
-          catch(InfException ex){
+
+        if (Validering.textFaltEjTomtRegEx(benamning)) {
+            try {
+                String nextId = getNextUtrustningsId();
+                String fraga = "INSERT INTO utrustning (Utrustnings_Id, Benamning) VALUES ( " + nextId + ", '" + benamning + "')";
+                idb.insert(fraga);
+
+                txtBenamning.setText("");
+                lblReg.setVisible(true);
+            } catch (InfException ex) {
                 JOptionPane.showMessageDialog(null, "Gick inte att registrera ny utrustning");
             }
         }
     }//GEN-LAST:event_btnRegActionPerformed
-     private String getUtrustningsId(){
+
+    ////Kollar sista id som finns i tabellen och returnerar nästommande index
+    private String getNextUtrustningsId() {
         String nextId = "";
-        try{
-            nextId = idb.getAutoIncrement("utrustning","Utrustnings_ID");
-        }
-        catch(InfException ex){
-                JOptionPane.showMessageDialog(null, "Gick inte att hämta id för utrustning");
+        try {
+            nextId = idb.getAutoIncrement("utrustning", "Utrustnings_ID");
+        } catch (InfException ex) {
+            JOptionPane.showMessageDialog(null, "Gick inte att hämta id för utrustning");
         }
         return nextId;
     }
-    
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnReg;
