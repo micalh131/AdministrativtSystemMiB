@@ -39,8 +39,8 @@ public class AdminStatus extends javax.swing.JFrame {
         lblAgentHittad = new javax.swing.JLabel();
         cbxAdminRatt = new javax.swing.JCheckBox();
         lblAgentFattAdmin = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        lblFyllFalt = new javax.swing.JLabel();
+        lblRubrik = new javax.swing.JLabel();
 
         btnSok.setText("Sök");
         btnSok.addActionListener(new java.awt.event.ActionListener() {
@@ -63,11 +63,11 @@ public class AdminStatus extends javax.swing.JFrame {
         lblAgentFattAdmin.setFont(new java.awt.Font("Helvetica Neue", 2, 13)); // NOI18N
         lblAgentFattAdmin.setText("lblAgentFattAdminstatus");
 
-        jLabel1.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
-        jLabel1.setText("Skriv in agentens namn");
+        lblFyllFalt.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
+        lblFyllFalt.setText("Skriv in agentens namn");
 
-        jLabel2.setFont(new java.awt.Font("Helvetica Neue", 1, 15)); // NOI18N
-        jLabel2.setText("Ge Agent Adminstatus");
+        lblRubrik.setFont(new java.awt.Font("Helvetica Neue", 1, 15)); // NOI18N
+        lblRubrik.setText("Ge Agent Adminstatus");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -78,23 +78,23 @@ public class AdminStatus extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(cbxAdminRatt)
                     .addComponent(lblAgentFattAdmin)
-                    .addComponent(jLabel1)
+                    .addComponent(lblFyllFalt)
                     .addComponent(btnSok)
                     .addComponent(txtNamnSok, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblAgentHittad))
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(135, Short.MAX_VALUE)
-                .addComponent(jLabel2)
+                .addComponent(lblRubrik)
                 .addGap(120, 120, 120))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(34, 34, 34)
-                .addComponent(jLabel2)
+                .addComponent(lblRubrik)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel1)
+                .addComponent(lblFyllFalt)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtNamnSok, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -150,10 +150,10 @@ public class AdminStatus extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnSok;
     private javax.swing.JCheckBox cbxAdminRatt;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel lblAgentFattAdmin;
     private javax.swing.JLabel lblAgentHittad;
+    private javax.swing.JLabel lblFyllFalt;
+    private javax.swing.JLabel lblRubrik;
     private javax.swing.JTextField txtNamnSok;
     // End of variables declaration//GEN-END:variables
 }
