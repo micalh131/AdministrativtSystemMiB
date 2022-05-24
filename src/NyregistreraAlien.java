@@ -7,18 +7,18 @@ import oru.inf.InfDB;
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-
 /**
  *
- * @author miche
+ * @author miche, aaau, cAppelina
  */
 public class NyregistreraAlien extends javax.swing.JFrame {
+
     private InfDB idb;
     //Klassen består av ett antal metoder som konverterar olika namn och benämningar till dess primärnyckel (id)
     private HjalpDbFunktioner konv;
     // Funktion för att ändra ras
     private AndraRasFunktion fuAndraRas;
-    
+
     /**
      * Creates new form NygeristreraAlien
      */
@@ -196,46 +196,19 @@ public class NyregistreraAlien extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private String getNextAlienId(){
+    
+    //Kollar sista id som finns i tabellen och returnerar nästommande index
+    private String getNextAlienId() {
         String nextId = "";
-        try{
-            nextId = idb.getAutoIncrement("alien","Alien_ID");
-        }
-        catch(InfException ex){
-                JOptionPane.showMessageDialog(null, "Gick inte att hämta Alien id");
+        try {
+            nextId = idb.getAutoIncrement("alien", "Alien_ID");
+        } catch (InfException ex) {
+            JOptionPane.showMessageDialog(null, "Gick inte att hämta Alien id");
         }
         return nextId;
     }
-    
-    /*private String getPlatsId(String platsNamn){
-        String platsId = platsNamn;
-        if(!platsNamn.equalsIgnoreCase("Välj")){
-        try{
-            String fraga = "SELECT Plats_ID FROM plats WHERE Benamning = '"+ platsNamn +"'";
-            platsId = idb.fetchSingle(fraga);
-        }
-        catch(InfException ex){
-                JOptionPane.showMessageDialog(null, "Gick inte att hämta platsent id");
-            }
-        }
-        return platsId;
-    }*/
-    
-    /*private String getAgentId(String agentNamn){
-        String agentId = agentNamn;
-        if(!agentNamn.equalsIgnoreCase("Välj")){
-        try{
-            String fraga = "SELECT Agent_ID FROM agent WHERE namn = '"+ agentNamn +"'";
-            agentId = idb.fetchSingle(fraga);
-        }
-        catch(InfException ex){
-                JOptionPane.showMessageDialog(null, "Gick inte att hämta agentens id");
-            }
-        }
-        return agentId;
-    }*/
-    
+
+
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         String namn = txtNamn.getText();
@@ -246,28 +219,31 @@ public class NyregistreraAlien extends javax.swing.JFrame {
         String ansvarigAgent = cboxAnsvarigAgent.getSelectedItem().toString();
         String ras = cboxRas.getSelectedItem().toString();
         String rasAttribut = txtRasAttribut.getText();
-        
-        
-        if (Validering.textFaltEjTomtRegEx(namn) && Validering.textFaltEjTomtRegEx(losen) && Validering.textFaltEjTomtRegEx(tel) && Validering.textFaltEjTomtRegEx(datum) && Validering.kollaCboxRegEx(plats) && Validering.kollaCboxRegEx(ansvarigAgent)&& Validering.kollaCboxRegEx(ras) && Validering.textFaltEjTomtRegEx(rasAttribut)){
-            try{
+
+        if (Validering.textFaltEjTomtRegEx(namn) && Validering.textFaltEjTomtRegEx(losen)
+                && Validering.textFaltEjTomtRegEx(tel) && Validering.textFaltEjTomtRegEx(datum)
+                && Validering.kollaCboxRegEx(plats) && Validering.kollaCboxRegEx(ansvarigAgent)
+                && Validering.kollaCboxRegEx(ras) && Validering.textFaltEjTomtRegEx(rasAttribut)) {
+            try {
                 String platsId = konv.getPlatsId(plats);
                 String ansvarigAgentId = konv.getAgentId(ansvarigAgent);
                 String nextId = getNextAlienId();
-                 //Lägg till ny ras
+                //Lägg till ny ras
                 fuAndraRas.andraRas(nextId, ras, rasAttribut);
-                
-                String fraga = "INSERT INTO alien (Alien_ID, Registreringsdatum, Losenord, Namn, Telefon, Plats, Ansvarig_Agent) \n"
-                +"VALUES ( "+ nextId +", '"+ datum +"', '"+ losen +"', '"+ namn +"', '"+ tel +"',"+ platsId +", "+ ansvarigAgentId +")";
+
+                String fraga = "INSERT INTO alien (Alien_ID, Registreringsdatum, Losenord, "
+                        + "Namn, Telefon, Plats, Ansvarig_Agent) \n"
+                        + "VALUES ( " + nextId + ", '" + datum + "', '" + losen + "', '" + namn
+                        + "', '" + tel + "'," + platsId + ", " + ansvarigAgentId + ")";
                 idb.insert(fraga);
-                
+
                 txtNamn.setText("");
                 txtLosen.setText("");
                 txtTel.setText("");
                 txtDatum.setText("");
-                
+
                 lblReg.setVisible(true);
-            }
-            catch(InfException ex){
+            } catch (InfException ex) {
                 JOptionPane.showMessageDialog(null, "Något gick fel");
             }
         }
@@ -287,13 +263,12 @@ public class NyregistreraAlien extends javax.swing.JFrame {
             lblRasAttribut.setVisible(true);
             txtRasAttribut.setVisible(true);
         } else if (ras.equalsIgnoreCase("worm")) {
-            lblRasAttribut.setText("1");
+            txtRasAttribut.setText("1");
             lblRasAttribut.setVisible(false);
             txtRasAttribut.setVisible(false);
         }
     }//GEN-LAST:event_cboxRasActionPerformed
 
-   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> cboxAnsvarigAgent;
