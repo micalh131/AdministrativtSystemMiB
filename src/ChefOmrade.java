@@ -86,11 +86,11 @@ public class ChefOmrade extends javax.swing.JFrame {
     private void cboxOmradeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboxOmradeActionPerformed
 
         txtaChefInfo.setText("");
+        String valtOmrade = cboxOmrade.getSelectedItem().toString();
         ArrayList<HashMap<String, String>> soktaOmraden;
-
+        if (Validering.kollaCboxRegEx(valtOmrade))
         try {
 
-            String valtOmrade = cboxOmrade.getSelectedItem().toString();
             String sqlFraga = "SELECT agent.Agent_ID, agent.Namn FROM agent \n"
                     + "    JOIN omradeschef ON omradeschef.Agent_ID = agent.Agent_ID\n"
                     + "        JOIN omrade ON omrade.Omrades_ID=omradeschef.Agent_ID\n"
