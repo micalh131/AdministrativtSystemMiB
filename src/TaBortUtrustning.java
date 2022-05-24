@@ -46,10 +46,9 @@ public class TaBortUtrustning extends javax.swing.JFrame {
 
         cmbUtrustning.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Välj" }));
 
-        lblRubrik.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         lblRubrik.setText("Välj utrusting att ta bort");
 
-        lblBorttagenUtrustning.setText("Utrustning har tagits bort");
+        lblBorttagenUtrustning.setText("Utr har tagits bort");
 
         btnTaBort.setText("Ta bort");
         btnTaBort.addActionListener(new java.awt.event.ActionListener() {
@@ -62,29 +61,34 @@ public class TaBortUtrustning extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(119, Short.MAX_VALUE)
+                .addComponent(lblRubrik)
+                .addGap(140, 140, 140))
             .addGroup(layout.createSequentialGroup()
-                .addGap(42, 42, 42)
+                .addGap(141, 141, 141)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(cmbUtrustning, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblRubrik)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnTaBort)
-                        .addGap(18, 18, 18)
-                        .addComponent(lblBorttagenUtrustning)))
-                .addGap(0, 119, Short.MAX_VALUE))
+                        .addComponent(cmbUtrustning, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblBorttagenUtrustning)
+                            .addComponent(btnTaBort))
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(36, 36, 36)
                 .addComponent(lblRubrik)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addComponent(cmbUtrustning, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(70, 70, 70)
+                .addComponent(btnTaBort)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnTaBort)
-                    .addComponent(lblBorttagenUtrustning))
-                .addContainerGap(177, Short.MAX_VALUE))
+                .addComponent(lblBorttagenUtrustning)
+                .addContainerGap(84, Short.MAX_VALUE))
         );
 
         pack();

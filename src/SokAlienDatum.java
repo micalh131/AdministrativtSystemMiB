@@ -46,7 +46,6 @@ public class SokAlienDatum extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        lblRubrik.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         lblRubrik.setText("Registrerade alien mellan vissa datum");
 
         lblRubrikFranDatum.setText("Skriv in sökdatum från (yyyy-mm-dd)");
@@ -80,13 +79,6 @@ public class SokAlienDatum extends javax.swing.JFrame {
                             .addComponent(lblRubrikFranDatum)
                             .addComponent(lblRubrikTillDatum1)
                             .addComponent(lblRubrik))
-
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(ftxtfFranDatum)
-                            .addComponent(ftxtfTillDatum))
-                        .addGap(17, 17, 17))))
-
                         .addGap(46, 46, 46)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtfTillDatum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -94,18 +86,13 @@ public class SokAlienDatum extends javax.swing.JFrame {
                     .addComponent(btnSok)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(52, Short.MAX_VALUE))
-
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(27, 27, 27)
+                .addGap(17, 17, 17)
                 .addComponent(lblRubrik)
-
-                .addGap(18, 18, 18)
-
                 .addGap(31, 31, 31)
-
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblRubrikFranDatum)
                     .addComponent(txtfTillDatum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))

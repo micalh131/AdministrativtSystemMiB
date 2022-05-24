@@ -47,10 +47,8 @@ public class AndraLosenord extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        lblNyttLosen.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         lblNyttLosen.setText("Skriv in nytt lösenord");
 
-        lblNuvarandeLosen.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         lblNuvarandeLosen.setText("Skriv in nuvarande lösenord");
 
         btnBytLosen.setText("Byt lösenord");

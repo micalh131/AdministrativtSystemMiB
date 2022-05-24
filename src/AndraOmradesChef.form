@@ -26,7 +26,6 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="btnSok" min="-2" max="-2" attributes="0"/>
                   <Component id="txtNyOmradeschef" min="-2" max="-2" attributes="0"/>
                   <Component id="lblRubrik" min="-2" max="-2" attributes="0"/>
                   <Component id="txtSokOmrade" min="-2" max="-2" attributes="0"/>
@@ -35,6 +34,7 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="btnAndraChef" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="lblRubrikOmradesChef" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnSok" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
@@ -54,9 +54,9 @@
               <Component id="lblRubrik" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="txtSokOmrade" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="btnSok" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="lblNuvarandeOmradeschef" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="lblRubrikOmradesChef" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -96,9 +96,6 @@
     </Component>
     <Component class="javax.swing.JLabel" name="lblRubrik">
       <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Helvetica Neue" size="13" style="1"/>
-        </Property>
         <Property name="text" type="java.lang.String" value="Skriv in omr&#xe5;de i s&#xf6;kf&#xe4;ltet"/>
       </Properties>
     </Component>
@@ -112,9 +109,6 @@
     </Component>
     <Component class="javax.swing.JLabel" name="lblNyOmradeschef">
       <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Helvetica Neue" size="13" style="1"/>
-        </Property>
         <Property name="text" type="java.lang.String" value="Skriv in ny Omr&#xe5;deschef"/>
       </Properties>
     </Component>
@@ -130,7 +124,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="lblRubrikOmradesChef">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Nuvarande Omr&#xe5;deschef:"/>
+        <Property name="text" type="java.lang.String" value="Nuvarande Omradeschef:"/>
       </Properties>
     </Component>
   </SubComponents>
