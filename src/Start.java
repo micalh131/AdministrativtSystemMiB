@@ -66,6 +66,7 @@ public class Start {
 
          new LoginPage(idb).setVisible(true);
          new AdminStatus(idb).setVisible(true);
+         new AliensPlats(idb).setVisible(true);
          
          
          
