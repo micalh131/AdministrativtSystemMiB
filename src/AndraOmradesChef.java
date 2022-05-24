@@ -56,7 +56,6 @@ public class AndraOmradesChef extends javax.swing.JFrame {
 
         lblNuvarandeOmradeschef.setText("lblNuvarandeOmradesChef");
 
-        lblRubrik.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         lblRubrik.setText("Skriv in område i sökfältet");
 
         btnAndraChef.setText("Ändra områdeschef");
@@ -66,14 +65,13 @@ public class AndraOmradesChef extends javax.swing.JFrame {
             }
         });
 
-        lblNyOmradeschef.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         lblNyOmradeschef.setText("Skriv in ny Områdeschef");
 
         txtNyOmradeschef.setColumns(8);
 
         lblOmradeschefAndrad.setText("lblOmradeschefAndrad");
 
-        lblRubrikOmradesChef.setText("Nuvarande Områdeschef:");
+        lblRubrikOmradesChef.setText("Nuvarande Omradeschef:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -82,7 +80,6 @@ public class AndraOmradesChef extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(53, 53, 53)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnSok)
                     .addComponent(txtNyOmradeschef, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblRubrik)
                     .addComponent(txtSokOmrade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -90,7 +87,8 @@ public class AndraOmradesChef extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnAndraChef)
-                            .addComponent(lblRubrikOmradesChef))
+                            .addComponent(lblRubrikOmradesChef)
+                            .addComponent(btnSok))
                         .addGap(37, 37, 37)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblNuvarandeOmradeschef)
@@ -104,9 +102,9 @@ public class AndraOmradesChef extends javax.swing.JFrame {
                 .addComponent(lblRubrik)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtSokOmrade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addComponent(btnSok)
-                .addGap(23, 23, 23)
+                .addGap(11, 11, 11)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblNuvarandeOmradeschef)
                     .addComponent(lblRubrikOmradesChef))

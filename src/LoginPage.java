@@ -50,7 +50,6 @@ public class LoginPage extends javax.swing.JFrame {
 
         loginImg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/MiB LoginPage.jpeg"))); // NOI18N
 
-        loginTitle.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         loginTitle.setText("Inloggning");
 
         loginSelectUser.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Välj", "Agent", "Alien" }));
@@ -89,7 +88,7 @@ public class LoginPage extends javax.swing.JFrame {
                 .addComponent(loginUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(33, 33, 33)
                 .addComponent(loginPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26)
+                .addGap(37, 37, 37)
                 .addComponent(loginButton)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );

@@ -25,7 +25,7 @@ public class AdminPage extends javax.swing.JFrame {
         initComponents();
         this.idb = idb;
         this.userName = userName;
-        loginTitle.setText("Välkommen" + " " + userName);
+        loginTitle.setText("Welcome" + " " + userName);
     }
 
     /**
@@ -50,11 +50,7 @@ public class AdminPage extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         loginTitle.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
-
-        loginTitle.setText("Välkommen Agent X");
-
         loginTitle.setText("Välkommen Super Admin");
-
 
         lblBild.setIcon(new javax.swing.ImageIcon(getClass().getResource("/MiB SuperAdmin3.jpeg"))); // NOI18N
         lblBild.setText("jLabel1");
@@ -143,10 +139,10 @@ public class AdminPage extends javax.swing.JFrame {
                             .addComponent(btnTaBortAlien)
                             .addComponent(btnTaBortAgent))
                         .addGap(67, 67, 67))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(146, 146, 146)
                         .addComponent(loginTitle)
-                        .addGap(188, 188, 188)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addComponent(lblBild, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -158,9 +154,9 @@ public class AdminPage extends javax.swing.JFrame {
                         .addContainerGap()
                         .addComponent(lblBild, javax.swing.GroupLayout.PREFERRED_SIZE, 449, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(33, 33, 33)
+                        .addGap(35, 35, 35)
                         .addComponent(loginTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(29, 29, 29)
+                        .addGap(27, 27, 27)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnAgentSokningar)
                             .addComponent(btnTaBortAgent))
@@ -189,35 +185,43 @@ public class AdminPage extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAdminStatusActionPerformed
 
     private void btnAgentSokningarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgentSokningarActionPerformed
+        // TODO add your handling code here:
         new SokEnskildAgent(idb).setVisible(true);
     }//GEN-LAST:event_btnAgentSokningarActionPerformed
 
     private void btnNyregAgentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNyregAgentActionPerformed
+        // TODO add your handling code here:
         new NyregistreraAgent(idb).setVisible(true);
     }//GEN-LAST:event_btnNyregAgentActionPerformed
 
     private void btnAndraInfoAgentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAndraInfoAgentActionPerformed
+        // TODO add your handling code here:
         new AndraInfoAgent(idb).setVisible(true);
     }//GEN-LAST:event_btnAndraInfoAgentActionPerformed
 
     private void btnAndraOmradeschefActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAndraOmradeschefActionPerformed
+        // TODO add your handling code here:
         new AndraOmradesChef(idb).setVisible(true);
     }//GEN-LAST:event_btnAndraOmradeschefActionPerformed
 
     private void btnAndraKontorschefActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAndraKontorschefActionPerformed
+        // TODO add your handling code here:
         new AndraKontorsChef(idb).setVisible(true);
     }//GEN-LAST:event_btnAndraKontorschefActionPerformed
 
     private void btnTaBortAgentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTaBortAgentActionPerformed
+        // TODO add your handling code here:
         new TaBortAgent(idb).setVisible(true);
     }//GEN-LAST:event_btnTaBortAgentActionPerformed
 
     private void btnTaBortAlienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTaBortAlienActionPerformed
+        // TODO add your handling code here:
         new TaBortAlien(idb).setVisible(true);
     }//GEN-LAST:event_btnTaBortAlienActionPerformed
 
     private void btnTaBortUtrActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTaBortUtrActionPerformed
-       new TaBortUtrustning(idb).setVisible(true);
+        // TODO add your handling code here:
+        new TaBortUtrustning(idb).setVisible(true);
     }//GEN-LAST:event_btnTaBortUtrActionPerformed
 
 

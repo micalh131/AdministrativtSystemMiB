@@ -12,8 +12,11 @@ import oru.inf.InfException;
 /**
  *
  * @author miche, aaau, cAppelina
- * Klassen innehåller att antal knappar som länkar till nya fönster med
- * funktioner som endast för Aliens.
+ * Aliens välkomstsida med funktionaliteter: Ändra lösenord samt se infor om 
+ * ansvarig områdeschef.
+ * Kopplar databasen. Vi använder fälten för att spara värden som vi skickar med via metoder
+ * i klassen när vi instantiserar nya objekt av andra klasser.
+ *  
  */
 public class AlienPage extends javax.swing.JFrame {
 
