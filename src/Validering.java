@@ -13,21 +13,11 @@ import java.util.Date;
  */
 /**
  *
- * @author carolinaappel
+ * @author miche, aaau, cAppelina
  */
 public class Validering {
 
-    public static boolean textFaltHarVarde(JTextField rutaAttKolla) {
-        boolean resultat = true;
-        if (rutaAttKolla.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "inmatningsrutan är tom");
-            resultat = false;
-            rutaAttKolla.requestFocus();
-        }
-        return resultat;
-    }
-//Metoden validerar datumformat
-
+    //Metoden validerar datumformat
     public static boolean valideraDatum(String datum) {
         boolean resultat = false;
         //använder javas klass SimpleDateFormat för att parsa/tolka en datumsträng
@@ -52,25 +42,9 @@ public class Validering {
         return resultat;
     }
 
-    /* Nedandstående kod är exempel på kod i klasser som ska använda 
-        valideringsklassen som skrivits ovan: 
-    if (Validering.textFaltHarVarde(variabelNamnA)){
-        
-        try{
-        String id = variabelNamnA.getText();
-        String fraga = "SELECT x FROM y WHERE n=" + id;
-        String svar = idb.fetchSingle(fraga);
-        String resultat = svar;
-        varabelNamnB.setText(resultat);
-        }
-        catch(InfException e){
-            JOptionPane.showMessageDialog(null, "Något gick fel!");
-            System.out.println("Internt felmeddelande" + e.getMessage());
-        }
-     */
+    //Metoden kollar om rutan är tom genom att använda metoden matches i klassen Pattern.
     public static boolean textFaltEjTomtRegEx(String textAttKolla) {
-        /* Metoden kollar om rutan är tom genom att använda metoden matches i klassen Pattern. 
-
+        /*  
     Klassen pattern är Javas implementation av regular expresions. Regular expression är avancerade söksträngar där 
     man genom olika notationer kan söka efter teckenklasser (siffror, bokstäver, white space etc). 
     Ett regular expression är en sträng. ("^\\s*$") ^början, \\s white space, * 0 eller flera, $ slutet)
@@ -78,7 +52,6 @@ public class Validering {
     
          */
         boolean resultat = true;
-        //Pattern Pat= new Pattern("\s*");
         boolean rutaTom = Pattern.matches("^\\s*$", textAttKolla);
 
         if (rutaTom) {
@@ -89,10 +62,10 @@ public class Validering {
         return resultat;
     }
 
+    //Koll så att användaren inte väljer "Välj" i comboboxen vid inmatning. 
     public static boolean kollaCboxRegEx(String textAttKolla) {
 
         boolean resultat = true;
-        //Pattern Pat= new Pattern("\s*");
         boolean rutaTom = Pattern.matches("\\W*((?i)välj(?-i))\\W*", textAttKolla);
 
         if (rutaTom) {
@@ -103,48 +76,22 @@ public class Validering {
         return resultat;
     }
 
-    public static boolean isHeltal(JTextField rutaAttKolla) {
-        boolean resultat = true;
-
-        try {
-            String inStrang = rutaAttKolla.getText();
-            Integer.parseInt(inStrang);
-            rutaAttKolla.requestFocus();
-
-        } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(null, "Var god ange ett heltal!");
-            resultat = false;
-            System.out.println("Heltal skrevs ej in");
-        }
-
-        return resultat;
-
-        /*if (Validering.isHeltal(variabelNamnA)){
-        
-        try{
-        String id = variabelNamnA.getText();
-        String fraga = "SELECT x FROM y WHERE n=" + id;
-        String svar = idb.fetchSingle(fraga);
-        String resultat = svar;
-        varabelNamnB.setText(resultat);
-        }
-        catch(InfException e){
-            JOptionPane.showMessageDialog(null, "Något gick fel!");
-            System.out.println("Internt felmeddelande" + e.getMessage());
-        }
-         */
-    }
-
-    public static boolean kollaLosen(String dbLosen, String nyttLosen) {
+    // Jämför användarens sparade lösenord från databasen med det användaren skriver
+    //in som nuvarande lösen. Detta är extra säkerhetskoll när användaren byter till nytt lösen.
+    public static boolean kollaLosen(String dbLosen, String nuvarandeLosen) {
         boolean resultat = true;
         System.out.println(dbLosen);
-        if (!dbLosen.equals(nyttLosen)) {
+        if (!dbLosen.equals(nuvarandeLosen)) {
             JOptionPane.showMessageDialog(null, "Nuvarande lösenord är fel");
             resultat = false;
         }
         return resultat;
     }
 
+    //@param ids en lista på alla Agent_ID från tabellen omradeschef
+    //@param nyOmradeschef den nya områdeschefen användaren vill uppdatera till
+    //Metoden kollar så att nyOmradeschef inte redan har ett område den är chef för
+    //Det ska inte gå att vara chef för flera områden
     public static boolean kollaAgentId(ArrayList<String> ids, String nyOmradesChef) {
         boolean resultat = true;
         for (String i : ids) {
@@ -153,10 +100,12 @@ public class Validering {
                 resultat = false;
             }
         }
-
         return resultat;
     }
 
+    //@param admin Får in Ja eller Nej beroende på om agenten ska vara admin eller inte
+    //Metoden gör om inputen till en bokstav, J eller N för att kunna ställa 
+    //en fråga till databasen
     public static String kollaIsAdmin(String admin) {
         String val = admin;
         if (!admin.equalsIgnoreCase("Välj")) {
@@ -169,6 +118,8 @@ public class Validering {
         return val;
     }
 
+    //@param namn Från in ett namn på en alien eller agent som användaren vill ta bort från databasen
+    //Skapar en speciell dialogruta där användaren kan välja "Ja" ta bort, "Nej" ta inte bort eller "Avbryt"
     public static boolean kollaTaBort(String namn) {
         int response = JOptionPane.showConfirmDialog(null, "Är du säker på att du vill ta bort " + namn, "Select option", JOptionPane.YES_NO_CANCEL_OPTION);
         if (response == JOptionPane.YES_OPTION) {
