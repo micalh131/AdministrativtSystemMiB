@@ -10,9 +10,10 @@ import oru.inf.InfException;
  */
 /**
  *
- * @author miche, aaau, cAppelina
- * Klass som visar info om agent som är områdeschef för den inloggade aliens plats/område.
- * 
+ * @author miche, aaau, cAppelina 
+ * Klass som visar info om agent som är
+ * områdeschef för den inloggade aliens plats/område.
+ *
  */
 public class VisaAgentInfo extends javax.swing.JFrame {
 
@@ -20,7 +21,7 @@ public class VisaAgentInfo extends javax.swing.JFrame {
     private String alienPlats;
 
     /**
-     * Creates new form VisaAgentInfo
+     * Skapar ny VisaAgentInfo
      */
     public VisaAgentInfo(InfDB idb, String alienPlats) {
         initComponents();
@@ -77,12 +78,10 @@ public class VisaAgentInfo extends javax.swing.JFrame {
     Fråga till databasen ställs för att lagra info om agent. Flertalet JOINS används för att
     komma åt områdeschef, område och plats för alien. Information hämtas endast om Namn 
     och Telefonnummer till agenten.
-    */
+     */
     private void visaInfo() {
-        //String id = cmbValjAgent.getItemAt(1);
 
         try {
-            //String fraga = "SELECT Agent_ID, Namn, Telefon, Anstallningsdatum FROM Agent WHERE Omrade = 1";
             String fraga = "SELECT agent.Agent_ID, Namn, Telefon FROM agent \n"
                     + "JOIN omradeschef ON omradeschef.`Agent_ID` = agent.`Agent_ID`\n"
                     + "JOIN omrade ON omradeschef.`Agent_ID` = omrade.`Omrades_ID`\n"

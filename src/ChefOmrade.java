@@ -49,8 +49,10 @@ public class ChefOmrade extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         jLabel1.setText("Välj område");
 
+        jLabel2.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         jLabel2.setText("Ansvarig områdeschef:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

@@ -9,17 +9,17 @@ import oru.inf.InfException;
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-
 /**
  *
- * @author carolinaappel
- * Experimenterar. Har använt textfält och lagrar valet från comboboxen, men ej skrivit klar SQL frågan för att ta bort
- * utrustningen.
+ * @author miche, aaau, cAppelina
+ *
  */
 public class TaBortUtrustning extends javax.swing.JFrame {
+
     private InfDB idb;
+
     /**
-     * Creates new form TaBortUtrustning
+     * Skapar ny TaBortUtrustning
      */
     public TaBortUtrustning(InfDB idb) {
         initComponents();
@@ -46,9 +46,10 @@ public class TaBortUtrustning extends javax.swing.JFrame {
 
         cmbUtrustning.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Välj" }));
 
+        lblRubrik.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         lblRubrik.setText("Välj utrusting att ta bort");
 
-        lblBorttagenUtrustning.setText("Utr har tagits bort");
+        lblBorttagenUtrustning.setText("Utrustning har tagits bort");
 
         btnTaBort.setText("Ta bort");
         btnTaBort.addActionListener(new java.awt.event.ActionListener() {
@@ -61,34 +62,29 @@ public class TaBortUtrustning extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(119, Short.MAX_VALUE)
-                .addComponent(lblRubrik)
-                .addGap(140, 140, 140))
             .addGroup(layout.createSequentialGroup()
-                .addGap(141, 141, 141)
+                .addGap(42, 42, 42)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(cmbUtrustning, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblRubrik)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(cmbUtrustning, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblBorttagenUtrustning)
-                            .addComponent(btnTaBort))
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                        .addComponent(btnTaBort)
+                        .addGap(18, 18, 18)
+                        .addComponent(lblBorttagenUtrustning)))
+                .addGap(0, 119, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(36, 36, 36)
                 .addComponent(lblRubrik)
-                .addGap(18, 18, 18)
-                .addComponent(cmbUtrustning, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(70, 70, 70)
-                .addComponent(btnTaBort)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lblBorttagenUtrustning)
-                .addContainerGap(84, Short.MAX_VALUE))
+                .addComponent(cmbUtrustning, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnTaBort)
+                    .addComponent(lblBorttagenUtrustning))
+                .addContainerGap(177, Short.MAX_VALUE))
         );
 
         pack();
@@ -97,7 +93,7 @@ public class TaBortUtrustning extends javax.swing.JFrame {
     private void btnTaBortActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTaBortActionPerformed
         String benamning = cmbUtrustning.getSelectedItem().toString();
         String utrusningsId = getUtrustningsId(benamning);
-        
+
         if (Validering.kollaTaBort(benamning)) {
             String fragaUtrustning = "DELETE FROM Utrustning WHERE Utrustnings_ID ='" + utrusningsId + "'";
             String fragaVapen = "DELETE FROM vapen WHERE Utrustnings_ID ='" + utrusningsId + "'";
@@ -107,9 +103,10 @@ public class TaBortUtrustning extends javax.swing.JFrame {
             String inneharUtrustning_AgentId = "SELECT Agent_ID FROM innehar_utrustning WHERE Utrustnings_ID ='" + utrusningsId + "'";
             System.out.println(inneharUtrustning_AgentId);
             try {
+                //Hämtar id för agent som innehar utrustning
                 String svarAgentId = idb.fetchSingle(inneharUtrustning_AgentId);
                 System.out.println(svarAgentId);
-                String fragaInneharUtrusning = "DELETE FROM innehar_utrustning WHERE (Utrustnings_ID, Agent_ID) IN ('"+utrusningsId+"','"+svarAgentId+"')";
+                String fragaInneharUtrusning = "DELETE FROM innehar_utrustning WHERE (Utrustnings_ID, Agent_ID) IN ('" + utrusningsId + "','" + svarAgentId + "')";
                 idb.delete(fragaUtrustning);
                 idb.delete(fragaVapen);
                 idb.delete(fragaTeknik);
@@ -124,8 +121,9 @@ public class TaBortUtrustning extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnTaBortActionPerformed
 
-    private void fyllValjUtrustning(){
-            String fraga = "SELECT Benamning FROM Utrustning";
+    //Fyller combobox med alla utrustning från databasen
+    private void fyllValjUtrustning() {
+        String fraga = "SELECT Benamning FROM Utrustning";
 
         ArrayList<String> allUtrustning;
 
@@ -140,18 +138,18 @@ public class TaBortUtrustning extends javax.swing.JFrame {
         }
 
     }
-    
-    private String getUtrustningsId(String benamning){
-        String svar= "";
-        String fraga = "SELECT Utrustnings_ID FROM utrustning WHERE Benamning ='"+ benamning +"'";
-        try{
+
+    //Tar in utrustningens namn och returnerar utrustningens id
+    private String getUtrustningsId(String benamning) {
+        String svar = "";
+        String fraga = "SELECT Utrustnings_ID FROM utrustning WHERE Benamning ='" + benamning + "'";
+        try {
             svar = idb.fetchSingle(fraga);
-        }
-        catch (InfException e) {
+        } catch (InfException e) {
             JOptionPane.showMessageDialog(null, "Gick inte att hämta id till utrustning");
         }
         return svar;
-        
+
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnTaBort;
@@ -160,36 +158,4 @@ public class TaBortUtrustning extends javax.swing.JFrame {
     private javax.swing.JLabel lblRubrik;
     // End of variables declaration//GEN-END:variables
 }
-// SKRÄP:
- // OBS! Va försiktig med att klicka i rutan då data tas bort från tabell 
-        /*String namn = cmbUtrustning.getSelectedItem().toString();
-        if(Validering.kollaTaBort(namn)){
-        String fraga = "DELETE FROM Utrustning WHERE Benamning =" + "'" + namn + "'" + ";";
-        
-        try {
-            idb.delete(fraga);
-            lblBorttagenUtrustning.setVisible(true);
-            
-        } catch (InfException ex) {
-            JOptionPane.showMessageDialog(null, "Något gick fel");
-        }
-    }*/
 
-/* ArrayList<HashMap<String, String>> soktUtrustning;
-        
-        try{
-            String valdUtrustning = cmbUtrustning.getSelectedItem().toString();
-            String sqlFraga = "SELECT utrustning.Utrustnings_ID, utrustning.Benamning FROM Utrustning \n"
-                    + "    WHERE utrustning.Benamning= '" + valdUtrustning + "'";
-        
-            soktUtrustning = idb.fetchRows(sqlFraga);
-            
-            for (HashMap<String, String> enUtrustning : soktUtrustning) {
-                txtaValdUtrustning.append(enUtrustning.get("Utrustnings_ID") + "\t" + enUtrustning.get("Benamning") + "\n");
-            
-        }
-        }
-        catch (InfException e) {
-            JOptionPane.showMessageDialog(null, "Något gick fel");
-        
-        } */ 

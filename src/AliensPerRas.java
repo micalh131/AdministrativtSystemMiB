@@ -33,9 +33,12 @@ public class AliensPerRas extends javax.swing.JFrame {
         cboxRaser = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtaAlienLista = new javax.swing.JTextArea();
-        lblRubrik = new javax.swing.JLabel();
         lblId = new javax.swing.JLabel();
         lblNamn = new javax.swing.JLabel();
+
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
 
         lblValgRas.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         lblValgRas.setText("Välj Alienras");
@@ -51,8 +54,10 @@ public class AliensPerRas extends javax.swing.JFrame {
         txtaAlienLista.setRows(5);
         jScrollPane1.setViewportView(txtaAlienLista);
 
+
         lblRubrik.setFont(new java.awt.Font("Helvetica Neue", 1, 15)); // NOI18N
         lblRubrik.setText("Visa Aliens av viss ras");
+
 
         lblId.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         lblId.setText("Alien ID");
@@ -69,7 +74,7 @@ public class AliensPerRas extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(lblId)
-                        .addGap(47, 47, 47)
+                        .addGap(53, 53, 53)
                         .addComponent(lblNamn))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cboxRaser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -82,9 +87,13 @@ public class AliensPerRas extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+
+                .addGap(62, 62, 62)
+
                 .addGap(27, 27, 27)
                 .addComponent(lblRubrik)
                 .addGap(18, 18, 18)
+
                 .addComponent(lblValgRas)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(cboxRaser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -156,7 +165,6 @@ public class AliensPerRas extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblId;
     private javax.swing.JLabel lblNamn;
-    private javax.swing.JLabel lblRubrik;
     private javax.swing.JLabel lblValgRas;
     private javax.swing.JTextArea txtaAlienLista;
     // End of variables declaration//GEN-END:variables

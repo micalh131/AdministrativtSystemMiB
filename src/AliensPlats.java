@@ -37,12 +37,9 @@ public class AliensPlats extends javax.swing.JFrame {
         cboPlatser = new javax.swing.JComboBox<>();
         scpAliens = new javax.swing.JScrollPane();
         txtAreaVisaInfo = new javax.swing.JTextArea();
-        lblRubrik = new javax.swing.JLabel();
         lblValjPlats = new javax.swing.JLabel();
         lblId = new javax.swing.JLabel();
         lblNamn = new javax.swing.JLabel();
-
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         cboPlatser.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Välj" }));
         cboPlatser.addActionListener(new java.awt.event.ActionListener() {
@@ -55,12 +52,13 @@ public class AliensPlats extends javax.swing.JFrame {
         txtAreaVisaInfo.setRows(5);
         scpAliens.setViewportView(txtAreaVisaInfo);
 
-        lblRubrik.setText("Lista över alien som finns på en angiven plats");
-
+        lblValjPlats.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         lblValjPlats.setText("Välj plats");
 
+        lblId.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         lblId.setText("Alien ID");
 
+        lblNamn.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         lblNamn.setText("Namn");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -71,21 +69,22 @@ public class AliensPlats extends javax.swing.JFrame {
                 .addGap(42, 42, 42)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(lblId)
-                        .addGap(49, 49, 49)
-                        .addComponent(lblNamn))
-                    .addComponent(lblValjPlats)
-                    .addComponent(lblRubrik)
-                    .addComponent(scpAliens, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cboPlatser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(120, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(lblId)
+                                .addGap(51, 51, 51)
+                                .addComponent(lblNamn))
+                            .addComponent(scpAliens, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cboPlatser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(154, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lblValjPlats)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addComponent(lblRubrik)
-                .addGap(18, 18, 18)
+                .addGap(60, 60, 60)
                 .addComponent(lblValjPlats)
                 .addGap(3, 3, 3)
                 .addComponent(cboPlatser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -158,7 +157,6 @@ public class AliensPlats extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cboPlatser;
     private javax.swing.JLabel lblId;
     private javax.swing.JLabel lblNamn;
-    private javax.swing.JLabel lblRubrik;
     private javax.swing.JLabel lblValjPlats;
     private javax.swing.JScrollPane scpAliens;
     private javax.swing.JTextArea txtAreaVisaInfo;

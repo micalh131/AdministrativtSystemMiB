@@ -8,21 +8,22 @@ import oru.inf.InfDB;
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-
 /**
  *
- * @author miche
+ * @author miche, aaau, cAppelina
  */
 public class TaBortAlien extends javax.swing.JFrame {
+
     private InfDB idb;
+
     /**
-     * Creates new form TaBortAlien
+     * Skapar ny TaBortAlien
      */
     public TaBortAlien(InfDB idb) {
         initComponents();
-         this.idb = idb;
-         fyllValjAlienNamn();
-         lblTaBort.setVisible(false);
+        this.idb = idb;
+        fyllValjAlienNamn();
+        lblTaBort.setVisible(false);
     }
 
     /**
@@ -50,65 +51,62 @@ public class TaBortAlien extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         jLabel1.setText("Välj Alien att ta bort");
 
-        lblTaBort.setText("jLabel2");
+        lblTaBort.setText("Alien har tagits bort");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(40, 40, 40)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(cboxValAlien, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(158, 158, 158)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btnTaBort, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(cboxValAlien, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(btnTaBort)
                         .addGap(18, 18, 18)
-                        .addComponent(lblTaBort, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(145, 145, 145)
-                        .addComponent(jLabel1)))
-                .addContainerGap(49, Short.MAX_VALUE))
+                        .addComponent(lblTaBort, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(148, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(35, 35, 35)
                 .addComponent(jLabel1)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(cboxValAlien, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(94, 94, 94)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnTaBort)
                     .addComponent(lblTaBort))
-                .addContainerGap(93, Short.MAX_VALUE))
+                .addContainerGap(181, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    // Tar bort vald alien ur databasen i samtliga tabeller
     private void btnTaBortActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTaBortActionPerformed
-        // TODO add your handling code here:
+
         String namn = cboxValAlien.getSelectedItem().toString();
-        if(Validering.kollaTaBort(namn)){
-            try{
-                 String fraga = "DELETE FROM alien WHERE Namn = '" +namn + "'";
-                 idb.delete(fraga);
-                 
-                 lblTaBort.setVisible(true);
-                 lblTaBort.setText(namn + "är borttagen ur systemet");
-            }
-             catch (InfException e) {
-                 JOptionPane.showMessageDialog(null, "Gick inte att ta bort");
+        if (Validering.kollaTaBort(namn)) {
+            try {
+                String fraga = "DELETE FROM alien WHERE Namn = '" + namn + "'";
+                idb.delete(fraga);
+
+                lblTaBort.setVisible(true);
+                lblTaBort.setText(namn + "är borttagen ur systemet");
+            } catch (InfException e) {
+                JOptionPane.showMessageDialog(null, "Gick inte att ta bort");
             }
         }
     }//GEN-LAST:event_btnTaBortActionPerformed
-    
-   
-    
-    private void fyllValjAlienNamn(){
+
+    //Fyller combobox med alla alien från databasen
+    private void fyllValjAlienNamn() {
         String fraga = "SELECT Namn FROM alien";
 
         ArrayList<String> allaAliens;
@@ -123,7 +121,7 @@ public class TaBortAlien extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Gick inte att ladda Aliens");
         }
     }
-  
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnTaBort;
