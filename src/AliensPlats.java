@@ -42,8 +42,6 @@ public class AliensPlats extends javax.swing.JFrame {
         lblId = new javax.swing.JLabel();
         lblNamn = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
         cboPlatser.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Välj" }));
         cboPlatser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -55,12 +53,16 @@ public class AliensPlats extends javax.swing.JFrame {
         txtAreaVisaInfo.setRows(5);
         scpAliens.setViewportView(txtAreaVisaInfo);
 
-        lblRubrik.setText("Lista över alien som finns på en angiven plats");
+        lblRubrik.setFont(new java.awt.Font("Helvetica Neue", 1, 15)); // NOI18N
+        lblRubrik.setText("Visa Aliens plats");
 
+        lblValjPlats.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         lblValjPlats.setText("Välj plats");
 
+        lblId.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         lblId.setText("Alien ID");
 
+        lblNamn.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         lblNamn.setText("Namn");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -68,17 +70,21 @@ public class AliensPlats extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(42, 42, 42)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(lblId)
-                        .addGap(49, 49, 49)
-                        .addComponent(lblNamn))
-                    .addComponent(lblValjPlats)
-                    .addComponent(lblRubrik)
-                    .addComponent(scpAliens, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cboPlatser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(120, Short.MAX_VALUE))
+                        .addGap(42, 42, 42)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblValjPlats)
+                            .addComponent(scpAliens, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cboPlatser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(lblId)
+                                .addGap(49, 49, 49)
+                                .addComponent(lblNamn))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(159, 159, 159)
+                        .addComponent(lblRubrik)))
+                .addContainerGap(154, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -95,7 +101,7 @@ public class AliensPlats extends javax.swing.JFrame {
                     .addComponent(lblNamn))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(scpAliens, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(68, Short.MAX_VALUE))
+                .addContainerGap(66, Short.MAX_VALUE))
         );
 
         pack();

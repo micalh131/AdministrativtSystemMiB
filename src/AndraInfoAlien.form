@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
 <Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
-  <Properties>
-    <Property name="defaultCloseOperation" type="int" value="3"/>
-  </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
     <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
@@ -48,15 +45,15 @@
                                       <EmptySpace min="-2" pref="120" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
-                              <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                   <Component id="cboxRas" min="-2" max="-2" attributes="0"/>
                                   <Component id="txtNamn" min="-2" pref="71" max="-2" attributes="0"/>
                                   <Component id="txtLosen" min="-2" pref="71" max="-2" attributes="0"/>
-                                  <Component id="txtTel" alignment="0" min="-2" pref="71" max="-2" attributes="0"/>
-                                  <Component id="txtDatum" alignment="0" min="-2" pref="71" max="-2" attributes="0"/>
                                   <Component id="cboxValAlien" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="cboxPlats" min="-2" max="-2" attributes="0"/>
                                   <Component id="cboxAnsvarigAgent" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtDatum" pref="101" max="32767" attributes="0"/>
+                                  <Component id="txtTel" alignment="0" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -124,7 +121,7 @@
                   <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="txtRasAttribut" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="29" max="32767" attributes="0"/>
+              <EmptySpace pref="27" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jButton1" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="lblAndra" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -213,6 +210,9 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel8">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Helvetica Neue" size="15" style="1"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="&#xc4;ndra info f&#xf6;r Alien"/>
       </Properties>
     </Component>
@@ -259,6 +259,9 @@
     </Component>
     <Component class="javax.swing.JLabel" name="lblAndra">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Helvetica Neue" size="13" style="2"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="&#xc4;ndringar har sparats"/>
       </Properties>
     </Component>
