@@ -37,8 +37,7 @@ public class AliensPerRas extends javax.swing.JFrame {
         lblId = new javax.swing.JLabel();
         lblNamn = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
+        lblValgRas.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         lblValgRas.setText("Välj Alienras");
 
         cboxRaser.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Välj", "Squid", "Worm", "Boglodite" }));
@@ -52,10 +51,13 @@ public class AliensPerRas extends javax.swing.JFrame {
         txtaAlienLista.setRows(5);
         jScrollPane1.setViewportView(txtaAlienLista);
 
-        lblRubrik.setText("Visar registrerade aliens av en viss ras");
+        lblRubrik.setFont(new java.awt.Font("Helvetica Neue", 1, 15)); // NOI18N
+        lblRubrik.setText("Visa Aliens av viss ras");
 
+        lblId.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         lblId.setText("Alien ID");
 
+        lblNamn.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         lblNamn.setText("Namn");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -69,28 +71,30 @@ public class AliensPerRas extends javax.swing.JFrame {
                         .addComponent(lblId)
                         .addGap(47, 47, 47)
                         .addComponent(lblNamn))
-                    .addComponent(lblRubrik)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cboxRaser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblValgRas))
+                    .addComponent(lblValgRas)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(75, 75, 75)
+                        .addComponent(lblRubrik)))
                 .addContainerGap(121, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(15, 15, 15)
+                .addGap(27, 27, 27)
                 .addComponent(lblRubrik)
                 .addGap(18, 18, 18)
                 .addComponent(lblValgRas)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(cboxRaser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32)
+                .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblId)
                     .addComponent(lblNamn))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(67, Short.MAX_VALUE))
+                .addContainerGap(65, Short.MAX_VALUE))
         );
 
         pack();

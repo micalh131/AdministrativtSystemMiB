@@ -9,13 +9,14 @@ import oru.inf.InfException;
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-
 /**
  *
- * @author miche
+ * @author miche, aaau, cAppelina
  */
 public class SokEnskildAlien extends javax.swing.JFrame {
+    
     private InfDB idb;
+
     /**
      * Creates new form SokEnskildAlien
      */
@@ -92,30 +93,29 @@ public class SokEnskildAlien extends javax.swing.JFrame {
 
     private void btnSokActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSokActionPerformed
         txtaAlienInfo.setText("");
-
+        String soktNamn = txtNamnSok.getText();
         ArrayList<HashMap<String, String>> soktaNamn;
         
-        try {
-
-            String soktNamn = txtNamnSok.getText();
-            String fraga = "SELECT alien.Alien_ID, alien.Namn, alien.Telefon, alien.Registreringsdatum, plats.Benamning, agent.Namn FROM alien\n"
-                    + "    JOIN plats ON alien.Plats=plats.Plats_ID\n"
-                    + "        JOIN agent ON alien.Ansvarig_Agent=agent.Agent_ID\n"
-                    + "            WHERE alien.Namn= '" + soktNamn + "'";
-
-            soktaNamn = idb.fetchRows(fraga);
-
-            for (HashMap<String, String> ettNamn : soktaNamn) {
-                txtaAlienInfo.append(ettNamn.get("Alien_ID") + "\t" + ettNamn.get("Namn"));
+        if (Validering.textFaltEjTomtRegEx(soktNamn)) {
+            try {
+                
+                String fraga = "SELECT alien.Alien_ID, alien.Namn, alien.Telefon, alien.Registreringsdatum, plats.Benamning, agent.Namn FROM alien\n"
+                        + "    JOIN plats ON alien.Plats=plats.Plats_ID\n"
+                        + "        JOIN agent ON alien.Ansvarig_Agent=agent.Agent_ID\n"
+                        + "            WHERE alien.Namn= '" + soktNamn + "'";
+                
+                soktaNamn = idb.fetchRows(fraga);
+                
+                for (HashMap<String, String> ettNamn : soktaNamn) {
+                    txtaAlienInfo.append(ettNamn.get("Alien_ID") + "\t" + ettNamn.get("Namn"));
+                }
+                
+            } catch (InfException e) {
+                JOptionPane.showMessageDialog(null, "Kunde inte nå databasen");
             }
-
-        } catch (InfException e) {
-            JOptionPane.showMessageDialog(null, "Kunde inte nå databasen");
         }
-
     }//GEN-LAST:event_btnSokActionPerformed
 
-   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnSok;

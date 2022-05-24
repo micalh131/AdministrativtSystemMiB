@@ -10,15 +10,16 @@ import oru.inf.InfException;
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-
 /**
  *
  * @author aaau
  */
 public class SokAlienDatum extends javax.swing.JFrame {
-private InfDB idb;
+
+    private InfDB idb;
+
     /**
-     * Creates new form SokAlienDatum
+     * Skapar ny SokAlienDatum
      */
     public SokAlienDatum(InfDB idb) {
         initComponents();
@@ -109,36 +110,34 @@ private InfDB idb;
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    //Får in två olika datum och söker fram alla aliens som är registrerade mellan dessa 
     private void btnSokActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSokActionPerformed
-        
+
         txtaAliens.setText("");
         String soktFranDatum = txtfFranDatum.getText();
         String soktTillDatum = txtfTillDatum.getText();
-        
+
         ArrayList<HashMap<String, String>> soktaAliens;
-     if(Validering.valideraDatum(soktFranDatum) && Validering.valideraDatum(soktTillDatum)){
-     try {
-         
-         String fraga = "SELECT Alien_ID, Namn FROM alien \n" +
-"WHERE Registreringsdatum BETWEEN '" + soktFranDatum + "'AND'" + soktTillDatum + "'";
-         
-     soktaAliens = idb.fetchRows(fraga);
-            txtaAliens.append("Alien_ID" + "\t" + "Namn" + "\n");
-            for (HashMap<String, String> enAlien : soktaAliens) {
-                txtaAliens.append(enAlien.get("Alien_ID") + "\t" + enAlien.get("Namn") + "\n");
+        if (Validering.valideraDatum(soktFranDatum) && Validering.valideraDatum(soktTillDatum)) {
+            try {
+
+                String fraga = "SELECT Alien_ID, Namn FROM alien \n"
+                        + "WHERE Registreringsdatum BETWEEN '" + soktFranDatum + "'AND'" + soktTillDatum + "'";
+
+                soktaAliens = idb.fetchRows(fraga);
+                txtaAliens.append("Alien_ID" + "\t" + "Namn" + "\n");
+                for (HashMap<String, String> enAlien : soktaAliens) {
+                    txtaAliens.append(enAlien.get("Alien_ID") + "\t" + enAlien.get("Namn") + "\n");
+                }
+
+            } catch (InfException e) {
+                JOptionPane.showMessageDialog(null, "Något gick fel");
+
             }
 
-        } 
-     catch (InfException e) {
-            JOptionPane.showMessageDialog(null, "Något gick fel");
-
         }
-
-        
-     }
     }//GEN-LAST:event_btnSokActionPerformed
 
-   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnSok;
