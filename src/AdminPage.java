@@ -8,7 +8,7 @@ import oru.inf.InfException;
 
 /**
  *
- * @author miche, cappelina, aaau
+ * @author miche, aaau, cAppelina
  *
  * Klassen innehåller att antal knappar som länkar till nya fönster med
  * funktioner som endast en administratör kommer åt.
@@ -50,7 +50,11 @@ public class AdminPage extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         loginTitle.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
+
         loginTitle.setText("Välkommen Agent X");
+
+        loginTitle.setText("Välkommen Super Admin");
+
 
         lblBild.setIcon(new javax.swing.ImageIcon(getClass().getResource("/MiB SuperAdmin3.jpeg"))); // NOI18N
         lblBild.setText("jLabel1");

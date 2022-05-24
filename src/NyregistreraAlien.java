@@ -7,21 +7,28 @@ import oru.inf.InfDB;
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-
 /**
  *
- * @author miche
+ * @author miche, aaau, cAppelina
  */
 public class NyregistreraAlien extends javax.swing.JFrame {
+
     private InfDB idb;
+    //Klassen består av ett antal metoder som konverterar olika namn och benämningar till dess primärnyckel (id)
+    private HjalpDbFunktioner konv;
+    // Funktion för att ändra ras
+    private AndraRasFunktion fuAndraRas;
+
     /**
      * Creates new form NygeristreraAlien
      */
     public NyregistreraAlien(InfDB idb) {
         initComponents();
         this.idb = idb;
-        lblAlienId.setText(getAlienId());
+        lblAlienId.setText(getNextAlienId());
         lblReg.setVisible(false);
+        konv = new HjalpDbFunktioner(idb);
+        fuAndraRas = new AndraRasFunktion(idb);
     }
 
     /**
@@ -49,7 +56,14 @@ public class NyregistreraAlien extends javax.swing.JFrame {
         lblReg = new javax.swing.JLabel();
         cboxPlats = new javax.swing.JComboBox<>();
         cboxAnsvarigAgent = new javax.swing.JComboBox<>();
+
         jLabel8 = new javax.swing.JLabel();
+
+        cboxRas = new javax.swing.JComboBox<>();
+        txtRasAttribut = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
+        lblRasAttribut = new javax.swing.JLabel();
+
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -83,14 +97,28 @@ public class NyregistreraAlien extends javax.swing.JFrame {
 
         cboxAnsvarigAgent.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Välj", "Agent O", "Agent K", "Agent J", "Agent Z" }));
 
+
         jLabel8.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         jLabel8.setText("Fyll i fält");
+
+        cboxRas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Välj", "Boglodite", "Squid", "Worm" }));
+        cboxRas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cboxRasActionPerformed(evt);
+            }
+        });
+
+        jLabel8.setText("Ras");
+
+        lblRasAttribut.setText("jLabel9");
+
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+
                 .addContainerGap(8, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
@@ -102,12 +130,28 @@ public class NyregistreraAlien extends javax.swing.JFrame {
                                 .addGap(31, 31, 31)
                                 .addComponent(cboxAnsvarigAgent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
+
+                .addContainerGap(148, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(jLabel8)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(cboxRas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(jLabel6)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(cboxAnsvarigAgent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel1)
                                     .addComponent(jLabel2)
                                     .addComponent(jLabel3)
                                     .addComponent(jLabel4)
                                     .addComponent(jLabel5))
+
                                 .addGap(168, 168, 168)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel8)
@@ -125,6 +169,25 @@ public class NyregistreraAlien extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel7)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+
+                                .addGap(43, 43, 43)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(lblAlienId)
+                                    .addComponent(cboxPlats, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(txtDatum)
+                                    .addComponent(txtTel)
+                                    .addComponent(txtLosen)
+                                    .addComponent(txtNamn))))
+                        .addGap(33, 33, 33))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(lblReg, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton1)
+                    .addComponent(txtRasAttribut, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblRasAttribut))
+                .addGap(48, 48, 48))
+
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -156,94 +219,112 @@ public class NyregistreraAlien extends javax.swing.JFrame {
                     .addComponent(jLabel5)
                     .addComponent(cboxPlats, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel6)
                     .addComponent(cboxAnsvarigAgent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
+
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(lblReg))
-                .addGap(20, 20, 20))
+                    .addComponent(cboxAnsvarigAgent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel6)
+                    .addComponent(lblRasAttribut))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButton1)
+                            .addComponent(lblReg))
+                        .addGap(20, 20, 20))
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(cboxRas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtRasAttribut, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel8))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private String getAlienId(){
+    
+    //Kollar sista id som finns i tabellen och returnerar nästommande index
+    private String getNextAlienId() {
         String nextId = "";
-        try{
-            nextId = idb.getAutoIncrement("alien","Alien_ID");
-        }
-        catch(InfException ex){
-                JOptionPane.showMessageDialog(null, "Gick inte att hämta Alien id");
+        try {
+            nextId = idb.getAutoIncrement("alien", "Alien_ID");
+        } catch (InfException ex) {
+            JOptionPane.showMessageDialog(null, "Gick inte att hämta Alien id");
         }
         return nextId;
     }
-    
-    private String getPlatsId(String platsNamn){
-        String platsId = platsNamn;
-        if(!platsNamn.equalsIgnoreCase("Välj")){
-        try{
-            String fraga = "SELECT Plats_ID FROM plats WHERE Benamning = '"+ platsNamn +"'";
-            platsId = idb.fetchSingle(fraga);
-        }
-        catch(InfException ex){
-                JOptionPane.showMessageDialog(null, "Gick inte att hämta platsent id");
-            }
-        }
-        return platsId;
-    }
-    
-    private String getAgentId(String agentNamn){
-        String agentId = agentNamn;
-        if(!agentNamn.equalsIgnoreCase("Välj")){
-        try{
-            String fraga = "SELECT Agent_ID FROM agent WHERE namn = '"+ agentNamn +"'";
-            agentId = idb.fetchSingle(fraga);
-        }
-        catch(InfException ex){
-                JOptionPane.showMessageDialog(null, "Gick inte att hämta agentens id");
-            }
-        }
-        return agentId;
-    }
-    
+
+
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         String namn = txtNamn.getText();
         String losen = txtLosen.getText();
         String tel = txtTel.getText();
         String datum = txtDatum.getText();
-        String plats = getPlatsId(cboxPlats.getSelectedItem().toString());
-        String ansvarigAgent = getAgentId(cboxAnsvarigAgent.getSelectedItem().toString());
-        
-        
-        if (Validering.textFaltEjTomtRegEx(namn) && Validering.textFaltEjTomtRegEx(losen) && Validering.textFaltEjTomtRegEx(tel) && Validering.textFaltEjTomtRegEx(datum) && Validering.kollaCboxRegEx(plats) && Validering.kollaCboxRegEx(ansvarigAgent)){
-            try{
-                String nextId = getAlienId();
-                
-                String fraga = "INSERT INTO alien (Alien_ID, Registreringsdatum, Losenord, Namn, Telefon, Plats, Ansvarig_Agent) \n"
-                +"VALUES ( "+ nextId +", '"+ datum +"', '"+ losen +"', '"+ namn +"', '"+ tel +"',"+ plats +", "+ ansvarigAgent +")";
+        String plats = cboxPlats.getSelectedItem().toString();
+        String ansvarigAgent = cboxAnsvarigAgent.getSelectedItem().toString();
+        String ras = cboxRas.getSelectedItem().toString();
+        String rasAttribut = txtRasAttribut.getText();
+
+        if (Validering.textFaltEjTomtRegEx(namn) && Validering.textFaltEjTomtRegEx(losen)
+                && Validering.textFaltEjTomtRegEx(tel) && Validering.textFaltEjTomtRegEx(datum)
+                && Validering.kollaCboxRegEx(plats) && Validering.kollaCboxRegEx(ansvarigAgent)
+                && Validering.kollaCboxRegEx(ras) && Validering.textFaltEjTomtRegEx(rasAttribut)) {
+            try {
+                String platsId = konv.getPlatsId(plats);
+                String ansvarigAgentId = konv.getAgentId(ansvarigAgent);
+                String nextId = getNextAlienId();
+                //Lägg till ny ras
+                fuAndraRas.andraRas(nextId, ras, rasAttribut);
+
+                String fraga = "INSERT INTO alien (Alien_ID, Registreringsdatum, Losenord, "
+                        + "Namn, Telefon, Plats, Ansvarig_Agent) \n"
+                        + "VALUES ( " + nextId + ", '" + datum + "', '" + losen + "', '" + namn
+                        + "', '" + tel + "'," + platsId + ", " + ansvarigAgentId + ")";
                 idb.insert(fraga);
-                
+
                 txtNamn.setText("");
                 txtLosen.setText("");
                 txtTel.setText("");
                 txtDatum.setText("");
-                
+
                 lblReg.setVisible(true);
-            }
-            catch(InfException ex){
+            } catch (InfException ex) {
                 JOptionPane.showMessageDialog(null, "Något gick fel");
             }
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
-   
+    private void cboxRasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboxRasActionPerformed
+        // TODO add your handling code here:
+        String ras = cboxRas.getSelectedItem().toString();
+
+        if (ras.equalsIgnoreCase("boglodite")) {
+            lblRasAttribut.setText("Antal Boogies");
+            lblRasAttribut.setVisible(true);
+            txtRasAttribut.setVisible(true);
+
+        } else if (ras.equalsIgnoreCase("squid")) {
+            lblRasAttribut.setText("Antal Armar");
+            lblRasAttribut.setVisible(true);
+            txtRasAttribut.setVisible(true);
+        } else if (ras.equalsIgnoreCase("worm")) {
+            txtRasAttribut.setText("1");
+            lblRasAttribut.setVisible(false);
+            txtRasAttribut.setVisible(false);
+        }
+    }//GEN-LAST:event_cboxRasActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> cboxAnsvarigAgent;
     private javax.swing.JComboBox<String> cboxPlats;
+    private javax.swing.JComboBox<String> cboxRas;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -254,10 +335,12 @@ public class NyregistreraAlien extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel lblAlienId;
+    private javax.swing.JLabel lblRasAttribut;
     private javax.swing.JLabel lblReg;
     private javax.swing.JTextField txtDatum;
     private javax.swing.JTextField txtLosen;
     private javax.swing.JTextField txtNamn;
+    private javax.swing.JTextField txtRasAttribut;
     private javax.swing.JTextField txtTel;
     // End of variables declaration//GEN-END:variables
 }

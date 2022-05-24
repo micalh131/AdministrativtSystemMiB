@@ -9,15 +9,16 @@ import oru.inf.InfException;
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-
 /**
  *
- * @author carolinaappel
+ * @author miche, aaau, cAppelina
  */
 public class SokEnskildAgent extends javax.swing.JFrame {
+
     private InfDB idb;
+
     /**
-     * Creates new form SokEnskildAgent
+     * Skapar ny SokEnskildAgent
      */
     public SokEnskildAgent(InfDB idb) {
         initComponents();
@@ -91,32 +92,27 @@ public class SokEnskildAgent extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSokActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSokActionPerformed
-    
+
         txtaAgentInfo.setText("");
         String soktNamn = txtNamnSok.getText();
-        boolean inmatningOk= false;
-        if(!inmatningOk){
-           soktNamn = txtNamnSok.getText();  
-           inmatningOk= Validering.textFaltEjTomtRegEx(soktNamn);
-            
-           txtNamnSok.requestFocus();
-          
+        boolean inmatningOk = Validering.textFaltEjTomtRegEx(soktNamn);
+        if (!inmatningOk) {
+            txtNamnSok.requestFocus();
         }
-      
-      
-     ArrayList<HashMap<String, String>> soktaNamn;
-     
-     try {
-         
-         String fraga = "SELECT agent.Agent_ID, agent.Namn, agent.Telefon, agent.Administrator, \n"
-                 +  "omrade.Benamning, fordon.Fordons_ID, fordon.Fordonsbeskrivning FROM agent \n"
-                 +  "JOIN omrade ON omrade.Omrades_ID = agent.Omrade \n"
-                 +  "JOIN innehar_fordon ON innehar_fordon.Agent_ID = agent.Agent_ID \n"
-                 +  "JOIN fordon ON fordon.Fordons_ID = innehar_fordon.Fordons_ID \n"
-                 +  " WHERE agent.Namn = '" + soktNamn + "'";
-         
-     soktaNamn = idb.fetchRows(fraga);
-            txtaAgentInfo.append("AgentID" + "\t" + "Agentnamn" + "\t" + "telefonnr" + "\t" 
+
+        ArrayList<HashMap<String, String>> soktaNamn;
+
+        try {
+
+            String fraga = "SELECT agent.Agent_ID, agent.Namn, agent.Telefon, agent.Administrator, \n"
+                    + "omrade.Benamning, fordon.Fordons_ID, fordon.Fordonsbeskrivning FROM agent \n"
+                    + "JOIN omrade ON omrade.Omrades_ID = agent.Omrade \n"
+                    + "JOIN innehar_fordon ON innehar_fordon.Agent_ID = agent.Agent_ID \n"
+                    + "JOIN fordon ON fordon.Fordons_ID = innehar_fordon.Fordons_ID \n"
+                    + " WHERE agent.Namn = '" + soktNamn + "'";
+
+            soktaNamn = idb.fetchRows(fraga);
+            txtaAgentInfo.append("AgentID" + "\t" + "Agentnamn" + "\t" + "telefonnr" + "\t"
                     + "Admin J/N" + "\t" + "Område" + "\t" + "FordonsID" + "\t" + "UtlånatFordon" + "\n");
             for (HashMap<String, String> ettNamn : soktaNamn) {
                 txtaAgentInfo.append(ettNamn.get("Agent_ID") + "\t" + ettNamn.get("Namn") + "\t" + ettNamn.get("Telefon") + "\t" + ettNamn.get("Administrator") + "\t" + ettNamn.get("Benamnning") + "\t" + ettNamn.get("Telefon") + "\t" + ettNamn.get("Fordons_ID") + "\t" + ettNamn.get("Fordonsbeskrivning"));
@@ -129,10 +125,6 @@ public class SokEnskildAgent extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btnSokActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnSok;

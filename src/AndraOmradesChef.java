@@ -10,7 +10,7 @@ import oru.inf.InfException;
  */
 /**
  *
- * @author carolinaappel
+ * @author miche, aaau, cAppelina
  */
 public class AndraOmradesChef extends javax.swing.JFrame {
 
@@ -152,20 +152,7 @@ public class AndraOmradesChef extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnSokActionPerformed
 
-    /* private String faUtAgentID(String agentNamn){
-        String idAgent ="";
-        try{
-           
-            String fraga = "SELECT Agent_ID FROM Agent WHERE Namn = '"+ agentNamn + "'";
-            idAgent = idb.fetchSingle(fraga);
-            
-        }
-        catch(InfException e){
-            JOptionPane.showMessageDialog(null, "Nått gick fel");
-        }
-      return idAgent;
-    
-    }*/
+  
     private ArrayList getAllaAgentidOmradesChaf() {
         ArrayList<String> agentIds = null;
 

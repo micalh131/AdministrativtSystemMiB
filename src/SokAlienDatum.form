@@ -26,28 +26,29 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <Component id="jScrollPane1" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                  </Group>
-                  <Group type="102" attributes="0">
-                      <Component id="btnSok" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
-                  </Group>
-                  <Group type="102" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="lblRubrikFranDatum" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="lblRubrikTillDatum1" min="-2" max="-2" attributes="0"/>
                           <Component id="lblRubrik" min="-2" max="-2" attributes="0"/>
                       </Group>
+
                       <EmptySpace pref="49" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="ftxtfFranDatum" max="32767" attributes="0"/>
                           <Component id="ftxtfTillDatum" max="32767" attributes="0"/>
+
+                      <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="txtfTillDatum" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtfFranDatum" min="-2" max="-2" attributes="0"/>
+
                       </Group>
-                      <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
                   </Group>
+                  <Component id="btnSok" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="jScrollPane1" alignment="0" min="-2" max="-2" attributes="0"/>
               </Group>
+              <EmptySpace pref="52" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -56,21 +57,25 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
               <Component id="lblRubrik" min="-2" max="-2" attributes="0"/>
+
               <EmptySpace type="separate" max="-2" attributes="0"/>
+
+              <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="lblRubrikFranDatum" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="ftxtfFranDatum" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtfTillDatum" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="lblRubrikTillDatum1" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="ftxtfTillDatum" alignment="3" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="lblRubrikTillDatum1" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtfFranDatum" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
               <Component id="btnSok" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
               <Component id="jScrollPane1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="24" max="32767" attributes="0"/>
+              <EmptySpace pref="12" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -92,22 +97,6 @@
     <Component class="javax.swing.JLabel" name="lblRubrikTillDatum1">
       <Properties>
         <Property name="text" type="java.lang.String" value="Skriv in s&#xf6;kdatum till (yyyy-mm-dd)"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JFormattedTextField" name="ftxtfFranDatum">
-      <Properties>
-        <Property name="columns" type="int" value="8"/>
-        <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor">
-          <Format subtype="1" type="1"/>
-        </Property>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JFormattedTextField" name="ftxtfTillDatum">
-      <Properties>
-        <Property name="columns" type="int" value="8"/>
-        <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor">
-          <Format subtype="1" type="1"/>
-        </Property>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="btnSok">
@@ -133,5 +122,15 @@
         </Component>
       </SubComponents>
     </Container>
+    <Component class="javax.swing.JTextField" name="txtfFranDatum">
+      <Properties>
+        <Property name="columns" type="int" value="6"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtfTillDatum">
+      <Properties>
+        <Property name="columns" type="int" value="6"/>
+      </Properties>
+    </Component>
   </SubComponents>
 </Form>

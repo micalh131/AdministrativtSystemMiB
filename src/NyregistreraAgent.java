@@ -8,20 +8,24 @@ import oru.inf.InfException;
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-
 /**
  *
- * @author miche
+ * @author miche, aaau, cAppelina
  */
 public class NyregistreraAgent extends javax.swing.JFrame {
+
     private InfDB idb;
+    //Klassen består av ett antal metoder som konverterar olika namn och benämningar till dess primärnyckel (id)
+    private HjalpDbFunktioner konv;
+
     /**
-     * Creates new form NyregistreraAgent
+     * Skapar ny NyregistreraAgent
      */
     public NyregistreraAgent(InfDB idb) {
         initComponents();
         this.idb = idb;
         lblReg.setVisible(false);
+        konv = new HjalpDbFunktioner(idb);
     }
 
     /**
@@ -148,19 +152,19 @@ public class NyregistreraAgent extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-     //Hämtar nösta id som är ledigt i taballen
-    private String getAgentId(){
+
+    //Kollar sista id som finns i tabellen och returnerar nästommande index
+    private String getNextAgentId() {
         String nextId = "";
-        try{
-            nextId = idb.getAutoIncrement("agent","Agent_ID");
-        }
-        catch(InfException ex){
-                JOptionPane.showMessageDialog(null, "Gick inte att hämta Agent id");
+        try {
+            nextId = idb.getAutoIncrement("agent", "Agent_ID");
+        } catch (InfException ex) {
+            JOptionPane.showMessageDialog(null, "Gick inte att hämta Agent id");
         }
         return nextId;
     }
-    
-    private String valjOmrade(String omrade){
+
+    /*private String valjOmrade(String omrade){
         String omradeId = omrade;
         if(!omrade.equalsIgnoreCase("Välj")){
         try{
@@ -172,69 +176,67 @@ public class NyregistreraAgent extends javax.swing.JFrame {
             }
         }
         return omradeId;
-    }
-    
-    private boolean kollaAgentNamnReadanFinns(String namn){
-   ArrayList<String> AgentNamn = null;
-    boolean result = false;
-    try{
-        
-        String fraga = "SELECT Namn FROM agent";
-        AgentNamn = idb.fetchColumn(fraga);
-    
-    }catch(InfException ex){
-                JOptionPane.showMessageDialog(null, "Gick inte hämta namn från agent");
-            
-    }
-    
-    for(String n : AgentNamn){
-        if(n.equals(namn)){
-            result = true;
-            JOptionPane.showMessageDialog(null, "Finns redan en Agent med det namnet");
-        }
-   }
-    return result;
-}
-        
+    }*/
+    private boolean kollaAgentNamnReadanFinns(String namn) {
+        ArrayList<String> AgentNamn = null;
+        boolean result = false;
+        try {
 
-    
-   
-    
+            String fraga = "SELECT Namn FROM agent";
+            AgentNamn = idb.fetchColumn(fraga);
+
+        } catch (InfException ex) {
+            JOptionPane.showMessageDialog(null, "Gick inte hämta namn från agent");
+
+        }
+
+        for (String n : AgentNamn) {
+            if (n.equals(namn)) {
+                result = true;
+                JOptionPane.showMessageDialog(null, "Finns redan en Agent med det namnet");
+            }
+        }
+        return result;
+    }
+
+
     private void btnRegistreraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistreraActionPerformed
         // TODO add your handling code here:
         String namn = txtNamn.getText();
         String losen = txtLosen.getText();
         String tel = txtTel.getText();
         String datum = txtAnstDatum.getText();
-        String omrade = valjOmrade(cboxOmrade.getSelectedItem().toString());
+        String omrade = cboxOmrade.getSelectedItem().toString();
         String isAdmin = Validering.kollaIsAdmin(cboxAdmin.getSelectedItem().toString());
-        Boolean isLikaNamn =  kollaAgentNamnReadanFinns(namn);
-        System.out.println(omrade);
-        System.out.println(isAdmin);
-        
+        Boolean isLikaNamn = kollaAgentNamnReadanFinns(namn);
+
         //Behöver lägga till en koll så användaren har valt ett område 
-        if (Validering.textFaltEjTomtRegEx(namn) && Validering.textFaltEjTomtRegEx(losen) && Validering.textFaltEjTomtRegEx(tel) && Validering.textFaltEjTomtRegEx(datum) && Validering.kollaCboxRegEx(omrade) && Validering.kollaCboxRegEx(isAdmin) && !isLikaNamn){
-            try{
-                String nextId = getAgentId();
-                
-                String fraga = "INSERT INTO agent (Agent_ID, Namn, Telefon, Anstallningsdatum, Administrator, Losenord, Omrade) \n"
-                +"VALUES ( "+ nextId +", '"+ namn +"', '"+ tel +"', '"+ datum +"', '"+ isAdmin  +"',"+ losen +", "+ omrade +")";
+        if (Validering.textFaltEjTomtRegEx(namn) && Validering.textFaltEjTomtRegEx(losen)
+                && Validering.textFaltEjTomtRegEx(tel) && Validering.textFaltEjTomtRegEx(datum)
+                && Validering.kollaCboxRegEx(omrade) && Validering.kollaCboxRegEx(isAdmin)
+                && !isLikaNamn) {
+            try {
+                String omradeId = konv.getOmradeId(omrade);
+                String nextId = getNextAgentId();
+
+                String fraga = "INSERT INTO agent (Agent_ID, Namn, Telefon, Anstallningsdatum, "
+                        + "Administrator, Losenord, Omrade) \n"
+                        + "VALUES ( " + nextId + ", '" + namn + "', '" + tel + "', '" + datum
+                        + "', '" + isAdmin + "'," + losen + ", " + omradeId + ")";
                 idb.insert(fraga);
-                
+
                 txtNamn.setText("");
                 txtLosen.setText("");
                 txtTel.setText("");
                 txtAnstDatum.setText("");
-                
+
                 lblReg.setVisible(true);
-            }
-            catch(InfException ex){
+            } catch (InfException ex) {
                 JOptionPane.showMessageDialog(null, "Något gick fel");
             }
         }
     }//GEN-LAST:event_btnRegistreraActionPerformed
 
-   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnRegistrera;

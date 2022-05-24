@@ -20,6 +20,8 @@ public class AndraInfoAlien extends javax.swing.JFrame {
     private InfDB idb;
     //Klassen består av ett antal metoder som konverterar olika namn och benämningar till dess primärnyckel (id)
     private HjalpDbFunktioner konv;
+    // Funktion för att ändra ras
+    private AndraRasFunktion fuAndraRas;
 
     /**
      * Creates new form AndraInfoAlien
@@ -28,6 +30,7 @@ public class AndraInfoAlien extends javax.swing.JFrame {
         initComponents();
         this.idb = idb;
         konv = new HjalpDbFunktioner(idb);
+        fuAndraRas = new AndraRasFunktion(idb);
         fyllValjAlienNamn();
         fyllValjAnsvarigAgent();
         fyllValjPlats();
@@ -235,9 +238,11 @@ public class AndraInfoAlien extends javax.swing.JFrame {
         if (Validering.textFaltEjTomtRegEx(namn) && Validering.textFaltEjTomtRegEx(losen)
                 && Validering.textFaltEjTomtRegEx(tel) && Validering.textFaltEjTomtRegEx(datum)
                 && Validering.kollaCboxRegEx(ras) && Validering.kollaCboxRegEx(plats)
-                && Validering.textFaltEjTomtRegEx(ansvarigAgent)) {
-            //ändrar ras och tar bort gammal ras
-            andraRas(alienId, ras, rasAttribut);
+                && Validering.textFaltEjTomtRegEx(ansvarigAgent) && Validering.textFaltEjTomtRegEx(rasAttribut)) {
+            //tar bort gammal ras
+            taBortRas(alienId);
+            //Lägg till ny ras
+            fuAndraRas.andraRas(alienId, ras, rasAttribut);
             try {
                 String fraga = "UPDATE alien SET Namn = '" + namn + "', Losenord = '" 
                         + losen + "', Telefon = '" + tel + "', Registreringsdatum= '" 
@@ -340,19 +345,7 @@ public class AndraInfoAlien extends javax.swing.JFrame {
         }
     }
 
-    //Hittar och returnerar den sökta aliens id
-    /* private String getAlienId(String Namn){
-        String alienId = "";
-        try{
-            String fraga = "SELECT Alien_ID FROM alien WHERE Namn = '"+ Namn +"'";
-            alienId = idb.fetchSingle(fraga);
-        }
-        catch(InfException ex){
-                JOptionPane.showMessageDialog(null, "Gick inte att hämta alien id");
-            }
-        return alienId;
-    }
-     */
+    
     //Fyller i comboboxen för väljAlien 
     private void fyllValjAlienNamn() {
         String fraga = "SELECT Namn FROM alien";
@@ -369,62 +362,7 @@ public class AndraInfoAlien extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Gick inte att fylla combobox");
         }
     }
-
-    /*/ Får in ett valt platsnamn och returnerar platsens id
-    private String getPlatsId(String platsNamn){
-        String platsId = "";
-        try{
-            String fraga = "SELECT Plats_ID FROM plats WHERE Benamning = '"+ platsNamn +"'";
-            platsId = idb.fetchSingle(fraga);
-        }
-        catch(InfException ex){
-                JOptionPane.showMessageDialog(null, "Gick inte att hämta platsent id");
-            }
-        return platsId;
-    }
-     */
-    //Får in en vald ansvarig agent och returnerar agentens id
-    private String getAgentId(String agentNamn) {
-        String agentId = "";
-        try {
-            String fraga = "SELECT Agent_ID FROM agent WHERE namn = '" + agentNamn + "'";
-            agentId = idb.fetchSingle(fraga);
-        } catch (InfException ex) {
-            JOptionPane.showMessageDialog(null, "Gick inte att hämta agentens id");
-        }
-        return agentId;
-    }
-
-    //Kollar vilken ras som är vald som ny ras , anropar metoden för att 
-    //ta bort den gamla rasen och lägger sedan till aliens id i den nya rasens tabell
-    private void andraRas(String alienID, String ras, String rasAttribut) {
-
-        taBortRas(alienID);
-        if (ras.equals("Worm")) {
-            try {
-                String fraga = "INSERT INTO worm (Alien_ID) VALUES ('" + alienID + "')";
-                idb.insert(fraga);
-            } catch (InfException ex) {
-                JOptionPane.showMessageDialog(null, "Gick inte att lägga till ras");
-            }
-        } else if (ras.equals("Squid")) {
-            try {
-                String fraga = "INSERT INTO squid (Alien_ID, Antal_Armar) VALUES "
-                        + "('" + alienID + "','" + rasAttribut + "')";
-                idb.insert(fraga);
-            } catch (InfException ex) {
-                JOptionPane.showMessageDialog(null, "Gick inte att lägga till ras");
-            }
-        } else if (ras.equals("Boglodite")) {
-            try {
-                String fraga = "INSERT INTO boglodite (Alien_ID,Antal_Boogies) VALUES "
-                        + "('" + alienID + "','" + rasAttribut + "')";
-                idb.insert(fraga);
-            } catch (InfException ex) {
-                JOptionPane.showMessageDialog(null, "Gick inte att lägga till ras");
-            }
-        }
-    }
+   
 
     // Letar i varje ras tabell för att se vilken ras alien tillhörde
     // Hittar den aliens id så tar den bort hela den raden ur databasen.

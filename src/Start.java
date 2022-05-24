@@ -65,10 +65,16 @@ public class Start {
         */
 
          new LoginPage(idb).setVisible(true);
+
          new AdminStatus(idb).setVisible(true);
          new AliensPlats(idb).setVisible(true);
          
          
          
+
+         new SokAlienDatum(idb).setVisible(true);
+         new AdminStatus(idb).setVisible(true);
+         new AliensPerRas(idb).setVisible(true);
+
     }
 }

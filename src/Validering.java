@@ -2,31 +2,56 @@
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
-import java.util.regex.Pattern;  
+import java.util.regex.Pattern;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-
 /**
- 
+ *
  * @author carolinaappel
  */
 public class Validering {
 
-public static boolean textFaltHarVarde(JTextField rutaAttKolla)
-{
-    boolean resultat = true;
-    if (rutaAttKolla.getText().isEmpty()) {
-        JOptionPane.showMessageDialog(null, "inmatningsrutan är tom");
-        resultat = false;
-        rutaAttKolla.requestFocus();
+    public static boolean textFaltHarVarde(JTextField rutaAttKolla) {
+        boolean resultat = true;
+        if (rutaAttKolla.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "inmatningsrutan är tom");
+            resultat = false;
+            rutaAttKolla.requestFocus();
+        }
+        return resultat;
     }
-    return resultat;
-}
-    
+//Metoden validerar datumformat
+
+    public static boolean valideraDatum(String datum) {
+        boolean resultat = false;
+        //använder javas klass SimpleDateFormat för att parsa/tolka en datumsträng
+        //När objetet skapas sätts formateringen till det önskade datumformatet (yyyy-mm-dd)
+        SimpleDateFormat datumLasare = new SimpleDateFormat("yyyy-MM-dd");
+
+        try {
+            //Konverterar datumet till javas datumtyp
+            Date javaDatum = datumLasare.parse(datum);
+
+            //Om datumvalideringen ovan gick bra sätts reultatet till true
+            resultat = true;
+
+//Felhantering med javas Exceptionklasser enligt Javas föreslag enl API. 
+//Den första ger ett felmeddelande om ingen sträng finns. Den andra ger felmeddelande om man tex anger bokstäber. 
+        } catch (NullPointerException e) {
+            JOptionPane.showMessageDialog(null, "Ange datumet i korrekt format (yyyy-mm-dd)");
+        } catch (java.text.ParseException e) {
+            JOptionPane.showMessageDialog(null, "Ange datumet i korrekt format (yyyy-mm-dd)");
+        }
+
+        return resultat;
+    }
+
     /* Nedandstående kod är exempel på kod i klasser som ska använda 
         valideringsklassen som skrivits ovan: 
     if (Validering.textFaltHarVarde(variabelNamnA)){
@@ -42,65 +67,59 @@ public static boolean textFaltHarVarde(JTextField rutaAttKolla)
             JOptionPane.showMessageDialog(null, "Något gick fel!");
             System.out.println("Internt felmeddelande" + e.getMessage());
         }
-    */
-
-public static boolean textFaltEjTomtRegEx(String textAttKolla)
-
-{  /* Metoden kollar om rutan är tom genom att använda metoden matches i klassen Pattern. 
+     */
+    public static boolean textFaltEjTomtRegEx(String textAttKolla) {
+        /* Metoden kollar om rutan är tom genom att använda metoden matches i klassen Pattern. 
 
     Klassen pattern är Javas implementation av regular expresions. Regular expression är avancerade söksträngar där 
     man genom olika notationer kan söka efter teckenklasser (siffror, bokstäver, white space etc). 
     Ett regular expression är en sträng. ("^\\s*$") ^början, \\s white space, * 0 eller flera, $ slutet)
     Om man ska göra för heltal så blir det ("\d+") det matchas på siffror, en eller flera. 
     
-    */
-    boolean resultat= true;
-    //Pattern Pat= new Pattern("\s*");
-    boolean rutaTom = Pattern.matches("^\\s*$", textAttKolla);
-    
- 
-    if (rutaTom) {
-        JOptionPane.showMessageDialog(null, "rutan är tom eller innehåller bara space, vänligen ange något i rutan");
-        resultat = false;
-       
-    }
-    return resultat;
-}
+         */
+        boolean resultat = true;
+        //Pattern Pat= new Pattern("\s*");
+        boolean rutaTom = Pattern.matches("^\\s*$", textAttKolla);
 
-public static boolean kollaCboxRegEx(String textAttKolla)
-{  
-   
-    boolean resultat= true;
-    //Pattern Pat= new Pattern("\s*");
-    boolean rutaTom = Pattern.matches("\\W*((?i)välj(?-i))\\W*", textAttKolla);
-  
-    if (rutaTom) {
-        JOptionPane.showMessageDialog(null, "Välj något av alternativen i dropdown menyn");
-        resultat = false;
-       
-    }
-    return resultat;
-}
+        if (rutaTom) {
+            JOptionPane.showMessageDialog(null, "rutan är tom eller innehåller bara space, vänligen ange något i rutan");
+            resultat = false;
 
-public static boolean isHeltal(JTextField rutaAttKolla)
-{
-    boolean resultat = true;
-    
-    try{
-        String inStrang = rutaAttKolla.getText();
-        Integer.parseInt(inStrang);
-        rutaAttKolla.requestFocus();
-        
+        }
+        return resultat;
     }
-    catch(NumberFormatException e){
-        JOptionPane.showMessageDialog(null, "Var god ange ett heltal!");
-        resultat = false;
-        System.out.println("Heltal skrevs ej in");
-    }
-         
-    return resultat; 
 
-    /*if (Validering.isHeltal(variabelNamnA)){
+    public static boolean kollaCboxRegEx(String textAttKolla) {
+
+        boolean resultat = true;
+        //Pattern Pat= new Pattern("\s*");
+        boolean rutaTom = Pattern.matches("\\W*((?i)välj(?-i))\\W*", textAttKolla);
+
+        if (rutaTom) {
+            JOptionPane.showMessageDialog(null, "Välj något av alternativen i dropdown menyn");
+            resultat = false;
+
+        }
+        return resultat;
+    }
+
+    public static boolean isHeltal(JTextField rutaAttKolla) {
+        boolean resultat = true;
+
+        try {
+            String inStrang = rutaAttKolla.getText();
+            Integer.parseInt(inStrang);
+            rutaAttKolla.requestFocus();
+
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "Var god ange ett heltal!");
+            resultat = false;
+            System.out.println("Heltal skrevs ej in");
+        }
+
+        return resultat;
+
+        /*if (Validering.isHeltal(variabelNamnA)){
         
         try{
         String id = variabelNamnA.getText();
@@ -113,55 +132,50 @@ public static boolean isHeltal(JTextField rutaAttKolla)
             JOptionPane.showMessageDialog(null, "Något gick fel!");
             System.out.println("Internt felmeddelande" + e.getMessage());
         }
-    */
-}
-public static boolean kollaLosen(String dbLosen, String nyttLosen)
-{
-    boolean resultat = true;
-    System.out.println(dbLosen);
-    if (!dbLosen.equals(nyttLosen)) {
-        JOptionPane.showMessageDialog(null, "Nuvarande lösenord är fel");
-        resultat = false;
+         */
     }
-    return resultat;
-}
 
-public static boolean kollaAgentId(ArrayList<String> ids, String nyOmradesChef)
-{
-    boolean resultat = true;
-    for(String i : ids){
-        if (i.equalsIgnoreCase(nyOmradesChef)) {
-        JOptionPane.showMessageDialog(null, "Denna agent är redan asvarig för ett område \n Vänligen välj en annan agent");
-        resultat = false;
+    public static boolean kollaLosen(String dbLosen, String nyttLosen) {
+        boolean resultat = true;
+        System.out.println(dbLosen);
+        if (!dbLosen.equals(nyttLosen)) {
+            JOptionPane.showMessageDialog(null, "Nuvarande lösenord är fel");
+            resultat = false;
         }
+        return resultat;
     }
-   
-    return resultat;
-}
 
- public static String kollaIsAdmin(String admin){
-        String val = admin;
-       if(!admin.equalsIgnoreCase("Välj")){
-            if(admin.equals("Ja")){
-                val = "J";
+    public static boolean kollaAgentId(ArrayList<String> ids, String nyOmradesChef) {
+        boolean resultat = true;
+        for (String i : ids) {
+            if (i.equalsIgnoreCase(nyOmradesChef)) {
+                JOptionPane.showMessageDialog(null, "Denna agent är redan asvarig för ett område \n Vänligen välj en annan agent");
+                resultat = false;
             }
-            else{
+        }
+
+        return resultat;
+    }
+
+    public static String kollaIsAdmin(String admin) {
+        String val = admin;
+        if (!admin.equalsIgnoreCase("Välj")) {
+            if (admin.equals("Ja")) {
+                val = "J";
+            } else {
                 val = "N";
             }
-       }
-       return val;
+        }
+        return val;
     }
 
-
-public static boolean kollaTaBort(String namn)
-{
-    int response = JOptionPane.showConfirmDialog(null, "Är du säker på att du vill ta bort " + namn ,"Select option", JOptionPane.YES_NO_CANCEL_OPTION);
-    if(response == JOptionPane.YES_OPTION){
-        return true;
-    }else{
-        return false;
+    public static boolean kollaTaBort(String namn) {
+        int response = JOptionPane.showConfirmDialog(null, "Är du säker på att du vill ta bort " + namn, "Select option", JOptionPane.YES_NO_CANCEL_OPTION);
+        if (response == JOptionPane.YES_OPTION) {
+            return true;
+        } else {
+            return false;
+        }
     }
-}
-
 
 }
