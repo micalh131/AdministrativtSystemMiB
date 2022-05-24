@@ -8,17 +8,18 @@ import oru.inf.InfException;
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-
 /**
  *
- * @author carolinaappel
- * experimenterar. Måste lösa hur valet i comboboxen ska lagras för att kunna tas bort.
+ * @author miche, aaau, cAppelina experimenterar. Måste lösa hur valet i
+ * comboboxen ska lagras för att kunna tas bort.
  */
 public class TaBortAgent extends javax.swing.JFrame {
+
     private InfDB idb;
     private HjalpDbFunktioner konv;
+
     /**
-     * Creates new form TaBortAgent
+     * Skapar ny TaBortAgent
      */
     public TaBortAgent(InfDB idb) {
         initComponents();
@@ -92,11 +93,12 @@ public class TaBortAgent extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+// Tar bort vald agent ur databasen i samtliga tabeller
     private void btnTaBortActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTaBortActionPerformed
         String namn = cmbAgenter.getSelectedItem().toString();
         String agentId = konv.getAgentId(namn);
-        
-        if(Validering.kollaTaBort(namn)){
+
+        if (Validering.kollaTaBort(namn)) {
             String fragaAgent = "DELETE FROM Agent WHERE Agent_ID ='" + agentId + "'";
             String fragaFaltAgent = "DELETE FROM Agent WHERE Agent_ID ='" + agentId + "'";
             String fragaKontChef = "DELETE FROM Agent WHERE Agent_ID ='" + agentId + "'";
@@ -106,21 +108,21 @@ public class TaBortAgent extends javax.swing.JFrame {
                 idb.delete(fragaFaltAgent);
                 idb.delete(fragaKontChef);
                 idb.delete(fragaOmrChef);
-                
+
                 lblBorttagenAgent.setVisible(true);
                 lblBorttagenAgent.setText(namn + "är borttagen ur systemet");
-            }
-           catch (InfException e) {
+            } catch (InfException e) {
                 JOptionPane.showMessageDialog(null, "Gick inte att ta bort");
             }
         }
     }//GEN-LAST:event_btnTaBortActionPerformed
 
-    private void fyllValjAgent(){
+    //Fyller combobox med alla agenter från databasen 
+    private void fyllValjAgent() {
         String fraga = "SELECT Namn FROM Agent";
-        
-        ArrayList<String> allaAgenter; 
-        
+
+        ArrayList<String> allaAgenter;
+
         try {
             allaAgenter = idb.fetchColumn(fraga);
 
@@ -130,7 +132,7 @@ public class TaBortAgent extends javax.swing.JFrame {
         } catch (InfException e) {
             JOptionPane.showMessageDialog(null, "Gick ej att ladda agenter");
         }
-    
+
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -141,38 +143,3 @@ public class TaBortAgent extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 }
 
-
-
-/* skräp:
-try{
-            String soktNamn = cmbAgenter.getName();
-            String agentFraga = "SELECT Namn FROM Agent WHERE Agent.namn = '" + soktNamn + "'";
-            String svar = idb.fetchSingle(agentFraga);
-            lblValdAgent.setText(svar);
-            
-            if(svar == null) {
-                System.out.println("Agent hittades inte");
-                JOptionPane.showMessageDialog(null, "Agent hittades inte, skriv in rätt Agentnamn"); 
-            }
-            
-        }
-        catch(InfException e){
-            System.out.println("Något gick fel");
-            JOptionPane.showMessageDialog(null, "Något gick fel");  
-    }
-*/
-
- // OBS! Va försiktig med att klicka i rutan då data tas bort från tabell
-       /* String namn = cmbAgenter.getSelectedItem().toString();
-        if(Validering.kollaTaBort(namn)){
-            String fraga = "DELETE FROM Agent WHERE Namn =" + "'" + namn + "'" + ";";
-            try {
-                idb.delete(fraga);
-                
-                lblBorttagenAgent.setVisible(true);
-                lblBorttagenAgent.setText(namn + "är borttagen ur systemet");
-            }
-           catch (InfException e) {
-                JOptionPane.showMessageDialog(null, "Gick inte att ta bort");
-            }
-        }*/

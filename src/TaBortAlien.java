@@ -8,21 +8,22 @@ import oru.inf.InfDB;
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-
 /**
  *
- * @author miche
+ * @author miche, aaau, cAppelina
  */
 public class TaBortAlien extends javax.swing.JFrame {
+
     private InfDB idb;
+
     /**
-     * Creates new form TaBortAlien
+     * Skapar ny TaBortAlien
      */
     public TaBortAlien(InfDB idb) {
         initComponents();
-         this.idb = idb;
-         fyllValjAlienNamn();
-         lblTaBort.setVisible(false);
+        this.idb = idb;
+        fyllValjAlienNamn();
+        lblTaBort.setVisible(false);
     }
 
     /**
@@ -89,26 +90,25 @@ public class TaBortAlien extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    // Tar bort vald alien ur databasen i samtliga tabeller
     private void btnTaBortActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTaBortActionPerformed
-        // TODO add your handling code here:
+
         String namn = cboxValAlien.getSelectedItem().toString();
-        if(Validering.kollaTaBort(namn)){
-            try{
-                 String fraga = "DELETE FROM alien WHERE Namn = '" +namn + "'";
-                 idb.delete(fraga);
-                 
-                 lblTaBort.setVisible(true);
-                 lblTaBort.setText(namn + "är borttagen ur systemet");
-            }
-             catch (InfException e) {
-                 JOptionPane.showMessageDialog(null, "Gick inte att ta bort");
+        if (Validering.kollaTaBort(namn)) {
+            try {
+                String fraga = "DELETE FROM alien WHERE Namn = '" + namn + "'";
+                idb.delete(fraga);
+
+                lblTaBort.setVisible(true);
+                lblTaBort.setText(namn + "är borttagen ur systemet");
+            } catch (InfException e) {
+                JOptionPane.showMessageDialog(null, "Gick inte att ta bort");
             }
         }
     }//GEN-LAST:event_btnTaBortActionPerformed
-    
-   
-    
-    private void fyllValjAlienNamn(){
+
+    //Fyller combobox med alla alien från databasen
+    private void fyllValjAlienNamn() {
         String fraga = "SELECT Namn FROM alien";
 
         ArrayList<String> allaAliens;
@@ -123,7 +123,7 @@ public class TaBortAlien extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Gick inte att ladda Aliens");
         }
     }
-  
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnTaBort;
