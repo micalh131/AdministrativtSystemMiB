@@ -156,19 +156,7 @@ public class NyregistreraAgent extends javax.swing.JFrame {
         return nextId;
     }
 
-    /*private String valjOmrade(String omrade){
-        String omradeId = omrade;
-        if(!omrade.equalsIgnoreCase("Välj")){
-        try{
-            String fraga = "SELECT Omrades_ID FROM omrade WHERE Benamning = '"+ omrade +"'";
-            omradeId = idb.fetchSingle(fraga);
-        }
-        catch(InfException ex){
-                JOptionPane.showMessageDialog(null, "Gick inte att hämta områdets id");
-            }
-        }
-        return omradeId;
-    }*/
+   
     private boolean kollaAgentNamnReadanFinns(String namn) {
         ArrayList<String> AgentNamn = null;
         boolean result = false;
@@ -201,12 +189,13 @@ public class NyregistreraAgent extends javax.swing.JFrame {
         String omrade = cboxOmrade.getSelectedItem().toString();
         String isAdmin = Validering.kollaIsAdmin(cboxAdmin.getSelectedItem().toString());
         Boolean isLikaNamn = kollaAgentNamnReadanFinns(namn);
+        Boolean isLosenRattLangd = Validering.kollaLosenLangd(losen);
 
         //Behöver lägga till en koll så användaren har valt ett område 
         if (Validering.textFaltEjTomtRegEx(namn) && Validering.textFaltEjTomtRegEx(losen)
                 && Validering.textFaltEjTomtRegEx(tel) && Validering.textFaltEjTomtRegEx(datum)
                 && Validering.kollaCboxRegEx(omrade) && Validering.kollaCboxRegEx(isAdmin)
-                && !isLikaNamn) {
+                && !isLikaNamn && isLosenRattLangd) {
             try {
                 String omradeId = konv.getOmradeId(omrade);
                 String nextId = getNextAgentId();
