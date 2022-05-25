@@ -64,8 +64,6 @@ public class NyregistreraAlien extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         lblRasAttribut = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
         jLabel1.setText("Namn");
 
         jLabel2.setText("Lösenord");

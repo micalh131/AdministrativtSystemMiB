@@ -42,8 +42,6 @@ public class TaBortUtrustning extends javax.swing.JFrame {
         lblBorttagenUtrustning = new javax.swing.JLabel();
         btnTaBort = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
         cmbUtrustning.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Välj" }));
 
         lblRubrik.setText("Välj utrusting att ta bort");

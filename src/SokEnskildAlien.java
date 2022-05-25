@@ -42,8 +42,6 @@ public class SokEnskildAlien extends javax.swing.JFrame {
         lblInfo = new javax.swing.JLabel();
         lblRubrik = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
         txtaAlienInfo.setColumns(20);
         txtaAlienInfo.setRows(5);
         jScrollPane1.setViewportView(txtaAlienInfo);

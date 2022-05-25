@@ -46,8 +46,6 @@ public class TaBortAlien extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         lblTaBort = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
         cboxValAlien.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Välj" }));
 
         btnTaBort.setText("Ta bort");

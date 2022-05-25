@@ -52,8 +52,6 @@ public class NyregistreraAgent extends javax.swing.JFrame {
         cboxOmrade = new javax.swing.JComboBox<>();
         cboxAdmin = new javax.swing.JComboBox<>();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
         btnRegistrera.setText("Registrera");
         btnRegistrera.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

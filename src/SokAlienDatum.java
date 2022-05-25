@@ -44,8 +44,6 @@ public class SokAlienDatum extends javax.swing.JFrame {
         txtfFranDatum = new javax.swing.JTextField();
         txtfTillDatum = new javax.swing.JTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
         lblRubrik.setText("Registrerade alien mellan vissa datum");
 
         lblRubrikFranDatum.setText("Skriv in sökdatum från (yyyy-mm-dd)");

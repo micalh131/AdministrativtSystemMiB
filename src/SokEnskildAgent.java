@@ -40,8 +40,6 @@ public class SokEnskildAgent extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         txtaAgentInfo = new javax.swing.JTextArea();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
         lblSokInfoAgent.setText("Sök info om agent");
 
         txtNamnSok.setColumns(4);

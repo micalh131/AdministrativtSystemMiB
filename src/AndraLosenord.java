@@ -45,8 +45,6 @@ public class AndraLosenord extends javax.swing.JFrame {
         btnBytLosen = new javax.swing.JButton();
         lblLosenIsUpdated = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
         lblNyttLosen.setText("Skriv in nytt lösenord");
 
         lblNuvarandeLosen.setText("Skriv in nuvarande lösenord");
