@@ -105,6 +105,7 @@ public class SokAllInfoAlien extends javax.swing.JFrame {
                     + "Namn" + "\t" + "Telefon" + "\t" + "Plats" + "\t" + "Ansvarig_Agent" + "\n");
             for (HashMap<String, String> ettNamn : soktaNamn) {
                 txtaAlienInfo.append(ettNamn.get("Alien_ID") + "\t" + ettNamn.get("Registreringsdatum") + "\t" + ettNamn.get("Losenord") + "\t" + ettNamn.get("Namn") + "\t" + ettNamn.get("Telefon") + "\t" + ettNamn.get("Plats") + "\t" + ettNamn.get("Ansvarig Agent"));
+            
             }
         }
         catch (InfException e) {
