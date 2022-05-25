@@ -17,7 +17,7 @@ public class NyregistreraAlien extends javax.swing.JFrame {
     //Klassen består av ett antal metoder som konverterar olika namn och benämningar till dess primärnyckel (id)
     private HjalpDbFunktioner konv;
     // Funktion för att ändra ras
-    private AndraRasFunktion fuAndraRas;
+    private RasFunktioner fuAndraRas;
 
     /**
      * Creates new form NygeristreraAlien
@@ -28,7 +28,7 @@ public class NyregistreraAlien extends javax.swing.JFrame {
         lblAlienId.setText(getNextAlienId());
         lblReg.setVisible(false);
         konv = new HjalpDbFunktioner(idb);
-        fuAndraRas = new AndraRasFunktion(idb);
+        fuAndraRas = new RasFunktioner(idb);
     }
 
     /**
