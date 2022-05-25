@@ -65,6 +65,9 @@ public class Start {
         */
 
          new LoginPage(idb).setVisible(true);
+         new SokEnskildAgent(idb).setVisible(true);
+         new SokEnskildAlien(idb).setVisible(true);
+         new SokAllInfoAlien(idb).setVisible(true);
         
     }
 }
