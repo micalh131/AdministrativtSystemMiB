@@ -274,7 +274,7 @@ public class AgentPage extends javax.swing.JFrame {
 
     private void btnEnskildAlienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnskildAlienActionPerformed
         // TODO add your handling code here:
-        new SokAllInfoAlien(idb).setVisible(true);
+        new SokEnskildAlien(idb).setVisible(true);
     }//GEN-LAST:event_btnEnskildAlienActionPerformed
 
 

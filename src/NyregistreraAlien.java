@@ -30,6 +30,8 @@ public class NyregistreraAlien extends javax.swing.JFrame {
         lblReg.setVisible(false);
         konv = new HjalpDbFunktioner(idb);
         fuAndraRas = new RasFunktioner(idb);
+        txtRasAttribut.setVisible(false);
+        lblRasAttribut.setVisible(false);
     }
 
     /**
@@ -233,6 +235,7 @@ public class NyregistreraAlien extends javax.swing.JFrame {
                 String ansvarigAgentId = konv.getAgentId(ansvarigAgent);
                 String nextId = getNextAlienId();
                 //Lägg till ny ras
+               
                 fuAndraRas.andraRas(nextId, ras, rasAttribut);
 
                 String fraga = "INSERT INTO alien (Alien_ID, Registreringsdatum, Losenord, "
