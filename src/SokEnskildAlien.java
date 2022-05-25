@@ -38,8 +38,9 @@ public class SokEnskildAlien extends javax.swing.JFrame {
         txtaAlienInfo = new javax.swing.JTextArea();
         txtNamnSok = new javax.swing.JTextField();
         btnSok = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        lblNamn = new javax.swing.JLabel();
+        lblInfo = new javax.swing.JLabel();
+        lblRubrik = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -54,9 +55,11 @@ public class SokEnskildAlien extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setText("Skriv in Aliens namn");
+        lblNamn.setText("Skriv in Aliens namn");
 
-        jLabel2.setText("Ansvarig agent:");
+        lblInfo.setText("Information:");
+
+        lblRubrik.setText("Sök information om en alien");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -65,24 +68,30 @@ public class SokEnskildAlien extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(74, 74, 74)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
-                    .addComponent(btnSok)
+                    .addComponent(lblRubrik)
+                    .addComponent(lblInfo)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1)
-                    .addComponent(txtNamnSok, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(btnSok)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(lblNamn)
+                            .addGap(34, 34, 34)
+                            .addComponent(txtNamnSok, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(92, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(31, 31, 31)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtNamnSok, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(9, 9, 9)
+                .addComponent(lblRubrik)
+                .addGap(28, 28, 28)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtNamnSok, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblNamn))
+                .addGap(18, 18, 18)
                 .addComponent(btnSok)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
-                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                .addComponent(lblInfo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(57, 57, 57))
@@ -106,10 +115,19 @@ public class SokEnskildAlien extends javax.swing.JFrame {
                 
                 soktaNamn = idb.fetchRows(fraga);
                 
-                for (HashMap<String, String> ettNamn : soktaNamn) {
-                    txtaAlienInfo.append(ettNamn.get("Alien_ID") + "\t" + ettNamn.get("Namn"));
-                }
+                 
                 
+                txtaAlienInfo.append("AlienID" + "\t" + "telefonnr" + "\t" + "Registrerad" + "\t"
+                   + "Plats" + "\t" + "Ansvarig Agent" + "\n");
+                if (soktaNamn.size() < 1) {
+                    txtaAlienInfo.setText("Det finns ingen alien med detta namn, försök igen!");
+                }
+                for (HashMap<String, String> ettNamn : soktaNamn) {
+                    txtaAlienInfo.append(ettNamn.get("Alien_ID") + "\t" 
+                            + ettNamn.get("Telefon") + "\t" +ettNamn.get("Registreringsdatum") + "\t" +
+                            ettNamn.get("Benamning") + "\t" + ettNamn.get("Namn"));
+                }
+                   
             } catch (InfException e) {
                 JOptionPane.showMessageDialog(null, "Kunde inte nå databasen");
             }
@@ -119,9 +137,10 @@ public class SokEnskildAlien extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnSok;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblInfo;
+    private javax.swing.JLabel lblNamn;
+    private javax.swing.JLabel lblRubrik;
     private javax.swing.JTextField txtNamnSok;
     private javax.swing.JTextArea txtaAlienInfo;
     // End of variables declaration//GEN-END:variables
