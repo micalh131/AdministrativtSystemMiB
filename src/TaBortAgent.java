@@ -98,19 +98,18 @@ public class TaBortAgent extends javax.swing.JFrame {
         String namn = cmbAgenter.getSelectedItem().toString();
         String agentId = konv.getAgentId(namn);
 
-        if (Validering.kollaTaBort(namn)) {
-            String fragaAgent = "DELETE FROM Agent WHERE Agent_ID ='" + agentId + "'";
-            String fragaFaltAgent = "DELETE FROM Agent WHERE Agent_ID ='" + agentId + "'";
-            String fragaKontChef = "DELETE FROM Agent WHERE Agent_ID ='" + agentId + "'";
-            String fragaOmrChef = "DELETE FROM Agent WHERE Agent_ID ='" + agentId + "'";
+        if (Validering.kollaTaBort(namn) &&  kollaOmAgentÄrAnsvarigFörAlien(namn,agentId)) {
             try {
-                idb.delete(fragaAgent);
-                idb.delete(fragaFaltAgent);
-                idb.delete(fragaKontChef);
-                idb.delete(fragaOmrChef);
+                idb.delete("DELETE FROM innehar_utrustning WHERE Agent_ID =" + agentId);
+                idb.delete("DELETE FROM innehar_fordon WHERE Agent_ID =" + agentId);
+                idb.delete("DELETE FROM faltagent WHERE Agent_ID =" + agentId);
+                idb.delete("DELETE FROM kontorschef WHERE Agent_ID =" + agentId);
+                idb.delete("DELETE FROM omradeschef WHERE Agent_ID =" + agentId);
+                idb.delete("DELETE FROM agent WHERE Agent_ID =" + agentId);
 
                 lblBorttagenAgent.setVisible(true);
                 lblBorttagenAgent.setText(namn + "är borttagen ur systemet");
+                //cmbAgenter.removeItem(namn);
             } catch (InfException e) {
                 JOptionPane.showMessageDialog(null, "Gick inte att ta bort");
             }
@@ -133,6 +132,28 @@ public class TaBortAgent extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Gick ej att ladda agenter");
         }
 
+    }
+    
+    private boolean kollaOmAgentÄrAnsvarigFörAlien(String namn, String agentId){
+        boolean result = false;
+        ArrayList<String> ansvarigaAgenter = null;
+        try{
+            ansvarigaAgenter = idb.fetchColumn("SELECT namn FROM alien WHERE Ansvarig_Agent ="+ agentId);
+        }catch (InfException e) {
+            JOptionPane.showMessageDialog(null, "Gick ej att hämta ansvarig agent");
+        }
+        if(ansvarigaAgenter.size() < 1){
+            result = true;
+        }else{
+            String text = "" + namn + " går inte att ta bort\n då hen är ansvarig för alien\n med namn: \n ";
+            for(String n : ansvarigaAgenter){
+                text += n + "\n";
+            }
+            text += "Ändra ansvarig agent innan borttagning!";
+            
+            JOptionPane.showMessageDialog(null, text);
+        }
+        return result;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

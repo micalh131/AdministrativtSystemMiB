@@ -80,7 +80,6 @@ public class Validering {
     //in som nuvarande lösen. Detta är extra säkerhetskoll när användaren byter till nytt lösen.
     public static boolean kollaLosen(String dbLosen, String nuvarandeLosen) {
         boolean resultat = true;
-        System.out.println(dbLosen);
         if (!dbLosen.equals(nuvarandeLosen)) {
             JOptionPane.showMessageDialog(null, "Nuvarande lösenord är fel");
             resultat = false;
@@ -127,6 +126,17 @@ public class Validering {
         } else {
             return false;
         }
+    }
+    
+     // Kollar så att användaren inte byter till ett lösen med fler än sex karaktärer.
+    // returnerar true om lösen är rätt längd och false om lösen är för långt
+    public static boolean kollaLosenLangd(String nyttLosen) {
+        boolean resultat = true;
+        if (nyttLosen.length() > 6) {
+            JOptionPane.showMessageDialog(null, "Nytt lösen är för lågt!");
+            resultat = false;
+        }
+        return resultat;
     }
 
 }

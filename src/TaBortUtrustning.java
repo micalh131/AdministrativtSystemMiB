@@ -99,26 +99,16 @@ public class TaBortUtrustning extends javax.swing.JFrame {
         String utrusningsId = getUtrustningsId(benamning);
 
         if (Validering.kollaTaBort(benamning)) {
-            String fragaUtrustning = "DELETE FROM Utrustning WHERE Utrustnings_ID ='" + utrusningsId + "'";
-            String fragaVapen = "DELETE FROM vapen WHERE Utrustnings_ID ='" + utrusningsId + "'";
-            String fragaTeknik = "DELETE FROM teknik WHERE Utrustnings_ID ='" + utrusningsId + "'";
-            String fragaKommunikation = "DELETE FROM kommunikation WHERE Utrustnings_ID ='" + utrusningsId + "'";
-            //Fråga för att hämta ut agent id i tabell inneahar_utrustning för att kunna deleta
-            String inneharUtrustning_AgentId = "SELECT Agent_ID FROM innehar_utrustning WHERE Utrustnings_ID ='" + utrusningsId + "'";
-            System.out.println(inneharUtrustning_AgentId);
             try {
-                //Hämtar id för agent som innehar utrustning
-                String svarAgentId = idb.fetchSingle(inneharUtrustning_AgentId);
-                System.out.println(svarAgentId);
-                String fragaInneharUtrusning = "DELETE FROM innehar_utrustning WHERE (Utrustnings_ID, Agent_ID) IN ('" + utrusningsId + "','" + svarAgentId + "')";
-                idb.delete(fragaUtrustning);
-                idb.delete(fragaVapen);
-                idb.delete(fragaTeknik);
-                idb.delete(fragaKommunikation);
-                idb.delete(fragaInneharUtrusning);
+              
+                idb.delete("DELETE FROM innehar_utrustning WHERE Utrustnings_ID=" +utrusningsId);
+                idb.delete("DELETE FROM vapen WHERE Utrustnings_ID =" + utrusningsId);
+                idb.delete("DELETE FROM teknik WHERE Utrustnings_ID =" + utrusningsId);
+                idb.delete("DELETE FROM kommunikation WHERE Utrustnings_ID =" + utrusningsId);
+                idb.delete("DELETE FROM Utrustning WHERE Utrustnings_ID =" + utrusningsId);
                 lblBorttagenUtrustning.setVisible(true);
                 lblBorttagenUtrustning.setText(benamning + " är borttagen ur systemet");
-
+                cmbUtrustning.removeItem(benamning);
             } catch (InfException ex) {
                 JOptionPane.showMessageDialog(null, "Gick inte att ta bort");
             }
