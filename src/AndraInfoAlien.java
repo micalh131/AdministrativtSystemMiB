@@ -360,45 +360,6 @@ public class AndraInfoAlien extends javax.swing.JFrame {
     }
    
 
-    // Letar i varje ras tabell för att se vilken ras alien tillhörde
-    // Hittar den aliens id så tar den bort hela den raden ur databasen.
-    /*private void taBortRas(String alienID) {
-        
-
-        try {
-            String fraga = "SELECT Alien_ID FROM boglodite WHERE Alien_ID ='" + alienID + "'";
-            String svarAlienId = idb.fetchSingle(fraga);
-            if (svarAlienId != null) {
-                String fragaDelete = "DELETE FROM boglodite WHERE Alien_ID ='" + svarAlienId + "'";
-                idb.delete(fragaDelete);
-            }
-        } catch (InfException ex) {
-            JOptionPane.showMessageDialog(null, "Gick inte att ta bort alien från ras");
-        }
-
-        try {
-            String fraga = "SELECT Alien_ID FROM worm WHERE Alien_ID ='" + alienID + "'";
-            String svarAlienId = idb.fetchSingle(fraga);
-            if (svarAlienId != null) {
-                String fragaDelete = "DELETE FROM worm WHERE Alien_ID ='" + svarAlienId + "'";
-                idb.delete(fragaDelete);
-            }
-        } catch (InfException ex) {
-            JOptionPane.showMessageDialog(null, "Gick inte att ta bort alien från ras");
-        }
-
-        try {
-            String fraga = "SELECT Alien_ID FROM squid WHERE Alien_ID ='" + alienID + "'";
-            String svarAlienId = idb.fetchSingle(fraga);
-            if (svarAlienId != null) {
-                String fragaDelete = "DELETE FROM squid WHERE Alien_ID ='" + svarAlienId + "'";
-                idb.delete(fragaDelete);
-            }
-        } catch (InfException ex) {
-            JOptionPane.showMessageDialog(null, "Gick inte att ta bort alien från ras");
-        }
-    }*/
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> cboxAnsvarigAgent;
     private javax.swing.JComboBox<String> cboxPlats;

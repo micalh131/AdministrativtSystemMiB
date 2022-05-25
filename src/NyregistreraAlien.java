@@ -1,4 +1,5 @@
 
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import oru.inf.InfException;
 import oru.inf.InfDB;
@@ -219,11 +220,14 @@ public class NyregistreraAlien extends javax.swing.JFrame {
         String ansvarigAgent = cboxAnsvarigAgent.getSelectedItem().toString();
         String ras = cboxRas.getSelectedItem().toString();
         String rasAttribut = txtRasAttribut.getText();
+        Boolean isLikaNamn = kollaAlienNamnReadanFinns(namn);
+        Boolean isLosenRattLangd = Validering.kollaLosenLangd(losen);
 
         if (Validering.textFaltEjTomtRegEx(namn) && Validering.textFaltEjTomtRegEx(losen)
                 && Validering.textFaltEjTomtRegEx(tel) && Validering.textFaltEjTomtRegEx(datum)
                 && Validering.kollaCboxRegEx(plats) && Validering.kollaCboxRegEx(ansvarigAgent)
-                && Validering.kollaCboxRegEx(ras) && Validering.textFaltEjTomtRegEx(rasAttribut)) {
+                && Validering.kollaCboxRegEx(ras) && Validering.textFaltEjTomtRegEx(rasAttribut)
+                && !isLikaNamn && isLosenRattLangd) {
             try {
                 String platsId = konv.getPlatsId(plats);
                 String ansvarigAgentId = konv.getAgentId(ansvarigAgent);
@@ -269,6 +273,27 @@ public class NyregistreraAlien extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_cboxRasActionPerformed
 
+     private boolean kollaAlienNamnReadanFinns(String namn) {
+        ArrayList<String> alienNamn = null;
+        boolean result = false;
+        try {
+
+            String fraga = "SELECT Namn FROM alien";
+            alienNamn = idb.fetchColumn(fraga);
+
+        } catch (InfException ex) {
+            JOptionPane.showMessageDialog(null, "Gick inte hämta namn från alien");
+
+        }
+
+        for (String n : alienNamn) {
+            if (n.equals(namn)) {
+                result = true;
+                JOptionPane.showMessageDialog(null, "Finns redan en Alien med det namnet");
+            }
+        }
+        return result;
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> cboxAnsvarigAgent;
