@@ -60,6 +60,7 @@ public class AgentPage extends javax.swing.JFrame {
         btnListaAlienRas = new javax.swing.JButton();
         btnSokAlienDatum = new javax.swing.JButton();
         btnAndraInfoAlien = new javax.swing.JButton();
+        btnEnskildAlien = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -141,6 +142,13 @@ public class AgentPage extends javax.swing.JFrame {
             }
         });
 
+        btnEnskildAlien.setText("Sök information om enskild alien");
+        btnEnskildAlien.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEnskildAlienActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -170,7 +178,8 @@ public class AgentPage extends javax.swing.JFrame {
                                     .addComponent(btnListaAlienRas, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(btnSokAlienDatum)
                                     .addComponent(btnListaAlienPlats)
-                                    .addComponent(btnAlienInfo))
+                                    .addComponent(btnAlienInfo)
+                                    .addComponent(btnEnskildAlien))
                                 .addGap(0, 0, Short.MAX_VALUE))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(97, 97, 97)
@@ -201,6 +210,8 @@ public class AgentPage extends javax.swing.JFrame {
                 .addComponent(btnListaAlienRas)
                 .addGap(23, 23, 23)
                 .addComponent(btnSokAlienDatum)
+                .addGap(18, 18, 18)
+                .addComponent(btnEnskildAlien)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAdminInlogg)
@@ -261,6 +272,11 @@ public class AgentPage extends javax.swing.JFrame {
         new AdminPage(idb, userName).setVisible(true);
     }//GEN-LAST:event_btnAdminInloggActionPerformed
 
+    private void btnEnskildAlienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnskildAlienActionPerformed
+        // TODO add your handling code here:
+        new SokEnskildAlien(idb).setVisible(true);
+    }//GEN-LAST:event_btnEnskildAlienActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAdminInlogg;
@@ -268,6 +284,7 @@ public class AgentPage extends javax.swing.JFrame {
     private javax.swing.JButton btnAlienInfo;
     private javax.swing.JButton btnAndraInfoAlien;
     private javax.swing.JButton btnBytLosen;
+    private javax.swing.JButton btnEnskildAlien;
     private javax.swing.JButton btnListaAlienPlats;
     private javax.swing.JButton btnListaAlienRas;
     private javax.swing.JButton btnNyregistreraAlien;
