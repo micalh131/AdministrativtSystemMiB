@@ -15,6 +15,10 @@ import oru.inf.InfDB;
 public class TaBortAlien extends javax.swing.JFrame {
 
     private InfDB idb;
+     //Klassen består av ett antal metoder som konverterar olika namn och benämningar till dess primärnyckel (id)
+    private HjalpDbFunktioner konv;
+    // Funktion för att ändra ras
+    private RasFunktioner funktRas;
 
     /**
      * Skapar ny TaBortAlien
@@ -24,6 +28,8 @@ public class TaBortAlien extends javax.swing.JFrame {
         this.idb = idb;
         fyllValjAlienNamn();
         lblTaBort.setVisible(false);
+        konv = new HjalpDbFunktioner(idb);
+        funktRas = new RasFunktioner(idb);
     }
 
     /**
@@ -94,8 +100,12 @@ public class TaBortAlien extends javax.swing.JFrame {
     private void btnTaBortActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTaBortActionPerformed
 
         String namn = cboxValAlien.getSelectedItem().toString();
+        String alienId = konv.getAlienId(namn);
+        
         if (Validering.kollaTaBort(namn)) {
             try {
+                //tar bort gammal ras
+                funktRas.taBortRas(alienId);
                 String fraga = "DELETE FROM alien WHERE Namn = '" + namn + "'";
                 idb.delete(fraga);
 

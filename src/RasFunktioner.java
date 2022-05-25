@@ -12,10 +12,10 @@ import oru.inf.InfException;
  *
  * @author miche, aaau, cAppelina
  */
-public class AndraRasFunktion {
+public class RasFunktioner {
     private InfDB idb;
     
-    public AndraRasFunktion(InfDB idb) {
+    public RasFunktioner(InfDB idb) {
         this.idb = idb;
         
     }
@@ -48,6 +48,25 @@ public class AndraRasFunktion {
                 JOptionPane.showMessageDialog(null, "Gick inte att lägga till ras");
             }
         }
+    }
+    
+    // Letar i varje ras tabell för att se vilken ras alien tillhörde
+    // Hittar den aliens id så tar den bort hela den raden ur databasen.
+    public void taBortRas(String alienID) {
+        
+
+        try {
+            
+            idb.delete("DELETE FROM boglodite WHERE Alien_ID =" + alienID);
+            idb.delete("DELETE FROM squid WHERE Alien_ID =" + alienID);
+            idb.delete("DELETE FROM worm WHERE Alien_ID =" + alienID);
+            
+        } catch (InfException ex) {
+            JOptionPane.showMessageDialog(null, "Gick inte att ta bort alien från ras");
+        }
+
+       
+        
     }
 
 }

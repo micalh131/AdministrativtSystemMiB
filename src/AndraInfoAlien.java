@@ -21,7 +21,7 @@ public class AndraInfoAlien extends javax.swing.JFrame {
     //Klassen består av ett antal metoder som konverterar olika namn och benämningar till dess primärnyckel (id)
     private HjalpDbFunktioner konv;
     // Funktion för att ändra ras
-    private AndraRasFunktion fuAndraRas;
+    private RasFunktioner funktRas;
 
     /**
      * Creates new form AndraInfoAlien
@@ -30,7 +30,7 @@ public class AndraInfoAlien extends javax.swing.JFrame {
         initComponents();
         this.idb = idb;
         konv = new HjalpDbFunktioner(idb);
-        fuAndraRas = new AndraRasFunktion(idb);
+        funktRas = new RasFunktioner(idb);
         fyllValjAlienNamn();
         fyllValjAnsvarigAgent();
         fyllValjPlats();
@@ -236,9 +236,9 @@ public class AndraInfoAlien extends javax.swing.JFrame {
                 && Validering.kollaCboxRegEx(ras) && Validering.kollaCboxRegEx(plats)
                 && Validering.textFaltEjTomtRegEx(ansvarigAgent) && Validering.textFaltEjTomtRegEx(rasAttribut)) {
             //tar bort gammal ras
-            taBortRas(alienId);
+            funktRas.taBortRas(alienId);
             //Lägg till ny ras
-            fuAndraRas.andraRas(alienId, ras, rasAttribut);
+            funktRas.andraRas(alienId, ras, rasAttribut);
             try {
                 String fraga = "UPDATE alien SET Namn = '" + namn + "', Losenord = '" 
                         + losen + "', Telefon = '" + tel + "', Registreringsdatum= '" 
@@ -362,7 +362,7 @@ public class AndraInfoAlien extends javax.swing.JFrame {
 
     // Letar i varje ras tabell för att se vilken ras alien tillhörde
     // Hittar den aliens id så tar den bort hela den raden ur databasen.
-    private void taBortRas(String alienID) {
+    /*private void taBortRas(String alienID) {
         
 
         try {
@@ -397,7 +397,7 @@ public class AndraInfoAlien extends javax.swing.JFrame {
         } catch (InfException ex) {
             JOptionPane.showMessageDialog(null, "Gick inte att ta bort alien från ras");
         }
-    }
+    }*/
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> cboxAnsvarigAgent;
