@@ -116,19 +116,26 @@ public class AliensPerRas extends javax.swing.JFrame {
                 String fragaSquid = "SELECT squid.Alien_ID, alien.Namn FROM squid JOIN alien ON alien.`Alien_ID`= squid.`Alien_ID`";
                 soktaAliens = idb.fetchRows(fragaSquid);
 
-                for (HashMap<String, String> enAlien : soktaAliens) {
-                    txtaAlienLista.append(enAlien.get("Alien_ID") + "\t" + enAlien.get("Namn") + "\n");
-                    return;
+                //if (soktaAliens!= null) {
+
+                    for (HashMap<String, String> enAlien : soktaAliens) {
+                        txtaAlienLista.append(enAlien.get("Alien_ID") + "\t" + enAlien.get("Namn") + "\n");
+
+                    //}
+
+                //} else {
+                    //txtaAlienLista.append("Det finns ingen alien av denna ras");
                 }
             }
             if (valdRas.equals("Worm")) {
 
                 String fragaWorm = "SELECT worm.Alien_ID, alien.Namn FROM worm JOIN alien ON alien.`Alien_ID`= worm.`Alien_ID`";
                 soktaAliens = idb.fetchRows(fragaWorm);
-
-                for (HashMap<String, String> enAlien : soktaAliens) {
-                    txtaAlienLista.append(enAlien.get("Alien_ID") + "\t" + enAlien.get("Namn") + "\n");
-                    return;
+                
+                
+                    for (HashMap<String, String> enAlien : soktaAliens) {
+                        txtaAlienLista.append(enAlien.get("Alien_ID") + "\t" + enAlien.get("Namn") + "\n");
+                    
                 }
             }
             if (valdRas.equals("Boglodite")) {
@@ -138,7 +145,7 @@ public class AliensPerRas extends javax.swing.JFrame {
 
                 for (HashMap<String, String> enAlien : soktaAliens) {
                     txtaAlienLista.append(enAlien.get("Alien_ID") + "\t" + enAlien.get("Namn") + "\n");
-                    return;
+
                 }
             }
 
