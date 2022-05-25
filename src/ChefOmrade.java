@@ -36,8 +36,6 @@ public class ChefOmrade extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
         txtaChefInfo.setColumns(20);
         txtaChefInfo.setRows(5);
         jScrollPane1.setViewportView(txtaChefInfo);

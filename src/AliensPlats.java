@@ -42,8 +42,6 @@ public class AliensPlats extends javax.swing.JFrame {
         lblId = new javax.swing.JLabel();
         lblNamn = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
         cboPlatser.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Välj" }));
         cboPlatser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

@@ -43,8 +43,6 @@ public class AndraOmradesChef extends javax.swing.JFrame {
         lblOmradeschefAndrad = new javax.swing.JLabel();
         lblRubrikOmradesChef = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
         txtSokOmrade.setColumns(8);
 
         btnSok.setText("Sök");

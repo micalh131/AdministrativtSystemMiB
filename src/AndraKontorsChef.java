@@ -44,8 +44,6 @@ public class AndraKontorsChef extends javax.swing.JFrame {
         spara = new javax.swing.JButton();
         lblRubrik = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
         cboKontor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Välj" }));
         cboKontor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

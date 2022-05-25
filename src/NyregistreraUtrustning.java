@@ -41,8 +41,6 @@ public class NyregistreraUtrustning extends javax.swing.JFrame {
         btnReg = new javax.swing.JButton();
         lblReg = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
         lblUtrustningsID.setText("jLabel1");
 
         jLabel2.setText("Utrustnings ID");

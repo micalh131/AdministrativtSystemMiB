@@ -55,8 +55,6 @@ public class AndraInfoAgent extends javax.swing.JFrame {
         cboxAdmin = new javax.swing.JComboBox<>();
         lblAndra = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
         cboxValAgent.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Välj" }));
         cboxValAgent.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

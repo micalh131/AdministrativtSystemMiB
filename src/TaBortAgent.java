@@ -43,8 +43,6 @@ public class TaBortAgent extends javax.swing.JFrame {
         lblBorttagenAgent = new javax.swing.JLabel();
         btnTaBort = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
         lblRubrik.setText("Välj Agent att ta bort");
 
         cmbAgenter.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Välj" }));

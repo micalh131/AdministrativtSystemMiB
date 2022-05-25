@@ -66,8 +66,6 @@ public class AndraInfoAlien extends javax.swing.JFrame {
         lblRasAttribut = new javax.swing.JLabel();
         txtRasAttribut = new javax.swing.JTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
         cboxValAlien.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Välj" }));
         cboxValAlien.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

@@ -47,8 +47,6 @@ public class AdminPage extends javax.swing.JFrame {
         btnAndraOmradeschef = new javax.swing.JButton();
         btnAndraKontorschef = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
         loginTitle.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
         loginTitle.setText("Välkommen Super Admin");
 
