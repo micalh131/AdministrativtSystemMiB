@@ -249,7 +249,7 @@ public class NyregistreraAlien extends javax.swing.JFrame {
 
                 lblReg.setVisible(true);
             } catch (InfException ex) {
-                JOptionPane.showMessageDialog(null, "Något gick fel");
+                JOptionPane.showMessageDialog(null, "Gick inte att registrera alien");
             }
         }
     }//GEN-LAST:event_jButton1ActionPerformed
