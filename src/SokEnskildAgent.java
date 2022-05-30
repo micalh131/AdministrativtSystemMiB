@@ -39,10 +39,11 @@ public class SokEnskildAgent extends javax.swing.JFrame {
         btnSok = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtaAgentInfo = new javax.swing.JTextArea();
+        jLabel1 = new javax.swing.JLabel();
 
         lblSokInfoAgent.setText("Sök info om agent");
 
-        txtNamnSok.setColumns(4);
+        txtNamnSok.setColumns(5);
 
         btnSok.setText("Sök");
         btnSok.addActionListener(new java.awt.event.ActionListener() {
@@ -51,9 +52,11 @@ public class SokEnskildAgent extends javax.swing.JFrame {
             }
         });
 
-        txtaAgentInfo.setColumns(20);
+        txtaAgentInfo.setColumns(40);
         txtaAgentInfo.setRows(5);
         jScrollPane1.setViewportView(txtaAgentInfo);
+
+        jLabel1.setText("Skriv in agentens namn");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -66,20 +69,27 @@ public class SokEnskildAgent extends javax.swing.JFrame {
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(lblSokInfoAgent)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 113, Short.MAX_VALUE)
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jLabel1)
+                        .addGap(46, 46, 46)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(txtNamnSok)
                             .addComponent(btnSok, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(73, 73, 73))))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(35, 35, 35)
+                .addComponent(lblSokInfoAgent)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(45, 45, 45)
+                .addGap(22, 22, 22)
+                .addComponent(lblSokInfoAgent)
+                .addGap(7, 7, 7)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblSokInfoAgent)
-                    .addComponent(txtNamnSok, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtNamnSok, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
                 .addGap(33, 33, 33)
                 .addComponent(btnSok)
                 .addGap(27, 27, 27)
@@ -94,32 +104,36 @@ public class SokEnskildAgent extends javax.swing.JFrame {
 
         txtaAgentInfo.setText("");
         String soktNamn = txtNamnSok.getText();
-        boolean inmatningOk = Validering.textFaltEjTomtRegEx(soktNamn);
-        if (!inmatningOk) {
-            txtNamnSok.requestFocus();
-        }
+        //boolean inmatningOk = Validering.textFaltEjTomtRegEx(soktNamn);
+        //if (!inmatningOk) {
+            //txtNamnSok.requestFocus();
+       // }
 
+       
         ArrayList<HashMap<String, String>> soktaNamn;
-
+        if(Validering.textFaltEjTomtRegEx(soktNamn))
         try {
 
             String fraga = "SELECT agent.Agent_ID, agent.Namn, agent.Telefon, agent.Administrator, \n"
-                    + "omrade.Benamning, fordon.Fordons_ID, fordon.Fordonsbeskrivning FROM agent \n"
+                    + "omrade.Benamning FROM agent \n"
                     + "JOIN omrade ON omrade.Omrades_ID = agent.Omrade \n"
-                    + "JOIN innehar_fordon ON innehar_fordon.Agent_ID = agent.Agent_ID \n"
-                    + "JOIN fordon ON fordon.Fordons_ID = innehar_fordon.Fordons_ID \n"
                     + " WHERE agent.Namn = '" + soktNamn + "'";
 
             soktaNamn = idb.fetchRows(fraga);
+            
             txtaAgentInfo.append("AgentID" + "\t" + "Agentnamn" + "\t" + "telefonnr" + "\t"
-                    + "Admin J/N" + "\t" + "Område" + "\t" + "FordonsID" + "\t" + "UtlånatFordon" + "\n");
+                    + "Admin J/N" + "\t" + "Område" + "\n");
+             if (soktaNamn.size() < 1) {
+                    txtaAgentInfo.setText("Det finns ingen agent med detta namn, försök igen!");
+                }
             for (HashMap<String, String> ettNamn : soktaNamn) {
-                txtaAgentInfo.append(ettNamn.get("Agent_ID") + "\t" + ettNamn.get("Namn") + "\t" + ettNamn.get("Telefon") + "\t" + ettNamn.get("Administrator") + "\t" + ettNamn.get("Benamnning") + "\t" + ettNamn.get("Telefon") + "\t" + ettNamn.get("Fordons_ID") + "\t" + ettNamn.get("Fordonsbeskrivning"));
+                txtaAgentInfo.append(ettNamn.get("Agent_ID") + "\t" + ettNamn.get("Namn") + "\t" + ettNamn.get("Telefon") 
+                        + "\t" + ettNamn.get("Administrator") + "\t" + ettNamn.get("Benamning"));
             }
 
         } catch (InfException e) {
-            JOptionPane.showMessageDialog(null, "Något gick fel");
-
+            JOptionPane.showMessageDialog(null, "Något gick fel vid databaskopplingen \n" + e.getMessage());
+                System.out.println(e.getMessage());
         }
 
     }//GEN-LAST:event_btnSokActionPerformed
@@ -127,6 +141,7 @@ public class SokEnskildAgent extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnSok;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblSokInfoAgent;
     private javax.swing.JTextField txtNamnSok;

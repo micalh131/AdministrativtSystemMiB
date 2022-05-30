@@ -42,7 +42,7 @@ public class SokEnskildAlien extends javax.swing.JFrame {
         lblInfo = new javax.swing.JLabel();
         lblRubrik = new javax.swing.JLabel();
 
-        txtaAlienInfo.setColumns(20);
+        txtaAlienInfo.setColumns(35);
         txtaAlienInfo.setRows(5);
         jScrollPane1.setViewportView(txtaAlienInfo);
 
@@ -64,18 +64,22 @@ public class SokEnskildAlien extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(74, 74, 74)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblRubrik)
-                    .addComponent(lblInfo)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(btnSok)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(lblNamn)
-                            .addGap(34, 34, 34)
-                            .addComponent(txtNamnSok, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(92, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(74, 74, 74)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblRubrik)
+                            .addComponent(lblInfo)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(btnSok)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(lblNamn)
+                                    .addGap(34, 34, 34)
+                                    .addComponent(txtNamnSok, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(37, 37, 37)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(43, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
