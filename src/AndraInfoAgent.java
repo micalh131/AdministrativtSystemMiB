@@ -182,20 +182,21 @@ public class AndraInfoAgent extends javax.swing.JFrame {
         String tel = txtTel.getText();
         String datum = txtDatum.getText();
         //Får in namn på plast och hämtar platsens id
-        String omrade = konv.getPlatsId(cboxOmrade.getSelectedItem().toString());
+        String omrade = konv.getOmradeId(cboxOmrade.getSelectedItem().toString());
         //Får in namn på ansvarig agent och hämtar angentens id
         String isAdmin = Validering.kollaIsAdmin(cboxAdmin.getSelectedItem().toString());
 
-        if (Validering.kollaCboxRegEx(isAdmin) && Validering.kollaCboxRegEx(omrade)
+        if (Validering.kollaCboxRegEx(isAdmin)&& Validering.kollaCboxRegEx(omrade)
                 && Validering.textFaltEjTomtRegEx(namn) && Validering.textFaltEjTomtRegEx(losen)
                 && Validering.textFaltEjTomtRegEx(tel) && Validering.textFaltEjTomtRegEx(datum)) {
+          
             try {
                 String fraga = "UPDATE agent SET Namn = '" + namn + "', Losenord = '" + losen
                         + "', Telefon = '" + tel + "', Anstallningsdatum= '" + datum
                         + "', Omrade = " + omrade + ", Administrator = '" + isAdmin
                         + "' WHERE Agent_ID = " + agentId + "";
                 idb.update(fraga);
-
+                
                 txtNamn.setText("");
                 txtLosen.setText("");
                 txtTel.setText("");
