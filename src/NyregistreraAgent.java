@@ -201,7 +201,7 @@ public class NyregistreraAgent extends javax.swing.JFrame {
                 String fraga = "INSERT INTO agent (Agent_ID, Namn, Telefon, Anstallningsdatum, "
                         + "Administrator, Losenord, Omrade) \n"
                         + "VALUES ( " + nextId + ", '" + namn + "', '" + tel + "', '" + datum
-                        + "', '" + isAdmin + "'," + losen + ", " + omradeId + ")";
+                        + "', '" + isAdmin + "','" + losen + "', " + omradeId + ")";
                 idb.insert(fraga);
 
                 txtNamn.setText("");
@@ -211,7 +211,7 @@ public class NyregistreraAgent extends javax.swing.JFrame {
 
                 lblReg.setVisible(true);
             } catch (InfException ex) {
-                JOptionPane.showMessageDialog(null, "Något gick fel");
+                JOptionPane.showMessageDialog(null, "Gick inte att registrera agent");
             }
         }
     }//GEN-LAST:event_btnRegistreraActionPerformed
