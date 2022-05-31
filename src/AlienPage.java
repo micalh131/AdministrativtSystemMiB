@@ -140,44 +140,39 @@ public class AlienPage extends javax.swing.JFrame {
     När knappen klickas instansieras objekt av 'VisaAgentInfo' som ställer relevant fråga till
     databasen.
      */
-    
-     /* 
-    Denna metod är till för att Alien ska kunna se info om områdeschefen för sitt område.
-    När knappen klickas instansieras objekt av 'VisaAgentInfo' som ställer relevant fråga till
-    databasen.
-     */
-    
-    private void visaInfo() {
-        //String id = cmbValjAgent.getItemAt(1);
+   
+             
+       private void visaInfo() {
+        
 
         try {
             //String fraga = "SELECT Agent_ID, Namn, Telefon, Anstallningsdatum FROM Agent WHERE Omrade = 1";
             String fraga = "SELECT agent.Agent_ID, Namn, Telefon, omrade.Benamning FROM agent \n"
-                    + "JOIN omradeschef ON omradeschef.`Agent_ID` = agent.`Agent_ID`\n"
-                    + "JOIN omrade ON omradeschef.`Agent_ID` = omrade.`Omrades_ID`\n"
-                    + "JOIN plats ON omrade.`Omrades_ID` = plats.`Plats_ID` WHERE Plats_ID =" + alienPlats;
+                    + "JOIN omradeschef ON omradeschef.Agent_ID = agent.Agent_ID\n"
+                    + "JOIN omrade ON omradeschef.Agent_ID = omrade.Omrades_ID\n"
+                    + "JOIN plats ON omrade.Omrades_ID = plats.Plats_ID WHERE Plats_ID =" + alienPlats;
             HashMap<String, String> svar = idb.fetchRow(fraga);
             String namn = svar.get("Namn");
             String telefon = svar.get("Telefon");
             String omrade = svar.get("Benamning");
-            
+
             lblOmrade.setText(omrade);
             if (namn == null) {
                 lblNamn.setText("Det finns ingen chef för detta område");
                 lblTfn.setText("");
             } 
-            
+
             else {
                 lblNamn.setText("Agent: " + namn);
                  lblTfn.setText("Telefonnummer: " + telefon);
             }
-            
-            
-            
+
+
+
         } catch (InfException e) {
             JOptionPane.showMessageDialog(null, "Något gick fel med uppkopplingen till databasen");
             System.out.println(e.getMessage());
-        }  }  /* 
+        }  } /* 
          Denna metod instansierar ett objekt av klassen AndraLosenord (som kommer användas av alla
     användare). Klassen hanterar byte av lösenord.
      */
