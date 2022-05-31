@@ -138,7 +138,7 @@ public class NyregistreraUtrustning extends javax.swing.JFrame {
         String kategoriAttribut = txtKategoriAttribut.getText();
         
 
-        if (Validering.textFaltEjTomtRegEx(benamning)) {
+        if (Validering.textFaltEjTomtRegEx(benamning) && Validering.kollaCboxRegEx(kategori)) {
             try {
                 String nextId = getNextUtrustningsId();
                 laggTillUtrustningIKategori(nextId,kategori, kategoriAttribut);
@@ -162,6 +162,7 @@ public class NyregistreraUtrustning extends javax.swing.JFrame {
             lblKategoriAttribut.setText("Överföringsteknik");
             lblKategoriAttribut.setVisible(true);
             txtKategoriAttribut.setVisible(true);
+            
 
         } else if (kategori.equalsIgnoreCase("Teknik")) {
             lblKategoriAttribut.setText("Kraftkälla");

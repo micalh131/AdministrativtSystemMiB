@@ -89,33 +89,32 @@ public class ChefOmrade extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void cboxOmradeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboxOmradeActionPerformed
-
+        String soktOmrade = cboxOmrade.getSelectedItem().toString();
         txtaChefInfo.setText("");
-        ArrayList<HashMap<String, String>> soktaOmraden;
+        if (Validering.kollaCboxRegEx(soktOmrade)) {
+            try {
 
-        try {
+                String fraga = "SELECT agent.Namn FROM agent \n"
+                        + "    JOIN omradeschef ON omradeschef.Agent_ID = agent.Agent_ID\n"
+                        + "        JOIN omrade ON omrade.Omrades_ID=omradeschef.Omrade\n"
+                        + "            WHERE omrade.Benamning= '" + soktOmrade + "'";
 
-            String valtOmrade = cboxOmrade.getSelectedItem().toString();
-            String sqlFraga = "SELECT agent.Agent_ID, agent.Namn FROM agent \n"
-                    + "    JOIN omradeschef ON omradeschef.Agent_ID = agent.Agent_ID\n"
-                    + "        JOIN omrade ON omrade.Omrades_ID=omradeschef.Agent_ID\n"
-                    + "            WHERE omrade.Benamning= '" + valtOmrade + "'";
+                String svar = idb.fetchSingle(fraga);
+                txtaChefInfo.append(svar);
 
-            soktaOmraden = idb.fetchRows(sqlFraga);
+                
 
-            if (soktaOmraden.size() < 1) {
-                txtaChefInfo.append("Det finns ingen chef över detta område");
+                if (svar == null) {
+                    txtaChefInfo.append("Området har ingen chef");
+                    //JOptionPane.showMessageDialog(null, "Området hittades inte, skriv in rätt område");
+                }
+
+            } catch (InfException e) {
+                JOptionPane.showMessageDialog(null, "Något gick fel med uppkopplingen till databasen");
+                System.out.println(e.getMessage());
             }
-            for (HashMap<String, String> ettOmrade : soktaOmraden) {
-                //appendmetoden skriver in sträng i textrutan. Här läggs Hashmapen ettOmråde 
-                //in som tar en key som inparameter. Här är key det som finns i selectsatsen i SQL frågan.
-                txtaChefInfo.append(ettOmrade.get("Agent_ID") + "\t" + ettOmrade.get("Namn") + "\n");
-
-            }
-        } catch (InfException e) {
-            JOptionPane.showMessageDialog(null, "Något gick fel");
-
         }
+        
     }//GEN-LAST:event_cboxOmradeActionPerformed
     //Fyller dynamiskt på comboboxen med alla områden som finns i databasen
 
