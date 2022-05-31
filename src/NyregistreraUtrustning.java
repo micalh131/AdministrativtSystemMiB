@@ -21,8 +21,10 @@ public class NyregistreraUtrustning extends javax.swing.JFrame {
     public NyregistreraUtrustning(InfDB idb) {
         initComponents();
         this.idb = idb;
-        lblUtrustningsID.setText(getNextUtrustningsId());
+        //lblUtrustningsID.setText(getNextUtrustningsId());
         lblReg.setVisible(false);
+        lblKategoriAttribut.setVisible(false);
+        txtKategoriAttribut.setVisible(false);
     }
 
     /**
@@ -34,16 +36,17 @@ public class NyregistreraUtrustning extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        lblUtrustningsID = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         txtBenamning = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         btnReg = new javax.swing.JButton();
         lblReg = new javax.swing.JLabel();
+        cboxVäljKategori = new javax.swing.JComboBox<>();
+        jLabel1 = new javax.swing.JLabel();
+        txtKategoriAttribut = new javax.swing.JTextField();
+        lblKategoriAttribut = new javax.swing.JLabel();
 
-        lblUtrustningsID.setText("jLabel1");
-
-        jLabel2.setText("Utrustnings ID");
+        jLabel2.setText("Välj kategori");
 
         jLabel3.setText("Benämning");
 
@@ -56,39 +59,67 @@ public class NyregistreraUtrustning extends javax.swing.JFrame {
 
         lblReg.setText("Utrustning registrerad");
 
+        cboxVäljKategori.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Välj", "Kommunikation", "Vapen", "Teknik" }));
+        cboxVäljKategori.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cboxVäljKategoriActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setText("Registrera ny utrustning");
+
+        lblKategoriAttribut.setText("jLabel4");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(68, 68, 68)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnReg)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                            .addComponent(jLabel3)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txtBenamning, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(jLabel2)
-                            .addGap(29, 29, 29)
-                            .addComponent(lblUtrustningsID, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(18, 18, 18))))
-                .addGap(18, 18, 18)
-                .addComponent(lblReg, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btnReg)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                    .addComponent(jLabel3)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(txtBenamning, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(jLabel2)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(cboxVäljKategori, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(6, 6, 6))))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(lblReg, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(34, 34, 34)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblKategoriAttribut)
+                                    .addComponent(txtKategoriAttribut, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(83, 83, 83)
+                        .addComponent(jLabel1)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(45, 45, 45)
+                .addGap(8, 8, 8)
+                .addComponent(jLabel1)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblUtrustningsID)
-                    .addComponent(jLabel2))
-                .addGap(46, 46, 46)
+                    .addComponent(jLabel2)
+                    .addComponent(cboxVäljKategori, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(15, 15, 15)
+                .addComponent(lblKategoriAttribut)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtBenamning, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
+                    .addComponent(jLabel3)
+                    .addComponent(txtKategoriAttribut, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(47, 47, 47)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnReg)
@@ -103,10 +134,15 @@ public class NyregistreraUtrustning extends javax.swing.JFrame {
     private void btnRegActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegActionPerformed
 
         String benamning = txtBenamning.getText();
+        String kategori = cboxVäljKategori.getSelectedItem().toString();
+        String kategoriAttribut = txtKategoriAttribut.getText();
+        
 
         if (Validering.textFaltEjTomtRegEx(benamning)) {
             try {
                 String nextId = getNextUtrustningsId();
+                laggTillUtrustningIKategori(nextId,kategori, kategoriAttribut);
+                
                 String fraga = "INSERT INTO utrustning (Utrustnings_Id, Benamning) VALUES ( " + nextId + ", '" + benamning + "')";
                 idb.insert(fraga);
 
@@ -117,6 +153,26 @@ public class NyregistreraUtrustning extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_btnRegActionPerformed
+
+    private void cboxVäljKategoriActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboxVäljKategoriActionPerformed
+        // TODO add your handling code here:
+        String kategori = cboxVäljKategori.getSelectedItem().toString();
+
+        if (kategori.equalsIgnoreCase("kommunikation")) {
+            lblKategoriAttribut.setText("Överföringsteknik");
+            lblKategoriAttribut.setVisible(true);
+            txtKategoriAttribut.setVisible(true);
+
+        } else if (kategori.equalsIgnoreCase("Teknik")) {
+            lblKategoriAttribut.setText("Kraftkälla");
+            lblKategoriAttribut.setVisible(true);
+            txtKategoriAttribut.setVisible(true);
+        } else if (kategori.equalsIgnoreCase("vapen")) {
+            lblKategoriAttribut.setText("Kaliber");
+            lblKategoriAttribut.setVisible(true);
+            txtKategoriAttribut.setVisible(true);
+        }
+    }//GEN-LAST:event_cboxVäljKategoriActionPerformed
 
     ////Kollar sista id som finns i tabellen och returnerar nästommande index
     private String getNextUtrustningsId() {
@@ -129,13 +185,47 @@ public class NyregistreraUtrustning extends javax.swing.JFrame {
         return nextId;
     }
 
+    ///TEST!!!!!!!!!!!!!!
+    //Kollar vilken ras som är vald som ny ras , anropar metoden för att 
+    //ta bort den gamla rasen och lägger sedan till aliens id i den nya rasens tabell
+    public void laggTillUtrustningIKategori(String utrustningsID, String kategori, String utrustningsAttribut) {
+
+        
+        if (kategori.equals("Kommunikation")) {
+            try {
+                String fraga = "INSERT INTO kommunikation (Utrustnings_ID,Overforingsteknik) VALUES (" + utrustningsID + ",'"+utrustningsAttribut+"')";
+                idb.insert(fraga);
+            } catch (InfException ex) {
+                JOptionPane.showMessageDialog(null, "Gick inte att lägga till utrustning");
+            }
+        } else if (kategori.equals("Vapen")) {
+            try {
+                String fraga = "INSERT INTO vapen (Utrustnings_ID, Kaliber) VALUES "
+                        + "(" + utrustningsID + ",'" + utrustningsAttribut + "')";
+                idb.insert(fraga);
+            } catch (InfException ex) {
+                JOptionPane.showMessageDialog(null, "Gick inte att lägga till utrustning");
+            }
+        } else if (kategori.equals("Teknik")) {
+            try {
+                String fraga = "INSERT INTO teknik (Utrustnings_ID,Kraftkalla) VALUES "
+                        + "(" + utrustningsID + ",'" + utrustningsAttribut + "')";
+                idb.insert(fraga);
+            } catch (InfException ex) {
+                JOptionPane.showMessageDialog(null, "Gick inte att lägga till utrustning");
+            }
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnReg;
+    private javax.swing.JComboBox<String> cboxVäljKategori;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel lblKategoriAttribut;
     private javax.swing.JLabel lblReg;
-    private javax.swing.JLabel lblUtrustningsID;
     private javax.swing.JTextField txtBenamning;
+    private javax.swing.JTextField txtKategoriAttribut;
     // End of variables declaration//GEN-END:variables
 }
