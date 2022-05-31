@@ -35,27 +35,26 @@
                           <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="txtNamn" min="-2" pref="71" max="-2" attributes="0"/>
                           <Component id="txtLosen" min="-2" pref="71" max="-2" attributes="0"/>
-                          <Component id="txtTel" alignment="0" min="-2" pref="71" max="-2" attributes="0"/>
-                          <Component id="txtDatum" alignment="0" min="-2" pref="71" max="-2" attributes="0"/>
                           <Component id="cboxValAgent" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="cboxOmrade" min="-2" max="-2" attributes="0"/>
                           <Component id="cboxAdmin" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtTel" pref="96" max="32767" attributes="0"/>
+                          <Component id="txtDatum" alignment="0" max="32767" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <EmptySpace max="32767" attributes="0"/>
-                      <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnAndra" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="lblAndra" pref="129" max="32767" attributes="0"/>
+                      <Component id="lblAndra" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -111,7 +110,7 @@
                       <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+              <Component id="btnAndra" min="-2" max="-2" attributes="0"/>
               <EmptySpace pref="35" max="32767" attributes="0"/>
           </Group>
       </Group>
@@ -176,12 +175,12 @@
         <Property name="text" type="java.lang.String" value="&#xc4;ndra info f&#xf6;r Agent"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton1">
+    <Component class="javax.swing.JButton" name="btnAndra">
       <Properties>
         <Property name="text" type="java.lang.String" value="&#xc4;ndra"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAndraActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel9">

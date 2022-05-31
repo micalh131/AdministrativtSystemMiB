@@ -68,11 +68,11 @@ public class TaBortAgent extends javax.swing.JFrame {
                             .addComponent(cmbAgenter, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnTaBort))
                         .addGap(18, 18, 18)
-                        .addComponent(lblBorttagenAgent))
+                        .addComponent(lblBorttagenAgent, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(138, 138, 138)
                         .addComponent(lblRubrik)))
-                .addContainerGap(21, Short.MAX_VALUE))
+                .addContainerGap(64, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -106,7 +106,7 @@ public class TaBortAgent extends javax.swing.JFrame {
                 idb.delete("DELETE FROM agent WHERE Agent_ID =" + agentId);
 
                 lblBorttagenAgent.setVisible(true);
-                lblBorttagenAgent.setText(namn + "är borttagen ur systemet");
+                lblBorttagenAgent.setText(namn + " är borttagen ur systemet");
                 //cmbAgenter.removeItem(namn);
             } catch (InfException e) {
                 JOptionPane.showMessageDialog(null, "Gick inte att ta bort");
