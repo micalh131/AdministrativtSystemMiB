@@ -270,7 +270,7 @@ public class AndraInfoAlien extends javax.swing.JFrame {
             lblRasAttribut.setVisible(true);
             txtRasAttribut.setVisible(true);
         } else if (ras.equalsIgnoreCase("worm")) {
-            lblRasAttribut.setText("1");
+            txtRasAttribut.setText("1");
             lblRasAttribut.setVisible(false);
             txtRasAttribut.setVisible(false);
         }

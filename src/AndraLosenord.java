@@ -108,7 +108,7 @@ public class AndraLosenord extends javax.swing.JFrame {
         String nyttLosen = txtNyttLosen.getText();
         String nuvarandeLosen = txtNuvarandeLosen.getText();
 
-        if (Validering.textFaltEjTomtRegEx(nyttLosen) && Validering.textFaltEjTomtRegEx(nuvarandeLosen)) {
+        if (Validering.textFaltEjTomtRegEx(nyttLosen) && Validering.textFaltEjTomtRegEx(nuvarandeLosen) && Validering.kollaLosenLangd(nyttLosen)) {
 
             if (Validering.kollaLosen(password, nuvarandeLosen)) {
                 String valtID = kollaValdUser(valdUser);

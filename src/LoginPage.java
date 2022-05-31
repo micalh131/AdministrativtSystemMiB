@@ -142,24 +142,26 @@ public class LoginPage extends javax.swing.JFrame {
                 if (valdUser.equalsIgnoreCase("Agent")) {
 
                     String fragaUserName = "SELECT Agent_ID FROM agent WHERE Agent_ID=" + userName;
-                    String fragaPassword = "SELECT Losenord FROM agent WHERE Losenord=" + "'" + password + "'";
+                    String fragaPassword = "SELECT Losenord FROM agent WHERE Agent_ID=" + userName;
                     String fragaIsAdmin = "SELECT Administrator FROM agent WHERE Agent_ID=" + userName;
                     String svarIsAdmin = idb.fetchSingle(fragaIsAdmin);
                     String svarUserName = idb.fetchSingle(fragaUserName);
                     String svarPassword = idb.fetchSingle(fragaPassword);
 
-                    if (userName.equals(svarUserName) && password.equals(svarPassword)) {
+                    if (userName.equals(svarUserName) && Validering.kollaLosen(svarPassword, password)) {
                         new AgentPage(idb, userName, valdUser, password, svarIsAdmin).setVisible(true);
                     }
                 } else if (valdUser.equalsIgnoreCase("Alien")) {
                     String fragaUserName = "SELECT Alien_ID FROM alien WHERE Alien_ID=" + userName;
-                    String fragaPassword = "SELECT Losenord FROM alien WHERE Losenord=" + "'" + password + "'";
+                    String fragaPassword = "SELECT Losenord FROM alien WHERE Alien_ID=" + userName;
                     String fragaPlats = "SELECT plats FROM alien WHERE Alien_ID=" + userName;
                     String svarPlats = idb.fetchSingle(fragaPlats);
                     String svarUserName = idb.fetchSingle(fragaUserName);
                     String svarPassword = idb.fetchSingle(fragaPassword);
+                    System.out.println(svarPassword);
+                    System.out.println(password);
 
-                    if (userName.equals(svarUserName) && password.equals(svarPassword)) {
+                    if (userName.equals(svarUserName) && Validering.kollaLosen(svarPassword, password)) {
                         new AlienPage(idb, svarPlats, userName, valdUser, password).setVisible(true);
                     }
                 }
