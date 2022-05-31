@@ -160,10 +160,19 @@ public class AlienPage extends javax.swing.JFrame {
             String namn = svar.get("Namn");
             String telefon = svar.get("Telefon");
             String omrade = svar.get("Benamning");
-
-            lblNamn.setText("Agent: " + namn);
-            lblTfn.setText("Telefonnummer: " + telefon);
-            lblOmrade.setText("Område: "+ omrade);
+            
+            lblOmrade.setText(omrade);
+            if (namn == null) {
+                lblNamn.setText("Det finns ingen chef för detta område");
+                lblTfn.setText("");
+            } 
+            
+            else {
+                lblNamn.setText("Agent: " + namn);
+                 lblTfn.setText("Telefonnummer: " + telefon);
+            }
+            
+            
             
         } catch (InfException e) {
             JOptionPane.showMessageDialog(null, "Något gick fel med uppkopplingen till databasen");
