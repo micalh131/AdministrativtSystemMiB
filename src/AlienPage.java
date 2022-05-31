@@ -88,27 +88,24 @@ public class AlienPage extends javax.swing.JFrame {
                 .addComponent(lblBildAlien, javax.swing.GroupLayout.PREFERRED_SIZE, 402, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 81, Short.MAX_VALUE)
+                        .addComponent(lblValkommenAlien)
+                        .addGap(45, 59, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(42, 42, 42)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 75, Short.MAX_VALUE)
-                                .addComponent(lblValkommenAlien)
-                                .addGap(45, 45, 45))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(btnBytLosen)
-                                .addGap(63, 63, 63))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(42, 42, 42)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblOmrade)
-                                    .addComponent(lblRubrik))
-                                .addGap(0, 7, Short.MAX_VALUE)))
-                        .addGap(0, 7, Short.MAX_VALUE))
+                            .addComponent(lblOmrade)
+                            .addComponent(lblRubrik))
+                        .addGap(0, 14, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(42, 42, 42)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblNamn)
                             .addComponent(lblTfn))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(84, 84, 84)
+                        .addComponent(btnBytLosen)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
@@ -156,10 +153,10 @@ public class AlienPage extends javax.swing.JFrame {
             String telefon = svar.get("Telefon");
             String omrade = svar.get("Benamning");
 
-            lblOmrade.setText(omrade);
+            lblOmrade.setText("Svealand");
             if (namn == null) {
-                lblNamn.setText("Det finns ingen chef för detta område");
-                lblTfn.setText("");
+                lblNamn.setText("Ansvarig agent: Agent J");
+                lblTfn.setText("Telefonnr: 4329-54829");
             } 
 
             else {
