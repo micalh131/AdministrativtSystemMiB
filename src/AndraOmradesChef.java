@@ -144,8 +144,8 @@ public class AndraOmradesChef extends javax.swing.JFrame {
                 this.agentID = konv.getAgentId(svar);
 
                 if (svar == null) {
-
-                    JOptionPane.showMessageDialog(null, "Området hittades inte, skriv in rätt område");
+                    lblNuvarandeOmradeschef.setText("Det finns ingen chef för detta område.");
+    
                 }
 
             } catch (InfException e) {
