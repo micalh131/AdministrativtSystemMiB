@@ -222,8 +222,6 @@ public class AndraInfoAgent extends javax.swing.JFrame {
 
             soktAgent = idb.fetchRow(fraga);
 
-            System.out.println(soktAgent);
-
             txtNamn.setText(soktAgent.get("Namn"));
             txtLosen.setText(soktAgent.get("Losenord"));
             txtTel.setText(soktAgent.get("Telefon"));
