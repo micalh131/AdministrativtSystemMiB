@@ -107,7 +107,7 @@ public class TaBortAgent extends javax.swing.JFrame {
 
                 lblBorttagenAgent.setVisible(true);
                 lblBorttagenAgent.setText(namn + " är borttagen ur systemet");
-                //cmbAgenter.removeItem(namn);
+                cmbAgenter.removeItem(namn);
             } catch (InfException e) {
                 JOptionPane.showMessageDialog(null, "Gick inte att ta bort");
             }

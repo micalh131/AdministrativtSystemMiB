@@ -39,7 +39,7 @@ public class SokEnskildAgent extends javax.swing.JFrame {
         btnSok = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtaAgentInfo = new javax.swing.JTextArea();
-        jLabel1 = new javax.swing.JLabel();
+        lblAgentNamn = new javax.swing.JLabel();
 
         lblSokInfoAgent.setText("Sök info om agent");
 
@@ -56,7 +56,7 @@ public class SokEnskildAgent extends javax.swing.JFrame {
         txtaAgentInfo.setRows(5);
         jScrollPane1.setViewportView(txtaAgentInfo);
 
-        jLabel1.setText("Skriv in agentens namn");
+        lblAgentNamn.setText("Skriv in agentens namn");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -70,7 +70,7 @@ public class SokEnskildAgent extends javax.swing.JFrame {
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jLabel1)
+                        .addComponent(lblAgentNamn)
                         .addGap(46, 46, 46)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(txtNamnSok)
@@ -89,7 +89,7 @@ public class SokEnskildAgent extends javax.swing.JFrame {
                 .addGap(7, 7, 7)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtNamnSok, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
+                    .addComponent(lblAgentNamn))
                 .addGap(33, 33, 33)
                 .addComponent(btnSok)
                 .addGap(27, 27, 27)
@@ -100,16 +100,12 @@ public class SokEnskildAgent extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    //Hämtar värden om en agent och lägger till dem i textrutan
     private void btnSokActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSokActionPerformed
 
         txtaAgentInfo.setText("");
         String soktNamn = txtNamnSok.getText();
-        //boolean inmatningOk = Validering.textFaltEjTomtRegEx(soktNamn);
-        //if (!inmatningOk) {
-            //txtNamnSok.requestFocus();
-       // }
-
-       
+        
         ArrayList<HashMap<String, String>> soktaNamn;
         if(Validering.textFaltEjTomtRegEx(soktNamn))
         try {
@@ -141,8 +137,8 @@ public class SokEnskildAgent extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnSok;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblAgentNamn;
     private javax.swing.JLabel lblSokInfoAgent;
     private javax.swing.JTextField txtNamnSok;
     private javax.swing.JTextArea txtaAgentInfo;

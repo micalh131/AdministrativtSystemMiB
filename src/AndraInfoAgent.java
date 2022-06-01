@@ -42,15 +42,15 @@ public class AndraInfoAgent extends javax.swing.JFrame {
         txtLosen = new javax.swing.JTextField();
         txtTel = new javax.swing.JTextField();
         txtDatum = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
+        lblNamn = new javax.swing.JLabel();
+        lblLosen = new javax.swing.JLabel();
+        lblTel = new javax.swing.JLabel();
+        lblDatum = new javax.swing.JLabel();
+        lblOmrade = new javax.swing.JLabel();
+        lblAdmin = new javax.swing.JLabel();
+        lblRubrik = new javax.swing.JLabel();
         btnAndra = new javax.swing.JButton();
-        jLabel9 = new javax.swing.JLabel();
+        lblAgent = new javax.swing.JLabel();
         cboxOmrade = new javax.swing.JComboBox<>();
         cboxAdmin = new javax.swing.JComboBox<>();
         lblAndra = new javax.swing.JLabel();
@@ -62,19 +62,19 @@ public class AndraInfoAgent extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setText("Namn");
+        lblNamn.setText("Namn");
 
-        jLabel2.setText("Lösenord");
+        lblLosen.setText("Lösenord");
 
-        jLabel3.setText("Telefon");
+        lblTel.setText("Telefon");
 
-        jLabel4.setText("Anställningsdatum");
+        lblDatum.setText("Anställningsdatum");
 
-        jLabel5.setText("Område");
+        lblOmrade.setText("Område");
 
-        jLabel6.setText("Administratör");
+        lblAdmin.setText("Administratör");
 
-        jLabel8.setText("Ändra info för Agent");
+        lblRubrik.setText("Ändra info för Agent");
 
         btnAndra.setText("Ändra");
         btnAndra.addActionListener(new java.awt.event.ActionListener() {
@@ -83,7 +83,7 @@ public class AndraInfoAgent extends javax.swing.JFrame {
             }
         });
 
-        jLabel9.setText("Agent");
+        lblAgent.setText("Agent");
 
         cboxOmrade.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Välj" }));
 
@@ -98,16 +98,16 @@ public class AndraInfoAgent extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(75, 75, 75)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel8)
+                    .addComponent(lblRubrik)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel6)
-                            .addComponent(jLabel9))
+                            .addComponent(lblNamn)
+                            .addComponent(lblLosen)
+                            .addComponent(lblTel)
+                            .addComponent(lblDatum)
+                            .addComponent(lblOmrade)
+                            .addComponent(lblAdmin)
+                            .addComponent(lblAgent))
                         .addGap(58, 58, 58)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(txtNamn, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -131,36 +131,36 @@ public class AndraInfoAgent extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(7, 7, 7)
-                .addComponent(jLabel8)
+                .addComponent(lblRubrik)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cboxValAgent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel9))
+                    .addComponent(lblAgent))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtNamn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
+                    .addComponent(lblNamn))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtLosen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
+                    .addComponent(lblLosen))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtTel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
+                    .addComponent(lblTel))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtDatum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4))
+                    .addComponent(lblDatum))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
+                    .addComponent(lblOmrade)
                     .addComponent(cboxOmrade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel6)
+                            .addComponent(lblAdmin)
                             .addComponent(cboxAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -280,15 +280,15 @@ public class AndraInfoAgent extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cboxAdmin;
     private javax.swing.JComboBox<String> cboxOmrade;
     private javax.swing.JComboBox<String> cboxValAgent;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel lblAdmin;
+    private javax.swing.JLabel lblAgent;
     private javax.swing.JLabel lblAndra;
+    private javax.swing.JLabel lblDatum;
+    private javax.swing.JLabel lblLosen;
+    private javax.swing.JLabel lblNamn;
+    private javax.swing.JLabel lblOmrade;
+    private javax.swing.JLabel lblRubrik;
+    private javax.swing.JLabel lblTel;
     private javax.swing.JTextField txtDatum;
     private javax.swing.JTextField txtLosen;
     private javax.swing.JTextField txtNamn;

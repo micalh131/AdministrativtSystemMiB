@@ -183,7 +183,7 @@ public class AndraOmradesChef extends javax.swing.JFrame {
                 idb.update(fraga);
                 lblOmradeschefAndrad.setText("Områdeschefen är ändrad till " + nyOmradeschef);
                 lblOmradeschefAndrad.setVisible(true);
-                System.out.println("funkar");
+                
             }
         } catch (InfException e) {
             JOptionPane.showMessageDialog(null, "Något gick fel med uppkopplingen till databasen");

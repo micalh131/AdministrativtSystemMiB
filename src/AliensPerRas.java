@@ -116,15 +116,10 @@ public class AliensPerRas extends javax.swing.JFrame {
                 String fragaSquid = "SELECT squid.Alien_ID, alien.Namn FROM squid JOIN alien ON alien.`Alien_ID`= squid.`Alien_ID`";
                 soktaAliens = idb.fetchRows(fragaSquid);
 
-                //if (soktaAliens!= null) {
-
                     for (HashMap<String, String> enAlien : soktaAliens) {
                         txtaAlienLista.append(enAlien.get("Alien_ID") + "\t" + enAlien.get("Namn") + "\n");
 
-                    //}
-
-                //} else {
-                    //txtaAlienLista.append("Det finns ingen alien av denna ras");
+        
                 }
             }
             if (valdRas.equals("Worm")) {

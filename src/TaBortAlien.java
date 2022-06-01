@@ -43,7 +43,7 @@ public class TaBortAlien extends javax.swing.JFrame {
 
         cboxValAlien = new javax.swing.JComboBox<>();
         btnTaBort = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        lblRubrik = new javax.swing.JLabel();
         lblTaBort = new javax.swing.JLabel();
 
         cboxValAlien.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Välj" }));
@@ -55,7 +55,7 @@ public class TaBortAlien extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setText("Välj Alien att ta bort");
+        lblRubrik.setText("Välj Alien att ta bort");
 
         lblTaBort.setText("jLabel2");
 
@@ -74,14 +74,14 @@ public class TaBortAlien extends javax.swing.JFrame {
                         .addComponent(lblTaBort, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(145, 145, 145)
-                        .addComponent(jLabel1)))
+                        .addComponent(lblRubrik)))
                 .addContainerGap(49, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(35, 35, 35)
-                .addComponent(jLabel1)
+                .addComponent(lblRubrik)
                 .addGap(18, 18, 18)
                 .addComponent(cboxValAlien, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(94, 94, 94)
@@ -109,6 +109,7 @@ public class TaBortAlien extends javax.swing.JFrame {
 
                 lblTaBort.setVisible(true);
                 lblTaBort.setText(namn + "är borttagen ur systemet");
+                cboxValAlien.removeItem(namn);
             } catch (InfException e) {
                 JOptionPane.showMessageDialog(null, "Gick inte att ta bort");
             }
@@ -136,7 +137,7 @@ public class TaBortAlien extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnTaBort;
     private javax.swing.JComboBox<String> cboxValAlien;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel lblRubrik;
     private javax.swing.JLabel lblTaBort;
     // End of variables declaration//GEN-END:variables
 }
