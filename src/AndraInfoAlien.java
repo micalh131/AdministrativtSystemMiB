@@ -50,16 +50,16 @@ public class AndraInfoAlien extends javax.swing.JFrame {
         txtTel = new javax.swing.JTextField();
         txtDatum = new javax.swing.JTextField();
         cboxRas = new javax.swing.JComboBox<>();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jLabel9 = new javax.swing.JLabel();
+        lblNamn = new javax.swing.JLabel();
+        lblLosen = new javax.swing.JLabel();
+        lblTel = new javax.swing.JLabel();
+        lblDatum = new javax.swing.JLabel();
+        lblPlats = new javax.swing.JLabel();
+        lblAnsvarigAgent = new javax.swing.JLabel();
+        lblRas = new javax.swing.JLabel();
+        lblRubrik = new javax.swing.JLabel();
+        btnAndra = new javax.swing.JButton();
+        lblAlien = new javax.swing.JLabel();
         cboxPlats = new javax.swing.JComboBox<>();
         cboxAnsvarigAgent = new javax.swing.JComboBox<>();
         lblAndra = new javax.swing.JLabel();
@@ -80,30 +80,30 @@ public class AndraInfoAlien extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setText("Namn");
+        lblNamn.setText("Namn");
 
-        jLabel2.setText("Lösenord");
+        lblLosen.setText("Lösenord");
 
-        jLabel3.setText("Telefon");
+        lblTel.setText("Telefon");
 
-        jLabel4.setText("Datum");
+        lblDatum.setText("Datum");
 
-        jLabel5.setText("Plats");
+        lblPlats.setText("Plats");
 
-        jLabel6.setText("Ansvarig Agent");
+        lblAnsvarigAgent.setText("Ansvarig Agent");
 
-        jLabel7.setText("Ras");
+        lblRas.setText("Ras");
 
-        jLabel8.setText("Ändra info för Alien");
+        lblRubrik.setText("Ändra info för Alien");
 
-        jButton1.setText("Ändra");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnAndra.setText("Ändra");
+        btnAndra.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnAndraActionPerformed(evt);
             }
         });
 
-        jLabel9.setText("Alien");
+        lblAlien.setText("Alien");
 
         cboxPlats.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Välj" }));
 
@@ -122,21 +122,21 @@ public class AndraInfoAlien extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(75, 75, 75)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel8)
+                            .addComponent(lblRubrik)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel1)
-                                            .addComponent(jLabel2)
-                                            .addComponent(jLabel3)
-                                            .addComponent(jLabel4)
-                                            .addComponent(jLabel5)
-                                            .addComponent(jLabel6)
-                                            .addComponent(jLabel9))
+                                            .addComponent(lblNamn)
+                                            .addComponent(lblLosen)
+                                            .addComponent(lblTel)
+                                            .addComponent(lblDatum)
+                                            .addComponent(lblPlats)
+                                            .addComponent(lblAnsvarigAgent)
+                                            .addComponent(lblAlien))
                                         .addGap(58, 58, 58))
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel7)
+                                        .addComponent(lblRas)
                                         .addGap(120, 120, 120)))
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(cboxRas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -155,51 +155,51 @@ public class AndraInfoAlien extends javax.swing.JFrame {
                         .addGap(185, 185, 185)
                         .addComponent(lblAndra, javax.swing.GroupLayout.DEFAULT_SIZE, 147, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton1)))
+                        .addComponent(btnAndra)))
                 .addGap(65, 65, 65))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(7, 7, 7)
-                .addComponent(jLabel8)
+                .addComponent(lblRubrik)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cboxValAlien, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel9))
+                    .addComponent(lblAlien))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtNamn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
+                    .addComponent(lblNamn))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtLosen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
+                    .addComponent(lblLosen))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtTel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
+                    .addComponent(lblTel))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtDatum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4))
+                    .addComponent(lblDatum))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
+                    .addComponent(lblPlats)
                     .addComponent(cboxPlats, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
+                    .addComponent(lblAnsvarigAgent)
                     .addComponent(cboxAnsvarigAgent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblRasAttribut))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cboxRas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel7)
+                    .addComponent(lblRas)
                     .addComponent(txtRasAttribut, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
+                    .addComponent(btnAndra)
                     .addComponent(lblAndra))
                 .addGap(27, 27, 27))
         );
@@ -215,7 +215,7 @@ public class AndraInfoAlien extends javax.swing.JFrame {
         Anropar metoden för att uppdatera aliens ras, plus tar bort den gamla rasen
         Uppdaterar sedan all info om en viss alien.
      */
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnAndraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAndraActionPerformed
         // TODO add your handling code here:
         String alienId = konv.getAlienId(cboxValAlien.getSelectedItem().toString());
         String namn = txtNamn.getText();
@@ -254,7 +254,7 @@ public class AndraInfoAlien extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Gick inte att uppdatera");
             }
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnAndraActionPerformed
 //Visar rasattribut och möjliggör ändring
     private void cboxRasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboxRasActionPerformed
         // TODO add your handling code here:
@@ -385,22 +385,22 @@ public class AndraInfoAlien extends javax.swing.JFrame {
    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAndra;
     private javax.swing.JComboBox<String> cboxAnsvarigAgent;
     private javax.swing.JComboBox<String> cboxPlats;
     private javax.swing.JComboBox<String> cboxRas;
     private javax.swing.JComboBox<String> cboxValAlien;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel lblAlien;
     private javax.swing.JLabel lblAndra;
+    private javax.swing.JLabel lblAnsvarigAgent;
+    private javax.swing.JLabel lblDatum;
+    private javax.swing.JLabel lblLosen;
+    private javax.swing.JLabel lblNamn;
+    private javax.swing.JLabel lblPlats;
+    private javax.swing.JLabel lblRas;
     private javax.swing.JLabel lblRasAttribut;
+    private javax.swing.JLabel lblRubrik;
+    private javax.swing.JLabel lblTel;
     private javax.swing.JTextField txtDatum;
     private javax.swing.JTextField txtLosen;
     private javax.swing.JTextField txtNamn;
