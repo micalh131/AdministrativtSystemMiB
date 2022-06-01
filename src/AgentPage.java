@@ -1,5 +1,7 @@
 
+import javax.swing.JOptionPane;
 import oru.inf.InfDB;
+import oru.inf.InfException;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -32,6 +34,7 @@ public class AgentPage extends javax.swing.JFrame {
         this.password = password;
         this.isAdmin = isAdmin;
         btnAdminInlogg.setVisible(kollaIsAdmin(isAdmin));
+        getAgentNamn(userName);
 
     }
 
@@ -42,6 +45,22 @@ public class AgentPage extends javax.swing.JFrame {
         }
         return false;
     }
+    
+    private void getAgentNamn(String userName){
+        
+          String Namn = userName;
+          lblValkommenAgent.setText("");
+        
+        try{
+            String fraga = "SELECT Namn FROM agent WHERE Agent_ID = '"+ userName +"'";
+            Namn = idb.fetchSingle(fraga);
+        }
+        catch(InfException ex){
+                JOptionPane.showMessageDialog(null, "Gick inte att hämta agentens namn");
+            }
+        
+        lblValkommenAgent.setText("Välkommen " + Namn);
+    }    
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -76,7 +95,7 @@ public class AgentPage extends javax.swing.JFrame {
         });
 
         lblValkommenAgent.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
-        lblValkommenAgent.setText("Välkommen Agent");
+        lblValkommenAgent.setText("Välkommen ");
 
         btnNyregistreraAlien.setText("Registrera ny Alien");
         btnNyregistreraAlien.addActionListener(new java.awt.event.ActionListener() {
@@ -183,7 +202,7 @@ public class AgentPage extends javax.swing.JFrame {
                                 .addGap(0, 0, Short.MAX_VALUE))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(97, 97, 97)
-                        .addComponent(lblValkommenAgent)
+                        .addComponent(lblValkommenAgent, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(

@@ -25,6 +25,7 @@ public class AlienPage extends javax.swing.JFrame {
     private String alienUserName;
     private String password;
     private String valdUser;
+    
 
     /**
      * Creates new form AlienPage
@@ -42,6 +43,8 @@ public class AlienPage extends javax.swing.JFrame {
         this.alienUserName = alienUserName;
         this.password = password;
         this.valdUser = valdUser;
+       getAlienNamn(alienUserName);
+        getOmrNamn(alienPlats);
         visaInfo();
     }
  
@@ -56,6 +59,7 @@ public class AlienPage extends javax.swing.JFrame {
         lblOmrade = new javax.swing.JLabel();
         lblNamn = new javax.swing.JLabel();
         lblTfn = new javax.swing.JLabel();
+        lblAlienNamn = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -80,40 +84,46 @@ public class AlienPage extends javax.swing.JFrame {
 
         lblTfn.setText("Telefon");
 
+        lblAlienNamn.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(lblBildAlien, javax.swing.GroupLayout.PREFERRED_SIZE, 402, Short.MAX_VALUE)
+                .addComponent(lblBildAlien, javax.swing.GroupLayout.PREFERRED_SIZE, 409, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 81, Short.MAX_VALUE)
-                        .addComponent(lblValkommenAlien)
-                        .addGap(45, 59, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(42, 42, 42)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblOmrade)
-                            .addComponent(lblRubrik))
-                        .addGap(0, 14, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(42, 42, 42)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblNamn)
-                            .addComponent(lblTfn))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(84, 84, 84)
-                        .addComponent(btnBytLosen)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(42, 42, 42)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblOmrade)
+                                    .addComponent(lblRubrik)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(42, 42, 42)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblNamn)
+                                    .addComponent(lblTfn)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(84, 84, 84)
+                                .addComponent(btnBytLosen)))
+                        .addContainerGap(20, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lblAlienNamn, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblValkommenAlien))
+                        .addGap(62, 62, 62))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(145, 145, 145)
+                .addGap(58, 58, 58)
                 .addComponent(lblValkommenAlien, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblAlienNamn, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(58, 58, 58)
                 .addComponent(lblRubrik)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblOmrade)
@@ -138,8 +148,25 @@ public class AlienPage extends javax.swing.JFrame {
     databasen.
      */
    
-             
-       private void visaInfo() {
+    private void getOmrNamn(String alienPlats){
+        
+          String omradeNamn = alienPlats;
+          lblOmrade.setText("");
+        
+        try{
+            String fraga = "SELECT omrade.Benamning FROM omrade JOIN plats "
+                    + "ON plats.Finns_I=omrade.Omrades_ID WHERE Plats_ID = '"+ alienPlats +"'";
+            omradeNamn = idb.fetchSingle(fraga);
+        }
+        catch(InfException ex){
+                JOptionPane.showMessageDialog(null, "Gick inte att hämta områdets id");
+            }
+        
+        lblOmrade.setText(omradeNamn);
+    }        
+      
+      
+      private void visaInfo() {
         
 
         try {
@@ -147,29 +174,41 @@ public class AlienPage extends javax.swing.JFrame {
             String fraga = "SELECT agent.Agent_ID, Namn, Telefon, omrade.Benamning FROM agent \n"
                     + "JOIN omradeschef ON omradeschef.Agent_ID = agent.Agent_ID\n"
                     + "JOIN omrade ON omradeschef.Agent_ID = omrade.Omrades_ID\n"
-                    + "JOIN plats ON omrade.Omrades_ID = plats.Plats_ID WHERE Plats_ID =" + alienPlats;
+                    + "JOIN plats ON omrade.Omrades_ID = plats.Finns_I WHERE Plats_ID =" + alienPlats;
             HashMap<String, String> svar = idb.fetchRow(fraga);
             String namn = svar.get("Namn");
             String telefon = svar.get("Telefon");
-            String omrade = svar.get("Benamning");
+            
 
-            lblOmrade.setText("Svealand");
+            lblNamn.setText("Agent: " + namn);
+            lblTfn.setText("Telefonnummer: " + telefon);
+
             if (namn == null) {
-                lblNamn.setText("Ansvarig agent: Agent J");
-                lblTfn.setText("Telefonnr: 4329-54829");
-            } 
-
-            else {
-                lblNamn.setText("Agent: " + namn);
-                 lblTfn.setText("Telefonnummer: " + telefon);
+                lblNamn.setText("Det finns ingen chef för detta område");
+                lblTfn.setText("");
             }
-
-
 
         } catch (InfException e) {
             JOptionPane.showMessageDialog(null, "Något gick fel med uppkopplingen till databasen");
             System.out.println(e.getMessage());
-        }  } /* 
+        }
+    }
+ private void getAlienNamn(String alienUserName){
+        
+          String Namn = alienUserName;
+          lblAlienNamn.setText("");
+        
+        try{
+            String fraga = "SELECT Namn FROM alien WHERE Alien_ID = '"+ alienUserName +"'";
+            Namn = idb.fetchSingle(fraga);
+        }
+        catch(InfException ex){
+                JOptionPane.showMessageDialog(null, "Gick inte att hämta aliens namn");
+            }
+        
+        lblAlienNamn.setText(Namn);
+    }        
+    /* 
          Denna metod instansierar ett objekt av klassen AndraLosenord (som kommer användas av alla
     användare). Klassen hanterar byte av lösenord.
      */
@@ -181,6 +220,7 @@ public class AlienPage extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBytLosen;
+    private javax.swing.JLabel lblAlienNamn;
     private javax.swing.JLabel lblBildAlien;
     private javax.swing.JLabel lblNamn;
     private javax.swing.JLabel lblOmrade;
