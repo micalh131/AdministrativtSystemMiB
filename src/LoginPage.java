@@ -158,8 +158,6 @@ public class LoginPage extends javax.swing.JFrame {
                     String svarPlats = idb.fetchSingle(fragaPlats);
                     String svarUserName = idb.fetchSingle(fragaUserName);
                     String svarPassword = idb.fetchSingle(fragaPassword);
-                    System.out.println(svarPassword);
-                    System.out.println(password);
 
                     if (userName.equals(svarUserName) && Validering.kollaLosen(svarPassword, password)) {
                         new AlienPage(idb, svarPlats, userName, valdUser, password).setVisible(true);

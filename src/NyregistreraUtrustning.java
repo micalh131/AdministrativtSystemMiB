@@ -216,6 +216,7 @@ public class NyregistreraUtrustning extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Gick inte att lägga till utrustning");
             }
         }
+        txtKategoriAttribut.setText("");
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

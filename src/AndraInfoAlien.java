@@ -280,17 +280,15 @@ public class AndraInfoAlien extends javax.swing.JFrame {
     private void cboxValAlienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboxValAlienActionPerformed
         
         HashMap<String, String> soktAlien;
-
+        String alienNamn = cboxValAlien.getSelectedItem().toString();
         try {
-            String alienNamn = cboxValAlien.getSelectedItem().toString();
+            
             String fraga = "SELECT alien.Losenord, alien.Telefon, Registreringsdatum, "
                     + "plats.Benamning, agent.Namn FROM alien \n"
                     + "JOIN plats ON plats.Plats_ID=alien.Plats JOIN agent "
                     + "ON alien.Ansvarig_Agent = Agent_ID WHERE alien.Namn='" + alienNamn + "'";
             
             soktAlien = idb.fetchRow(fraga);
-        
-            System.out.println(soktAlien);
 
             txtNamn.setText(alienNamn);
             txtLosen.setText(soktAlien.get("Losenord"));
@@ -301,6 +299,34 @@ public class AndraInfoAlien extends javax.swing.JFrame {
 
         } catch (InfException e) {
             JOptionPane.showMessageDialog(null, "Gick inte att hämta info om alien");
+
+        }
+        //Konverterar alien namn till id 
+        //Kollar i vilken ras tabellsom alien finns i och visar
+        //den rasen i comboboxen. Finns attribut till rasen så visas  
+        //det i taxtrutan för rasattribut
+        String alienId = konv.getAlienId(alienNamn);
+        try{
+            String fragaRasBoglodite = "SELECT Alien_ID FROM boglodite WHERE Alien_ID ="+ alienId;
+            String svarBoglodite = idb.fetchSingle(fragaRasBoglodite);
+            if(svarBoglodite != null){
+                 cboxRas.setSelectedItem("Boglodite");
+                 txtRasAttribut.setText(idb.fetchSingle("SELECT Antal_Boogies FROM boglodite WHERE Alien_ID ="+ alienId));
+            }
+            String fragaRasSquid = "SELECT Alien_ID FROM squid WHERE Alien_ID ="+ alienId;
+            String svarSquid = idb.fetchSingle(fragaRasSquid);
+            if(svarSquid != null){
+                 cboxRas.setSelectedItem("Squid");
+                 txtRasAttribut.setText(idb.fetchSingle("SELECT Antal_Armar FROM squid WHERE Alien_ID ="+ alienId));
+            }
+            String fragaRasWorm = "SELECT Alien_ID FROM worm WHERE Alien_ID ="+ alienId;
+            String svarWorm = idb.fetchSingle(fragaRasWorm);
+            if(svarWorm != null){
+                 cboxRas.setSelectedItem("Worm");
+            }
+        }
+        catch (InfException e) {
+            JOptionPane.showMessageDialog(null, "Gick inte att hämta info om aliens ras");
 
         }
 
