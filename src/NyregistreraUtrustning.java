@@ -36,19 +36,19 @@ public class NyregistreraUtrustning extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel2 = new javax.swing.JLabel();
+        lblKategori = new javax.swing.JLabel();
         txtBenamning = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
+        lblBenamning = new javax.swing.JLabel();
         btnReg = new javax.swing.JButton();
         lblReg = new javax.swing.JLabel();
         cboxVäljKategori = new javax.swing.JComboBox<>();
-        jLabel1 = new javax.swing.JLabel();
+        lblRubrik = new javax.swing.JLabel();
         txtKategoriAttribut = new javax.swing.JTextField();
         lblKategoriAttribut = new javax.swing.JLabel();
 
-        jLabel2.setText("Välj kategori");
+        lblKategori.setText("Välj kategori");
 
-        jLabel3.setText("Benämning");
+        lblBenamning.setText("Benämning");
 
         btnReg.setText("Registrera");
         btnReg.addActionListener(new java.awt.event.ActionListener() {
@@ -66,7 +66,7 @@ public class NyregistreraUtrustning extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setText("Registrera ny utrustning");
+        lblRubrik.setText("Registrera ny utrustning");
 
         lblKategoriAttribut.setText("jLabel4");
 
@@ -82,11 +82,11 @@ public class NyregistreraUtrustning extends javax.swing.JFrame {
                             .addComponent(btnReg)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                    .addComponent(jLabel3)
+                                    .addComponent(lblBenamning)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(txtBenamning, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jLabel2)
+                                    .addComponent(lblKategori)
                                     .addGap(18, 18, 18)
                                     .addComponent(cboxVäljKategori, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGap(6, 6, 6))))
@@ -101,24 +101,24 @@ public class NyregistreraUtrustning extends javax.swing.JFrame {
                                 .addComponent(lblReg, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(83, 83, 83)
-                        .addComponent(jLabel1)))
+                        .addComponent(lblRubrik)))
                 .addContainerGap(49, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(8, 8, 8)
-                .addComponent(jLabel1)
+                .addComponent(lblRubrik)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
+                    .addComponent(lblKategori)
                     .addComponent(cboxVäljKategori, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(15, 15, 15)
                 .addComponent(lblKategoriAttribut)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtBenamning, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3)
+                    .addComponent(lblBenamning)
                     .addComponent(txtKategoriAttribut, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(47, 47, 47)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -222,11 +222,11 @@ public class NyregistreraUtrustning extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnReg;
     private javax.swing.JComboBox<String> cboxVäljKategori;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel lblBenamning;
+    private javax.swing.JLabel lblKategori;
     private javax.swing.JLabel lblKategoriAttribut;
     private javax.swing.JLabel lblReg;
+    private javax.swing.JLabel lblRubrik;
     private javax.swing.JTextField txtBenamning;
     private javax.swing.JTextField txtKategoriAttribut;
     // End of variables declaration//GEN-END:variables

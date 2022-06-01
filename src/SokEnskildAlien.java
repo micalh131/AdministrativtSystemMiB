@@ -18,7 +18,7 @@ public class SokEnskildAlien extends javax.swing.JFrame {
     private InfDB idb;
 
     /**
-     * Creates new form SokEnskildAlien
+     * Skapar ny SokEnskildAlien
      */
     public SokEnskildAlien(InfDB idb) {
         initComponents();
@@ -102,6 +102,7 @@ public class SokEnskildAlien extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    //Hämtar värden om en alien och lägger till dem i textrutan
     private void btnSokActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSokActionPerformed
         txtaAlienInfo.setText("");
         String soktNamn = txtNamnSok.getText();

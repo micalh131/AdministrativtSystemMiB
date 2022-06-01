@@ -33,9 +33,9 @@ public class ChefOmrade extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         txtaChefInfo = new javax.swing.JTextArea();
         cboxOmrade = new javax.swing.JComboBox<>();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        lblOmrade = new javax.swing.JLabel();
+        lblAnsvarigOmradeschef = new javax.swing.JLabel();
+        lblRubrik = new javax.swing.JLabel();
 
         txtaChefInfo.setColumns(20);
         txtaChefInfo.setRows(5);
@@ -48,12 +48,12 @@ public class ChefOmrade extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setText("Välj område");
+        lblOmrade.setText("Välj område");
 
-        jLabel2.setText("Ansvarig områdeschef:");
+        lblAnsvarigOmradeschef.setText("Ansvarig områdeschef:");
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel3.setText("Se vem som är områdeschef");
+        lblRubrik.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblRubrik.setText("Se vem som är områdeschef");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -62,24 +62,24 @@ public class ChefOmrade extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(40, 40, 40)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel2)
+                    .addComponent(lblRubrik)
+                    .addComponent(lblAnsvarigOmradeschef)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cboxOmrade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
+                    .addComponent(lblOmrade))
                 .addContainerGap(126, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(19, Short.MAX_VALUE)
-                .addComponent(jLabel3)
+                .addComponent(lblRubrik)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel1)
+                .addComponent(lblOmrade)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(cboxOmrade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel2)
+                .addComponent(lblAnsvarigOmradeschef)
                 .addGap(4, 4, 4)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(80, 80, 80))
@@ -136,10 +136,10 @@ public class ChefOmrade extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> cboxOmrade;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblAnsvarigOmradeschef;
+    private javax.swing.JLabel lblOmrade;
+    private javax.swing.JLabel lblRubrik;
     private javax.swing.JTextArea txtaChefInfo;
     // End of variables declaration//GEN-END:variables
 }

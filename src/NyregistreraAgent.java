@@ -42,12 +42,12 @@ public class NyregistreraAgent extends javax.swing.JFrame {
         txtTel = new javax.swing.JTextField();
         txtAnstDatum = new javax.swing.JTextField();
         btnRegistrera = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
+        lblNamn = new javax.swing.JLabel();
+        lblLosen = new javax.swing.JLabel();
+        lblTel = new javax.swing.JLabel();
+        lblDatum = new javax.swing.JLabel();
+        lblOmrade = new javax.swing.JLabel();
+        lblAdmin = new javax.swing.JLabel();
         lblReg = new javax.swing.JLabel();
         cboxOmrade = new javax.swing.JComboBox<>();
         cboxAdmin = new javax.swing.JComboBox<>();
@@ -60,17 +60,17 @@ public class NyregistreraAgent extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setText("Namn");
+        lblNamn.setText("Namn");
 
-        jLabel2.setText("Lösenord");
+        lblLosen.setText("Lösenord");
 
-        jLabel3.setText("Telefon");
+        lblTel.setText("Telefon");
 
-        jLabel4.setText("Anställningsdatum (yyyy-mm-dd)");
+        lblDatum.setText("Anställningsdatum (yyyy-mm-dd)");
 
-        jLabel5.setText("Område");
+        lblOmrade.setText("Område");
 
-        jLabel6.setText("Administratör");
+        lblAdmin.setText("Administratör");
 
         lblReg.setText("Agent har registrerats");
 
@@ -96,12 +96,12 @@ public class NyregistreraAgent extends javax.swing.JFrame {
                                 .addComponent(btnRegistrera))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel6)
-                                    .addComponent(jLabel5)
-                                    .addComponent(jLabel4)
-                                    .addComponent(jLabel3)
-                                    .addComponent(jLabel2)
-                                    .addComponent(jLabel1))
+                                    .addComponent(lblAdmin)
+                                    .addComponent(lblOmrade)
+                                    .addComponent(lblDatum)
+                                    .addComponent(lblTel)
+                                    .addComponent(lblLosen)
+                                    .addComponent(lblNamn))
                                 .addGap(55, 55, 55)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(txtNamn, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -123,26 +123,26 @@ public class NyregistreraAgent extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtNamn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
+                    .addComponent(lblNamn))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtLosen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
+                    .addComponent(lblLosen))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtTel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
+                    .addComponent(lblTel))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtAnstDatum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4))
+                    .addComponent(lblDatum))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
+                    .addComponent(lblOmrade)
                     .addComponent(cboxOmrade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
+                    .addComponent(lblAdmin)
                     .addComponent(cboxAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -165,7 +165,8 @@ public class NyregistreraAgent extends javax.swing.JFrame {
         return nextId;
     }
 
-   
+   //Finns redan en agent med samma namn som användaren försöker registrera
+    //så kastas ett felmeddelande
     private boolean kollaAgentNamnReadanFinns(String namn) {
         ArrayList<String> AgentNamn = null;
         boolean result = false;
@@ -188,7 +189,9 @@ public class NyregistreraAgent extends javax.swing.JFrame {
         return result;
     }
 
-
+    //Hamtar in alla värden och validerar dem
+    //Lägger till agent och sätter textsutorna till tomma
+    //Visar i slutet en label som meddelar för anvädaren att alien är registrerad
     private void btnRegistreraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistreraActionPerformed
         // TODO add your handling code here:
         String namn = txtNamn.getText();
@@ -199,8 +202,7 @@ public class NyregistreraAgent extends javax.swing.JFrame {
         String isAdmin = Validering.kollaIsAdmin(cboxAdmin.getSelectedItem().toString());
         Boolean isLikaNamn = kollaAgentNamnReadanFinns(namn);
         Boolean isLosenRattLangd = Validering.kollaLosenLangd(losen);
-
-        //Behöver lägga till en koll så användaren har valt ett område 
+        
         if (Validering.textFaltEjTomtRegEx(namn) && Validering.textFaltEjTomtRegEx(losen)
                 && Validering.textFaltEjTomtRegEx(tel) && Validering.textFaltEjTomtRegEx(datum)
                 && Validering.kollaCboxRegEx(omrade) && Validering.kollaCboxRegEx(isAdmin)
@@ -232,14 +234,14 @@ public class NyregistreraAgent extends javax.swing.JFrame {
     private javax.swing.JButton btnRegistrera;
     private javax.swing.JComboBox<String> cboxAdmin;
     private javax.swing.JComboBox<String> cboxOmrade;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel lblAdmin;
+    private javax.swing.JLabel lblDatum;
+    private javax.swing.JLabel lblLosen;
+    private javax.swing.JLabel lblNamn;
+    private javax.swing.JLabel lblOmrade;
     private javax.swing.JLabel lblReg;
     private javax.swing.JLabel lblRubrik;
+    private javax.swing.JLabel lblTel;
     private javax.swing.JTextField txtAnstDatum;
     private javax.swing.JTextField txtLosen;
     private javax.swing.JTextField txtNamn;
