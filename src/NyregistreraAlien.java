@@ -43,47 +43,47 @@ public class NyregistreraAlien extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        lblNamn = new javax.swing.JLabel();
         txtNamn = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
+        lblLosen = new javax.swing.JLabel();
         txtLosen = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
+        lblTel = new javax.swing.JLabel();
         txtTel = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
+        lblDatum = new javax.swing.JLabel();
         txtDatum = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jLabel7 = new javax.swing.JLabel();
+        lblPlats = new javax.swing.JLabel();
+        lblAnsvarigAgent = new javax.swing.JLabel();
+        btnReg = new javax.swing.JButton();
+        lblID = new javax.swing.JLabel();
         lblAlienId = new javax.swing.JLabel();
         lblReg = new javax.swing.JLabel();
         cboxPlats = new javax.swing.JComboBox<>();
         cboxAnsvarigAgent = new javax.swing.JComboBox<>();
         cboxRas = new javax.swing.JComboBox<>();
         txtRasAttribut = new javax.swing.JTextField();
-        jLabel8 = new javax.swing.JLabel();
+        lblRas = new javax.swing.JLabel();
         lblRasAttribut = new javax.swing.JLabel();
 
-        jLabel1.setText("Namn");
+        lblNamn.setText("Namn");
 
-        jLabel2.setText("Lösenord");
+        lblLosen.setText("Lösenord");
 
-        jLabel3.setText("Telefon");
+        lblTel.setText("Telefon");
 
-        jLabel4.setText("Datum");
+        lblDatum.setText("Datum");
 
-        jLabel5.setText("Plats");
+        lblPlats.setText("Plats");
 
-        jLabel6.setText("Ansvarig Agent");
+        lblAnsvarigAgent.setText("Ansvarig Agent");
 
-        jButton1.setText("Registrera");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnReg.setText("Registrera");
+        btnReg.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnRegActionPerformed(evt);
             }
         });
 
-        jLabel7.setText("Alien Id");
+        lblID.setText("Alien Id");
 
         lblAlienId.setText("jLabel8");
 
@@ -100,7 +100,7 @@ public class NyregistreraAlien extends javax.swing.JFrame {
             }
         });
 
-        jLabel8.setText("Ras");
+        lblRas.setText("Ras");
 
         lblRasAttribut.setText("jLabel9");
 
@@ -114,21 +114,21 @@ public class NyregistreraAlien extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jLabel8)
+                                .addComponent(lblRas)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(cboxRas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jLabel6)
+                                .addComponent(lblAnsvarigAgent)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(cboxAnsvarigAgent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel1)
-                                    .addComponent(jLabel7)
-                                    .addComponent(jLabel2)
-                                    .addComponent(jLabel3)
-                                    .addComponent(jLabel4)
-                                    .addComponent(jLabel5))
+                                    .addComponent(lblNamn)
+                                    .addComponent(lblID)
+                                    .addComponent(lblLosen)
+                                    .addComponent(lblTel)
+                                    .addComponent(lblDatum)
+                                    .addComponent(lblPlats))
                                 .addGap(43, 43, 43)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(lblAlienId)
@@ -142,7 +142,7 @@ public class NyregistreraAlien extends javax.swing.JFrame {
                         .addComponent(lblReg, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1)
+                    .addComponent(btnReg)
                     .addComponent(txtRasAttribut, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblRasAttribut))
                 .addGap(48, 48, 48))
@@ -152,38 +152,38 @@ public class NyregistreraAlien extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(29, 29, 29)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7)
+                    .addComponent(lblID)
                     .addComponent(lblAlienId))
                 .addGap(9, 9, 9)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
+                    .addComponent(lblNamn)
                     .addComponent(txtNamn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtLosen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
+                    .addComponent(lblLosen))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtTel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
+                    .addComponent(lblTel))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtDatum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4))
+                    .addComponent(lblDatum))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
+                    .addComponent(lblPlats)
                     .addComponent(cboxPlats, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cboxAnsvarigAgent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6)
+                    .addComponent(lblAnsvarigAgent)
                     .addComponent(lblRasAttribut))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton1)
+                            .addComponent(btnReg)
                             .addComponent(lblReg))
                         .addGap(20, 20, 20))
                     .addGroup(layout.createSequentialGroup()
@@ -191,7 +191,7 @@ public class NyregistreraAlien extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(cboxRas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtRasAttribut, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel8))
+                            .addComponent(lblRas))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
@@ -209,8 +209,11 @@ public class NyregistreraAlien extends javax.swing.JFrame {
         return nextId;
     }
 
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    //Hamtar in alla värden och validerar dem
+    //Lägger till ny ras och tar bort gammal
+    //Lägger till alien och sätter textsutorna till tomma
+    //Visar i slutet en label som meddelar för anvädaren att alien är registrerad
+    private void btnRegActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegActionPerformed
         // TODO add your handling code here:
         String namn = txtNamn.getText();
         String losen = txtLosen.getText();
@@ -252,8 +255,9 @@ public class NyregistreraAlien extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Gick inte att registrera alien");
             }
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnRegActionPerformed
 
+    //Visar olika rasattribut beroende på vilken ras användaren väljer
     private void cboxRasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboxRasActionPerformed
         // TODO add your handling code here:
         String ras = cboxRas.getSelectedItem().toString();
@@ -274,6 +278,8 @@ public class NyregistreraAlien extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_cboxRasActionPerformed
 
+    //Finns redan en alien med samma namn som användaren försöker registrera
+    //så kastas ett felmeddelande
      private boolean kollaAlienNamnReadanFinns(String namn) {
         ArrayList<String> alienNamn = null;
         boolean result = false;
@@ -297,21 +303,21 @@ public class NyregistreraAlien extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnReg;
     private javax.swing.JComboBox<String> cboxAnsvarigAgent;
     private javax.swing.JComboBox<String> cboxPlats;
     private javax.swing.JComboBox<String> cboxRas;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel lblAlienId;
+    private javax.swing.JLabel lblAnsvarigAgent;
+    private javax.swing.JLabel lblDatum;
+    private javax.swing.JLabel lblID;
+    private javax.swing.JLabel lblLosen;
+    private javax.swing.JLabel lblNamn;
+    private javax.swing.JLabel lblPlats;
+    private javax.swing.JLabel lblRas;
     private javax.swing.JLabel lblRasAttribut;
     private javax.swing.JLabel lblReg;
+    private javax.swing.JLabel lblTel;
     private javax.swing.JTextField txtDatum;
     private javax.swing.JTextField txtLosen;
     private javax.swing.JTextField txtNamn;
